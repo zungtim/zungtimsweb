@@ -8,7 +8,7 @@ export const Hero: React.FC = () => {
       <div className="relative mb-8 group">
         <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
         <img
-          src="https://raw.githubusercontent.com/zungtim/zungtimsweb/main/public/avatar.jpg"
+          src="/avatar.jpg"  // 没错，就是根目录斜杠，Vite 会自动去 public 找
           alt="ZungTim's Avatar"
           className="relative w-40 h-40 rounded-full border-4 border-white shadow-xl object-cover"
         />
