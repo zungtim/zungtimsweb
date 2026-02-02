@@ -42,7 +42,7 @@ export const Education: React.FC = () => {
 
             <div className="mb-6">
               <h4 className="flex items-center gap-2 text-sm font-semibold text-slate-700 uppercase tracking-wider mb-4">
-                <Trophy className="w-4 h-4" /> 主要成绩 (Campus Life & Achievements)
+                <Trophy className="w-4 h-4" /> 课程成绩 (Academic Performance)
               </h4>
               
               {/* GPA Card */}
@@ -51,7 +51,7 @@ export const Education: React.FC = () => {
                   <span className="block text-xs uppercase tracking-wide text-slate-400 mb-1">GPA Score</span>
                   <div className="flex items-baseline gap-2">
                     <span className="text-3xl font-bold text-slate-900">3.46</span>
-                    <span className="text-sm text-slate-400">/ 4.0</span> // Assuming 4.0 scale or 5.0, keeping general
+                    <span className="text-sm text-slate-400">/ 5.0</span>
                   </div>
                 </div>
               </div>
@@ -65,40 +65,42 @@ export const Education: React.FC = () => {
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Year 1 Ranking */}
-                    <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 p-2 opacity-10">
-                            <Trophy className="w-16 h-16 text-blue-600" />
-                        </div>
-                        <div className="relative z-10">
-                            <div className="flex justify-between items-center mb-2">
+                    <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-blue-200 transition-colors">
+                        <div className="flex justify-between items-start mb-3">
+                            <div>
                                 <span className="text-sm font-semibold text-slate-500">Year 1</span>
-                                <span className="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded-full">Top 1.28%</span>
+                                <div className="flex items-baseline gap-1 mt-1">
+                                    <span className="text-2xl font-bold text-slate-900">2</span>
+                                    <span className="text-sm text-slate-400 font-normal">/ 156</span>
+                                </div>
                             </div>
-                            <div className="text-2xl font-bold text-slate-900 mb-2">
-                                2 <span className="text-sm text-slate-400 font-normal">/ 156</span>
+                            <div className="flex flex-col items-end bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                                <span className="text-[10px] font-bold text-blue-500 uppercase">Top</span>
+                                <span className="text-lg font-bold text-blue-700 leading-none">1.28%</span>
                             </div>
-                            <div className="w-full bg-slate-100 rounded-full h-2">
-                                <div className="bg-blue-600 h-2 rounded-full" style={{ width: '98.7%' }}></div>
-                            </div>
+                        </div>
+                        <div className="w-full bg-slate-100 rounded-full h-2">
+                            <div className="bg-blue-600 h-2 rounded-full" style={{ width: '98.7%' }}></div>
                         </div>
                     </div>
 
                     {/* Year 2 Ranking */}
-                    <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 p-2 opacity-10">
-                            <Trophy className="w-16 h-16 text-blue-600" />
-                        </div>
-                        <div className="relative z-10">
-                            <div className="flex justify-between items-center mb-2">
+                    <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-blue-200 transition-colors">
+                        <div className="flex justify-between items-start mb-3">
+                            <div>
                                 <span className="text-sm font-semibold text-slate-500">Year 2</span>
-                                <span className="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded-full">Top 1.95%</span>
+                                <div className="flex items-baseline gap-1 mt-1">
+                                    <span className="text-2xl font-bold text-slate-900">3</span>
+                                    <span className="text-sm text-slate-400 font-normal">/ 154</span>
+                                </div>
                             </div>
-                            <div className="text-2xl font-bold text-slate-900 mb-2">
-                                3 <span className="text-sm text-slate-400 font-normal">/ 154</span>
+                            <div className="flex flex-col items-end bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                                <span className="text-[10px] font-bold text-blue-500 uppercase">Top</span>
+                                <span className="text-lg font-bold text-blue-700 leading-none">1.95%</span>
                             </div>
-                            <div className="w-full bg-slate-100 rounded-full h-2">
-                                <div className="bg-blue-600 h-2 rounded-full" style={{ width: '98.1%' }}></div>
-                            </div>
+                        </div>
+                        <div className="w-full bg-slate-100 rounded-full h-2">
+                            <div className="bg-blue-600 h-2 rounded-full" style={{ width: '98.1%' }}></div>
                         </div>
                     </div>
                 </div>
