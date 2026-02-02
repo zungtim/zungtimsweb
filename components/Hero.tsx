@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Mail, Map, FlaskConical, Laptop } from 'lucide-react';
+import { BookOpen, Mail, Map, FlaskConical, Laptop } from 'lucide-react';
 
 
 export const Hero: React.FC = () => {
@@ -32,7 +32,7 @@ export const Hero: React.FC = () => {
 
       <p className="max-w-2xl text-lg text-slate-600 leading-relaxed mb-8">
         Hi，我是黄颂添，Zungtim Wong，一名热衷于探索世界、热爱生活的“奔三青年”。
-        虽然我的本专业是<span className="font-semibold text-slate-800">化学工程</span>，但我对其他学科领域也充满热情，包括但不限于<span className="font-semibold text-slate-800">计算机科学、电子科学和地理科学</span>。无论是探究化学过程的精细控制，还是构建复杂系统的后端逻辑，亦或是用眼睛和脚步丈量世界的尺寸，
+        虽然我的本专业是<span className="font-semibold text-slate-800">化学工程</span>，但我对其他学科领域也充满热情，包括但不限于<span className="font-semibold text-slate-800">计算机科学、电子科学</span>和<span className="font-semibold text-slate-800">地理科学</span>。无论是探究化学过程的精细控制，还是构建复杂系统的后端逻辑，亦或是用眼睛和脚步丈量世界的尺寸，
         我都始终保持着 <span className="italic font-serif text-slate-800">"Stay Hungry, Stay Foolish"</span> 的态度。
       </p>
 
@@ -41,9 +41,14 @@ export const Hero: React.FC = () => {
           <Mail className="w-5 h-5" />
           Email Me
         </a>
-        <a href="#" className="flex items-center gap-2 px-6 py-3 bg-white text-slate-700 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors shadow-sm">
-          <Github className="w-5 h-5" />
-          GitHub
+        <a 
+          href="#" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-6 py-3 bg-white text-slate-700 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors shadow-sm"
+        >
+          <BookOpen className="w-5 h-5" />
+          My Blog
         </a>
       </div>
     </section>
