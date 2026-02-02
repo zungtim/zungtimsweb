@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Mail, Camera, FlaskConical, Laptop } from 'lucide-react';
+import { Github, Mail, Map, FlaskConical, Laptop } from 'lucide-react';
 
 
 export const Hero: React.FC = () => {
@@ -8,14 +8,14 @@ export const Hero: React.FC = () => {
       <div className="relative mb-8 group">
         <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
         <img
-          src="/avatar.jpg"  // 没错，就是根目录斜杠，Vite 会自动去 public 找
+          src="https://raw.githubusercontent.com/zungtim/zungtimsweb/main/public/avatar.jpg"
           alt="ZungTim's Avatar"
           className="relative w-40 h-40 rounded-full border-4 border-white shadow-xl object-cover"
         />
       </div>
 
       <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-        Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">ZungTim</span> 👋
+        Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Zungtim Wong</span> 👋
       </h1>
 
       <div className="flex flex-wrap justify-center gap-4 mb-8 text-sm sm:text-base text-slate-600 font-medium">
@@ -26,14 +26,13 @@ export const Hero: React.FC = () => {
           <Laptop className="w-4 h-4" /> CS Enthusiast
         </span>
         <span className="flex items-center gap-1 bg-amber-50 text-amber-700 px-3 py-1 rounded-full border border-amber-100">
-          <Camera className="w-4 h-4" /> Photography Lover
+          <Map className="w-4 h-4" /> 旅行爱好者
         </span>
       </div>
 
       <p className="max-w-2xl text-lg text-slate-600 leading-relaxed mb-8">
-        Hi，我是 Zungtim Wong，一名热衷于探索世界、热爱生活的“旅者”。
-        虽然我的本专业是<span className="font-semibold text-slate-800">化学工程</span>，但我对<span className="font-semibold text-slate-800">计算机科学</span>充满热情。
-        无论是探究化工过程的精密控制，还是构建复杂系统的后端逻辑，亦或是用镜头记录世界的光影，
+        Hi，我是黄颂添，Zungtim Wong，一名热衷于探索世界、热爱生活的“奔三青年”。
+        虽然我的本专业是<span className="font-semibold text-slate-800">化学工程</span>，但我对其他学科领域也充满热情，包括但不限于<span className="font-semibold text-slate-800">计算机科学、电子科学和地理科学</span>。无论是探究化学过程的精细控制，还是构建复杂系统的后端逻辑，亦或是用眼睛和脚步丈量世界的尺寸，
         我都始终保持着 <span className="italic font-serif text-slate-800">"Stay Hungry, Stay Foolish"</span> 的态度。
       </p>
 
