@@ -42,7 +42,7 @@ export const Hero: React.FC = () => {
           Email Me
         </a>
         <a 
-          href="https://zungtim.github.io/" 
+          href="#" // 用占位符先顶替一下
           target="_blank" 
           rel="noopener noreferrer"
           className="flex items-center gap-2 px-6 py-3 bg-white text-slate-700 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors shadow-sm"
