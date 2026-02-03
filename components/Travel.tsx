@@ -9,7 +9,8 @@ interface Trip {
   title: string; // 标题
   location: string;
   emoji: string;
-  description: string; // 详细感想
+  // 🌟 修改点 1：改为 ReactNode，这样既能存普通文字，也能存带样式的 JSX 代码
+  description: React.ReactNode; 
   coverImage: string; // 卡片封面图路径
   galleryImages: string[]; // 详情页图集路径数组
 }
@@ -20,57 +21,106 @@ const trips: Trip[] = [
     id: 'sz-2026',
     year: 2026,
     date: '2026.01.30',
-    title: '鲲鹏十九径之深圳天文台海岸徒步', // ✅ 已更新
-    location: '深圳天文台 (Shenzhen Observatory)', // ✅ 已更新
+    title: '鲲鹏十九径之深圳天文台海岸徒步',
+    location: '深圳天文台 (Shenzhen Observatory)',
     emoji: '🌊',
-    // ✅ 已更新为你提供的最新文案
-    description: '在海浪与礁石碰撞的狭缝中攀爬前行，少年的眼中没有对日落缺席海天之际的失望，只有在逐渐降临的夜幕中迎着海风与浪潮不断向前的激动，直到终点海岸微弱灯光照在脸上。',
+    // 普通文本描述：依然完美支持
+    description: '定位在北纬22°29′、东经114°32′的大鹏半岛南端，我们沿着西涌崎岖的海岸线，在海浪与礁石碰撞的狭缝中攀爬前行。少年的眼中没有对日落缺席海天之际的失望，只有在逐渐降临的夜幕中迎着海风与浪潮不断向前的激动，直到终点海岸微弱灯光照在脸上。',
     
-    // ✅ 保持你正确的本地图片路径
-    coverImage: '/photo/travel/2026.01.30sz/cover.jpg', 
+    coverImage: '/photo/travel/2026.01.30sz/cover.webp', 
     galleryImages: [
-      '/photo/travel/2026.01.30sz/1.jpg',
-      '/photo/travel/2026.01.30sz/2.jpg',
-      '/photo/travel/2026.01.30sz/3.jpg',
-      '/photo/travel/2026.01.30sz/4.jpg',
-      '/photo/travel/2026.01.30sz/5.jpg',
-      '/photo/travel/2026.01.30sz/6.jpg',
-      '/photo/travel/2026.01.30sz/7.jpg',
+      '/photo/travel/2026.01.30sz/3.webp',
+      '/photo/travel/2026.01.30sz/2.webp',
+      '/photo/travel/2026.01.30sz/4.webp',
+      '/photo/travel/2026.01.30sz/5.webp',
+      '/photo/travel/2026.01.30sz/6.webp',
+      '/photo/travel/2026.01.30sz/1.webp',
+      '/photo/travel/2026.01.30sz/7.webp',
+      '/photo/travel/2026.01.30sz/8.webp',
+      '/photo/travel/2026.01.30sz/9.webp',
+      '/photo/travel/2026.01.30sz/10.webp',
+      '/photo/travel/2026.01.30sz/11.webp',
+      '/photo/travel/2026.01.30sz/12.webp',
+      '/photo/travel/2026.01.30sz/13.webp',
     ]
   },
   {
-    id: 'hokkaido-2024',
-    year: 2024,
-    date: '2024.12.15',
-    title: 'xxxxxxx',
-    location: '########',
-    emoji: '❄️',
-    description: '零下20度的世界，时间仿佛被冻结。小樽运河边的煤气灯，札幌的拉面，还有漫天飞舞的粉雪，构成了一幅绝美的冬日画卷。',
-    
-    // ⚠️ 暂未修改：保留网络图片，等你上传本地图片后记得来改这里
-    coverImage: 'https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=800&auto=format&fit=crop',
-    galleryImages: [
-      'https://images.unsplash.com/photo-1480796927426-f609979314bd?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1548263594-a71ea1995027?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1516466723877-e462d7300aa0?q=80&w=800&auto=format&fit=crop',
-    ]
-  },
-  {
-    id: 'guilin-2023',
-    year: 2023,
-    date: '2023.07.10',
-    title: 'xxxxxx',
-    location: '########',
+    id: 'htx&wdh-2025',
+    year: 2025,
+    date: '2025.10.05',
+    title: '虎跳峡&无底湖徒步',
+    location: '云南丽江&迪庆 (Lijiang & Diqing)',
     emoji: '⛰️',
-    description: '舟行碧波上，人在画中游。喀斯特地貌的奇峰林立，遇龙河的竹筏漂流，大自然的鬼斧神工令人叹为观止。',
+    // 🌟 修改点 2：使用 JSX 代码块来实现标题加粗和分段排版
+    description: (
+      <>
+        {/* 第一段标题：加粗 + 间距 */}
+        <div className="font-bold text-slate-900 mb-2">
+          北纬27°13′、东经100°07′ | 金沙江畔 [ 山河鸣响之虎跳峡高路徒步 ]
+        </div>
+        {/* 第一段正文：底部留白分隔下一段 */}
+        <p className="mb-8 leading-relaxed">
+          “行走在哈巴雪山与玉龙雪山的裂缝之间，脚下是咆哮奔涌的金沙江，耳畔是千年来未曾停歇的山谷回响。脚步从未因悬崖峭壁的险峻而迟疑，只有在登顶俯瞰那一道‘虎跳’时，对大自然鬼斧神工的敬畏与征服自我的快意在胸中激荡，直到晚霞温柔地覆盖了整座神山。”
+        </p>
+
+        {/* 第二段标题：加粗 + 间距 */}
+        <div className="font-bold text-slate-900 mb-2">
+          北纬27°48′、东经99°54′ | 香格里拉深处 [ 秘境寻踪之迪庆无底湖森林徒步 ]
+        </div>
+        {/* 第二段正文 */}
+        <p className="leading-relaxed">
+          “深入香格里拉未被惊扰的腹地，穿过挂满长松萝的原始森林，那一汪湛蓝的无底湖如同地球坠落的一滴眼泪。眼中没有对路途漫长孤寂的疲惫，只有在轻触冰凉湖水那一刻，感受万物静默、神山共鸣的空灵与纯粹。夕阳隐入林海，满天繁星是这一路最慷慨的慰藉。”
+        </p>
+      </>
+    ),
     
-    // ⚠️ 暂未修改：保留网络图片
-    coverImage: 'https://images.unsplash.com/photo-1528695085352-d17b5c874254?q=80&w=800&auto=format&fit=crop',
+    coverImage:  '/photo/travel/2025.10.05/cover.webp',
     galleryImages: [
-      'https://images.unsplash.com/photo-1627448897723-690225101258?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?q=80&w=800&auto=format&fit=crop',
+      '/photo/travel/2025.10.05/1.webp',
+      '/photo/travel/2025.10.05/2.webp',
+      '/photo/travel/2025.10.05/3.webp',
+      '/photo/travel/2025.10.05/4.webp',
+      '/photo/travel/2025.10.05/5.webp',
+      '/photo/travel/2025.10.05/6.webp',
+      '/photo/travel/2025.10.05/7.webp',
+      '/photo/travel/2025.10.05/8.webp',
+      '/photo/travel/2025.10.05/9.webp',
+      '/photo/travel/2025.10.05/10.webp',
     ]
-  }
+  },
+  
+  {
+    id: 'meili-2025',
+    year: 2025,
+    date: '2025.10.02',
+    title: '雪神的仪仗队',
+    location: '梅里雪山 (Meri Snow Mountain)',
+    emoji: '🗻',
+    description: (
+      <>
+        {/* 第一段标题 */}
+        <div className="font-bold text-slate-900 mb-2">
+          北纬28°26′、东经98°41′ | 滇藏界·云端之上 [ 觐见神山之梅里雪山日照金山 ]
+        </div>
+        
+        {/* 第一段正文 */}
+        {/* 我把 mb-8 去掉了，因为下面没有第二段了，不需要底部留白 */}
+        <p className="leading-relaxed">
+          “伫立在黎明前的寒风中，屏息凝神等待一场神迹的降临。当第一缕曙光吻上卡瓦格博的瞬间，金光如熔岩般倾泻而下，点燃了沉睡千年的雪峰。少年的眼中倒映着这震撼人心的‘日照金山’，在那一刻，所有的跋涉与守候都有了意义。在众神之神的注视下，许下一份关于勇气与信仰的承诺，愿此后余生，心中长有雪山，眼底总有光芒。”
+        </p>
+      </>
+    ),
+     // ⚠️ 这里的图片还是网络占位符
+    coverImage:  '/photo/travel/2025.10.02/cover.webp',
+    galleryImages: [
+      '/photo/travel/2025.10.02/1.webp',
+      '/photo/travel/2025.10.02/2.webp',
+      '/photo/travel/2025.10.02/3.webp',
+      '/photo/travel/2025.10.02/4.webp',
+      '/photo/travel/2025.10.02/5.webp',
+      '/photo/travel/2025.10.02/6.webp',
+    ]
+  },
 ];
 
 export const Travel: React.FC = () => {
@@ -111,8 +161,6 @@ export const Travel: React.FC = () => {
             >
               {/* Cover Image Wrapper */}
               <div className="relative h-64 overflow-hidden bg-slate-100"> 
-                 {/* ✅ 保持修改：无 animate-pulse，防止频闪 */}
-                 
                  <img 
                     src={trip.coverImage} 
                     alt={trip.title}
@@ -204,9 +252,11 @@ export const Travel: React.FC = () => {
                         {/* Text Description */}
                         <div className="bg-slate-50 border-l-4 border-teal-500 p-6 rounded-r-xl mb-10">
                             <Quote className="w-8 h-8 text-teal-200 mb-2" />
-                            <p className="text-slate-700 text-lg leading-relaxed font-serif">
+                            
+                            {/* 🌟 修改点 3：外层改为 div，因为内部可能包含 p 和 div 标签 */}
+                            <div className="text-slate-700 text-lg font-serif">
                                 {selectedTrip.description}
-                            </p>
+                            </div>
                         </div>
 
                         {/* Masonry Gallery Grid */}

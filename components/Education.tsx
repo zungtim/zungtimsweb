@@ -117,7 +117,7 @@ export const Education: React.FC = () => {
                 <p className="text-slate-500 text-sm">Printed Circuit Board Technology / 辅修</p>
               </div>
               <span className="text-sm font-medium text-slate-500 bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">
-                2025.09 - 2026.06
+                2025.09 - 2026.09
               </span>
             </div>
 
