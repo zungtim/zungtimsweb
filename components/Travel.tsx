@@ -157,6 +157,167 @@ const trips: Trip[] = [
       '/photo/travel/2025.09.30/9.webp',
     ]
   },
+  {
+    id: 'km-2025',
+    year: 2025,
+    date: '2025.01.22',
+    title: '春城的老街漫游',
+    location: '昆明 (Kunming Yunnan)',
+    emoji: '🌸',
+    description: (
+      <>
+        {/* 第一段标题 */}
+        <div className="font-bold text-slate-900 mb-2">
+          北纬25°02′、东经102°42′ | 春城·花都 [ 迎着暖阳在昆明城市漫游 ]
+        </div>
+        
+        {/* 第一段正文 */}
+        <p className="leading-relaxed">
+          “来自西伯利亚的白色精灵，跨越山海赴一场与春城的约定。在滇池大坝的微风中，看红嘴鸥衔走冬日的寒意，只留下满目绚烂的花海与和煦暖阳。脚步不由得慢下来，转身没入昆明老街斑驳的黄墙黛瓦间。在光影交错与市井烟火中，寻回那份久违的松弛感，原来时光真的可以在这里温柔地停驻。”
+        </p>
+      </>
+    ),
+     // ⚠️ 自行修改照片位置
+    coverImage:  '/photo/travel/2025.01.22/11.webp',
+    galleryImages: [
+      '/photo/travel/2025.01.22/cover.webp',
+      '/photo/travel/2025.01.22/1.webp',
+      '/photo/travel/2025.01.22/2.webp',
+      '/photo/travel/2025.01.22/3.webp',
+      '/photo/travel/2025.01.22/4.webp',
+      '/photo/travel/2025.01.22/5.webp',
+      '/photo/travel/2025.01.22/6.webp',
+      '/photo/travel/2025.01.22/7.webp',
+      '/photo/travel/2025.01.22/8.webp',
+      '/photo/travel/2025.01.22/9.webp',
+      '/photo/travel/2025.01.22/10.webp',
+      '/photo/travel/2025.01.22/11.webp',
+    ]
+  },
+  {
+    id: 'xgll-2025',
+    year: 2025,
+    date: '2025.10 & 2025.01',
+    title: '找寻心中的日月',
+    location: '云南迪庆·香格里拉 (Shangri-La)',
+    emoji: '🏯',
+    description: (
+      <>
+        {/* 第一段标题 */}
+        <div className="font-bold text-slate-900 mb-2">
+          北纬27°49′、东经99°42′ | 高原·心中的日月 [ 触摸信仰之香格里拉圣境巡礼 ]
+        </div>
+        
+        {/* 第一段正文 */}
+        <p className="leading-relaxed">
+          “在独克宗古城转动世界上最大的转经筒，指尖划过千年的沧桑与祈愿。抬头仰望‘小布达拉宫’松赞林寺的金顶，在缭绕的桑烟中感受信仰的重量。纳帕海的倒影里藏着天空的秘密，在消失的地平线上，找到了属于心中的日月。不问归期，只闻梵音，这是一场关于寻找与归宿的对话。”
+        </p>
+      </>
+    ),
+     // ⚠️ 自行修改照片位置
+    coverImage:  '/photo/travel/2025.10-2025.01/1.webp',
+    galleryImages: [
+      '/photo/travel/2025.10-2025.01/11.webp',
+      '/photo/travel/2025.10-2025.01/1.webp',
+      '/photo/travel/2025.10-2025.01/2.webp',
+      '/photo/travel/2025.10-2025.01/3.webp',
+      '/photo/travel/2025.10-2025.01/4.webp',
+      '/photo/travel/2025.10-2025.01/5.webp',
+      '/photo/travel/2025.10-2025.01/6.webp',
+      '/photo/travel/2025.10-2025.01/7.webp',
+      '/photo/travel/2025.10-2025.01/8.webp',
+      '/photo/travel/2025.10-2025.01/9.webp',
+      '/photo/travel/2025.10-2025.01/10.webp',
+      '/photo/travel/2025.10-2025.01/12.webp',
+      '/photo/travel/2025.10-2025.01/13.webp',
+      '/photo/travel/2025.10-2025.01/14.webp',
+      '/photo/travel/2025.10-2025.01/15.webp',
+      '/photo/travel/2025.10-2025.01/16.webp',
+      '/photo/travel/2025.10-2025.01/17.webp',
+      '/photo/travel/2025.10-2025.01/18.webp',
+      '/photo/travel/2025.10-2025.01/19.webp',
+      '/photo/travel/2025.10-2025.01/20.webp',
+    ]
+  },
+  {
+    id: 'ylxs-2025',
+    year: 2025,
+    date: '2025.01.18',
+    title: '一抹古韵撞入巍峨',
+    location: '丽江·玉龙雪山 (Lijiang)',
+    emoji: '🎐',
+    description: (
+      <>
+        {/* 第一段标题 */}
+        <div className="font-bold text-slate-900 mb-2">
+          北纬26°52′、东经100°13′ | 纳西故土·柔软时光 [ 追风逐雪之丽江古韵 ]
+        </div>
+        
+        {/* 第一段正文 */}
+        <p className="leading-relaxed">
+         “登临海拔4680米的冰川公园，触碰玉龙雪山千年的凛冽与圣洁，那是纳西守护神的威严。转身走进山脚的白沙古镇，在斑驳的土墙下遥望雪山，时光仿佛在这里按下了暂停键。听潺潺流水穿过青石板路，在灯火阑珊中迷失。梦里，有一半是雪山的巍峨，另一半是古城的温柔，此刻，只愿沉醉在这柔软时光里。”
+        </p>
+      </>
+    ),
+     // ⚠️ 自行修改照片位置
+    coverImage:  '/photo/travel/2025.01.18/cover.webp',
+    galleryImages: [
+      '/photo/travel/2025.01.18/cover.webp',
+      '/photo/travel/2025.01.18/1.webp',
+      '/photo/travel/2025.01.18/2.webp',
+      '/photo/travel/2025.01.18/3.webp',
+      '/photo/travel/2025.01.18/4.webp',
+      '/photo/travel/2025.01.18/5.webp',
+      '/photo/travel/2025.01.18/6.webp',
+      '/photo/travel/2025.01.18/7.webp',
+      '/photo/travel/2025.01.18/8.webp',
+      '/photo/travel/2025.01.18/9.webp',
+      '/photo/travel/2025.01.18/10.webp',
+      '/photo/travel/2025.01.18/11.webp',
+      '/photo/travel/2025.01.18/12.webp',
+      '/photo/travel/2025.01.18/13.webp',
+      ]
+  },
+  {
+    id: 'dali-2025',
+    year: 2025,
+    date: '2025.01.15',
+    title: '我们如此热爱大理',
+    location: '大理·苍山洱海 (DaLi)',
+    emoji: '🍃',
+    description: (
+      <>
+        {/* 第一段标题 */}
+        <div className="font-bold text-slate-900 mb-2">
+          北纬25°41′、东经100°09′ | 苍洱之间·理想国度 [ 山海对峙间的风花雪月 ]
+        </div>
+        
+        {/* 第一段正文 */}
+        <p className="leading-relaxed">
+         “徘徊在横断山脉末端的构造盆地，脚下是苍山十九峰延伸而出的冲积扇平原。西枕四千米海拔的冷峻屏障，东临断陷而成的高原明珠。穿过大理，才知何是‘上关花，下关风，苍山雪，洱海月’。白雪凝结于苍山之巅，明月倒悬在洱海深处。行走在这山海对峙的壮阔间，将满身的疲惫交付给这片亘古温柔的苍洱大地。”
+        </p>
+      </>
+    ),
+     // ⚠️ 自行修改照片位置
+    coverImage:  '/photo/travel/2025.01.15/cover.webp',
+    galleryImages: [
+      '/photo/travel/2025.01.15/cover.webp',
+      '/photo/travel/2025.01.15/1.webp',
+      '/photo/travel/2025.01.15/2.webp',
+      '/photo/travel/2025.01.15/3.webp',
+      '/photo/travel/2025.01.15/4.webp',
+      '/photo/travel/2025.01.15/5.webp',
+      '/photo/travel/2025.01.15/6.webp',
+      '/photo/travel/2025.01.15/7.webp',
+      '/photo/travel/2025.01.15/8.webp',
+      '/photo/travel/2025.01.15/9.webp',
+      '/photo/travel/2025.01.15/10.webp',
+      '/photo/travel/2025.01.15/11.webp',
+      '/photo/travel/2025.01.15/12.webp',
+      '/photo/travel/2025.01.15/13.webp',
+      '/photo/travel/2025.01.15/14.webp',
+      ]
+  },
 ];
 
 export const Travel: React.FC = () => {
