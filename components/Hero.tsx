@@ -20,7 +20,7 @@ export const Hero: React.FC = () => {
 
       <div className="flex flex-wrap justify-center gap-4 mb-8 text-sm sm:text-base text-slate-600 font-medium">
         <span className="flex items-center gap-1 bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-100">
-          <FlaskConical className="w-4 h-4" /> ChemEng Undergrad / 化工本科生
+          <FlaskConical className="w-4 h-4" /> ChemEng Undergrad / 化学工程专业本科
         </span>
         <span className="flex items-center gap-1 bg-purple-50 text-purple-700 px-3 py-1 rounded-full border border-purple-100">
           <Laptop className="w-4 h-4" /> CS Enthusiast / 计算机科学爱好者
