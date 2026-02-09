@@ -55,8 +55,17 @@ const trips: Trip[] = [
     description: (
       <>
         {/* 第一段标题：加粗 + 间距 */}
-        <div className="font-bold text-slate-900 mb-2">
+        <div className="font-bold text-slate-900 dark:text-slate-200 mb-2">
           北纬27°13′、东经100°07′ | 金沙江畔 [ 山河鸣响之虎跳峡高路徒步 ]
+        </div>
+        {/* 第一段正文：底部留白分隔下一段 */}
+        <p className="mb-8 leading-relaxed">
+          "行走在哈巴雪山与玉龙雪山的裂缝之间，脚下是咆哮奔涌的金沙江，耳畔是千年来未曾停歇的山谷回响。脚步从未因悬崖峭壁的险峻而迟疑，只有在登顶俯瞰那一道'虎跳'时，对大自然鬼斧神工的敬畏与征服自我的快意在胸中激荡，直到晚霞温柔地覆盖了整座神山。"
+        </p>
+
+        {/* 第二段标题：加粗 + 间距 */}
+        <div className="font-bold text-slate-900 dark:text-slate-200 mb-2">
+          北纬27°48′、东经99°54′ | 香格里拉深处 [ 秘境寻踪之迪庆无底湖森林徒步 ]
         </div>
         {/* 第一段正文：底部留白分隔下一段 */}
         <p className="mb-8 leading-relaxed">
@@ -64,7 +73,7 @@ const trips: Trip[] = [
         </p>
 
         {/* 第二段标题：加粗 + 间距 */}
-        <div className="font-bold text-slate-900 mb-2">
+        <div className="font-bold text-slate-900 dark:text-slate-200 mb-2">
           北纬27°48′、东经99°54′ | 香格里拉深处 [ 秘境寻踪之迪庆无底湖森林徒步 ]
         </div>
         {/* 第二段正文 */}
@@ -99,7 +108,7 @@ const trips: Trip[] = [
     description: (
       <>
         {/* 第一段标题 */}
-        <div className="font-bold text-slate-900 mb-2">
+        <div className="font-bold text-slate-900 dark:text-slate-200 mb-2">
           北纬28°26′、东经98°41′ | 滇藏界·云端之上 [ 觐见神山之梅里雪山日照金山 ]
         </div>
         
@@ -131,7 +140,7 @@ const trips: Trip[] = [
     description: (
       <>
         {/* 第一段标题 */}
-        <div className="font-bold text-slate-900 mb-2">
+        <div className="font-bold text-slate-900 dark:text-slate-200 mb-2">
           北纬28°23′、东经100°20′ | 川西高原·蓝色星球最后净土 [ 稻城三神山 ]
         </div>
         
@@ -167,7 +176,7 @@ const trips: Trip[] = [
     description: (
       <>
         {/* 第一段标题 */}
-        <div className="font-bold text-slate-900 mb-2">
+        <div className="font-bold text-slate-900 dark:text-slate-200 mb-2">
           北纬25°02′、东经102°42′ | 春城·花都 [ 迎着暖阳在昆明城市漫游 ]
         </div>
         
@@ -204,7 +213,7 @@ const trips: Trip[] = [
     description: (
       <>
         {/* 第一段标题 */}
-        <div className="font-bold text-slate-900 mb-2">
+        <div className="font-bold text-slate-900 dark:text-slate-200 mb-2">
           北纬27°49′、东经99°42′ | 高原·心中的日月 [ 触摸信仰之香格里拉圣境巡礼 ]
         </div>
         
@@ -249,7 +258,7 @@ const trips: Trip[] = [
     description: (
       <>
         {/* 第一段标题 */}
-        <div className="font-bold text-slate-900 mb-2">
+        <div className="font-bold text-slate-900 dark:text-slate-200 mb-2">
           北纬26°52′、东经100°13′ | 纳西故土·柔软时光 [ 追风逐雪之丽江古韵 ]
         </div>
         
@@ -260,7 +269,7 @@ const trips: Trip[] = [
       </>
     ),
      // ⚠️ 自行修改照片位置
-    coverImage:  '/photo/travel/2025.01.18/cover.webp',
+    coverImage:  '/photo/travel/2025.01.18/2.webp',
     galleryImages: [
       '/photo/travel/2025.01.18/cover.webp',
       '/photo/travel/2025.01.18/1.webp',
@@ -288,7 +297,47 @@ const trips: Trip[] = [
     description: (
       <>
         {/* 第一段标题 */}
-        <div className="font-bold text-slate-900 mb-2">
+        <div className="font-bold text-slate-900 dark:text-slate-200 mb-2">
+          北纬25°41′、东经100°09′ | 苍洱之间·理想国度 [ 山海对峙间的风花雪月 ]
+        </div>
+        
+        {/* 第一段正文 */}
+        <p className="leading-relaxed">
+         “徘徊在横断山脉末端的构造盆地，脚下是苍山十九峰延伸而出的冲积扇平原。西枕四千米海拔的冷峻屏障，东临断陷而成的高原明珠。穿过大理，才知何是‘上关花，下关风，苍山雪，洱海月’。白雪凝结于苍山之巅，明月倒悬在洱海深处。行走在这山海对峙的壮阔间，将满身的疲惫交付给这片亘古温柔的苍洱大地。”
+        </p>
+      </>
+    ),
+     // ⚠️ 自行修改照片位置
+    coverImage:  '/photo/travel/2025.01.15/cover.webp',
+    galleryImages: [
+      '/photo/travel/2025.01.15/cover.webp',
+      '/photo/travel/2025.01.15/1.webp',
+      '/photo/travel/2025.01.15/2.webp',
+      '/photo/travel/2025.01.15/3.webp',
+      '/photo/travel/2025.01.15/4.webp',
+      '/photo/travel/2025.01.15/5.webp',
+      '/photo/travel/2025.01.15/6.webp',
+      '/photo/travel/2025.01.15/7.webp',
+      '/photo/travel/2025.01.15/8.webp',
+      '/photo/travel/2025.01.15/9.webp',
+      '/photo/travel/2025.01.15/10.webp',
+      '/photo/travel/2025.01.15/11.webp',
+      '/photo/travel/2025.01.15/12.webp',
+      '/photo/travel/2025.01.15/13.webp',
+      '/photo/travel/2025.01.15/14.webp',
+      ]
+  },
+  {
+    id: 'qinghai&gansu-2025',
+    year: 2024,
+    date: '2024.xx.xx',
+    title: 'xxxxxx',
+    location: '青甘大环线 (青海 & 甘肃)',
+    emoji: '#',
+    description: (
+      <>
+        {/* 第一段标题 */}
+        <div className="font-bold text-slate-900 dark:text-slate-200 mb-2">
           北纬25°41′、东经100°09′ | 苍洱之间·理想国度 [ 山海对峙间的风花雪月 ]
         </div>
         
@@ -336,35 +385,35 @@ export const Travel: React.FC = () => {
   }, [selectedTrip]);
 
   return (
-    <section id="travel" className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 min-h-screen">
+    <section id="travel" className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900 min-h-screen">
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center p-3 bg-teal-100 rounded-full text-teal-600 mb-4 shadow-sm">
+          <div className="inline-flex items-center justify-center p-3 bg-teal-100 dark:bg-teal-900/30 rounded-full text-teal-600 dark:text-teal-400 mb-4 shadow-sm">
             <Camera className="w-8 h-8" />
           </div>
-          <h2 className="text-4xl font-bold text-slate-900 mb-3 tracking-tight">旅行足迹</h2>
-          <p className="text-slate-500 font-serif italic text-lg">"The world is a book and those who do not travel read only one page."</p>
+          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">旅行足迹</h2>
+          <p className="text-slate-500 dark:text-slate-400 font-serif italic text-lg">"The world is a book and those who do not travel read only one page."</p>
         </div>
 
         {/* Gallery Grid (Level 1) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {trips.map((trip) => (
-            <div 
+            <div
               key={trip.id}
               onClick={() => setSelectedTrip(trip)}
-              className="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-slate-100 flex flex-col h-full"
+              className="group cursor-pointer bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-slate-100 dark:border-slate-700 flex flex-col h-full"
             >
               {/* Cover Image Wrapper */}
-              <div className="relative h-64 overflow-hidden bg-slate-100"> 
-                 <img 
-                    src={trip.coverImage} 
-                    alt={trip.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              <div className="relative h-64 overflow-hidden bg-slate-100 dark:bg-slate-800">
+                 <img
+                     src={trip.coverImage}
+                     alt={trip.title}
+                     loading="lazy"
+                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                  />
-                 <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-slate-800 shadow-sm z-10">
+                 <div className="absolute top-4 right-4 bg-white/90 dark:bg-slate-700/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm z-10">
                     {trip.year}
                  </div>
                  {/* Overlay hint */}
@@ -378,18 +427,18 @@ export const Travel: React.FC = () => {
               {/* Card Content */}
               <div className="p-6 flex-grow flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-2 text-sm text-teal-600 font-semibold mb-2">
+                  <div className="flex items-center gap-2 text-sm text-teal-600 dark:text-teal-400 font-semibold mb-2">
                     <Calendar className="w-4 h-4" />
                     {trip.date}
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2 line-clamp-1">{trip.title}</h3>
-                  <div className="flex items-center gap-2 text-slate-500 text-sm mb-4">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 line-clamp-1">{trip.title}</h3>
+                  <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm mb-4">
                     <MapPin className="w-4 h-4" />
                     {trip.location}
                   </div>
                 </div>
-                
-                <div className="pt-4 border-t border-slate-100 flex justify-between items-center text-slate-400 text-sm">
+
+                <div className="pt-4 border-t border-slate-100 dark:border-slate-700 flex justify-between items-center text-slate-400 dark:text-slate-500 text-sm">
                     <span className="flex items-center gap-1">
                         <Camera className="w-3.5 h-3.5" /> {trip.galleryImages.length} Photos
                     </span>
@@ -414,12 +463,12 @@ export const Travel: React.FC = () => {
             />
 
             {/* Modal Content */}
-            <div className="relative w-full max-w-5xl max-h-[90vh] bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-200">
-                
+            <div className="relative w-full max-w-5xl max-h-[90vh] bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-200">
+
                 {/* Close Button */}
-                <button 
+                <button
                     onClick={() => setSelectedTrip(null)}
-                    className="absolute top-4 right-4 z-20 p-2 bg-black/10 hover:bg-black/20 text-slate-800 rounded-full transition-colors"
+                    className="absolute top-4 right-4 z-20 p-2 bg-black/10 hover:bg-black/20 text-slate-800 dark:text-slate-200 rounded-full transition-colors"
                 >
                     <X className="w-6 h-6" />
                 </button>
@@ -447,18 +496,18 @@ export const Travel: React.FC = () => {
 
                     <div className="p-8">
                         {/* Text Description */}
-                        <div className="bg-slate-50 border-l-4 border-teal-500 p-6 rounded-r-xl mb-10">
+                        <div className="bg-slate-50 dark:bg-slate-700/50 border-l-4 border-teal-500 p-6 rounded-r-xl mb-10">
                             <Quote className="w-8 h-8 text-teal-200 mb-2" />
-                            
+
                             {/* 🌟 修改点 3：外层改为 div，因为内部可能包含 p 和 div 标签 */}
-                            <div className="text-slate-700 text-lg font-serif">
+                            <div className="text-slate-700 dark:text-slate-300 text-lg font-serif">
                                 {selectedTrip.description}
                             </div>
                         </div>
 
                         {/* Masonry Gallery Grid */}
-                        <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                            <Camera className="w-5 h-5 text-teal-600" /> 
+                        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                            <Camera className="w-5 h-5 text-teal-600 dark:text-teal-400" />
                             旅途剪影
                         </h3>
                         

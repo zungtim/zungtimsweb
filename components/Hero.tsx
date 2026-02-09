@@ -10,34 +10,34 @@ export const Hero: React.FC = () => {
         <img
           src="/photo/avatar.jpg"//头像的地址 
           alt="ZungTim's Avatar"
-          className="relative w-40 h-40 rounded-full border-4 border-white shadow-xl object-cover"
+          className="relative w-40 h-40 rounded-full border-4 border-white dark:border-slate-800 shadow-xl object-cover"
         />
       </div>
 
-      <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+      <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
         Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Zungtim Wong</span> 👋
       </h1>
 
-      <div className="flex flex-wrap justify-center gap-4 mb-8 text-sm sm:text-base text-slate-600 font-medium">
-        <span className="flex items-center gap-1 bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-100">
+      <div className="flex flex-wrap justify-center gap-4 mb-8 text-sm sm:text-base text-slate-600 dark:text-slate-300 font-medium">
+        <span className="flex items-center gap-1 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full border border-blue-100 dark:border-blue-800">
           <FlaskConical className="w-4 h-4" /> ChemEng Undergrad / 化学工程专业本科
         </span>
-        <span className="flex items-center gap-1 bg-purple-50 text-purple-700 px-3 py-1 rounded-full border border-purple-100">
+        <span className="flex items-center gap-1 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-3 py-1 rounded-full border border-purple-100 dark:border-purple-800">
           <Laptop className="w-4 h-4" /> CS Enthusiast / 计算机科学爱好者
         </span>
-        <span className="flex items-center gap-1 bg-amber-50 text-amber-700 px-3 py-1 rounded-full border border-amber-100">
+        <span className="flex items-center gap-1 bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 px-3 py-1 rounded-full border border-amber-100 dark:border-amber-800">
           <Map className="w-4 h-4" /> GeoSci & Travel / 地理科学及旅行爱好者
         </span>
       </div>
 
-      <p className="max-w-2xl text-lg text-slate-600 leading-relaxed mb-8">
-        Hi，我是黄颂添，Zungtim Wong，一名热衷于探索世界、热爱生活的“奔三青年”。
-        虽然我的本专业是<span className="font-semibold text-slate-800">化学工程</span>，但我对其他学科领域也充满热情，包括但不限于<span className="font-semibold text-slate-800">计算机科学、电子科学</span>和<span className="font-semibold text-slate-800">地理科学</span>。无论是探究化学过程的精细控制，还是构建复杂系统的后端逻辑，亦或是用眼睛和脚步丈量世界的尺寸，
-        我都始终保持着 <span className="italic font-serif text-slate-800">"Stay Hungry, Stay Foolish"</span> 的态度。
+      <p className="max-w-2xl text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
+        Hi，我是黄颂添，Zungtim Wong，一名热衷于探索世界、热爱生活的"奔三青年"。
+        虽然我的本专业是<span className="font-semibold text-slate-800 dark:text-slate-200">化学工程</span>，但我对其他学科领域也充满热情，包括但不限于<span className="font-semibold text-slate-800 dark:text-slate-200">计算机科学、电子科学</span>和<span className="font-semibold text-slate-800 dark:text-slate-200">地理科学</span>。无论是探究化学过程的精细控制，还是构建一个系统的前后端逻辑，亦或是用眼睛和脚步丈量世界的尺寸，
+        我都始终保持着 <span className="italic font-serif text-slate-800 dark:text-slate-200">"Stay Hungry, Stay Foolish"</span> 的态度。
       </p>
 
       <div className="flex gap-4">
-        <a href="mailto:zungtimwong@gmail.com" className="flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/20">
+        <a href="mailto:zungtimwong@gmail.com" className="flex items-center gap-2 px-6 py-3 bg-slate-900 dark:bg-blue-600 text-white rounded-lg hover:bg-slate-800 dark:hover:bg-blue-700 transition-colors shadow-lg shadow-slate-900/20 dark:shadow-blue-900/30">
           <Mail className="w-5 h-5" />
           Email Me
         </a>
@@ -45,7 +45,7 @@ export const Hero: React.FC = () => {
           href="#" // 用占位符先顶替一下
           target="_blank" 
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-6 py-3 bg-white text-slate-700 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors shadow-sm"
+          className="flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors shadow-sm"
         >
           <BookOpen className="w-5 h-5" />
           My Blog

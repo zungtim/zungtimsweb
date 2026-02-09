@@ -28,7 +28,7 @@ const competitions: CompetitionData[] = [
     level: 'Provincial'
   },
   {
-    name: '第十三届“赢在广州”暨粤港澳大湾区大学生创业大赛',
+    name: '第十三届"赢在广州"暨粤港澳大湾区大学生创业大赛',
     role: '第一作者',
     award: '一等奖',
     date: '2025.05',
@@ -40,38 +40,38 @@ const competitions: CompetitionData[] = [
 const getAwardStyle = (award: string) => {
     if (award.includes('金')) {
         return {
-            bg: 'bg-yellow-50',
-            border: 'border-yellow-200',
-            text: 'text-yellow-700',
-            iconColor: 'text-yellow-500',
-            badge: 'bg-yellow-100 text-yellow-800'
+            bg: 'bg-yellow-50 dark:bg-yellow-900/20',
+            border: 'border-yellow-200 dark:border-yellow-800',
+            text: 'text-yellow-700 dark:text-yellow-400',
+            iconColor: 'text-yellow-500 dark:text-yellow-400',
+            badge: 'bg-yellow-100 dark:bg-yellow-900/40 text-yellow-800 dark:text-yellow-300'
         };
     }
     if (award.includes('银')) {
         return {
-            bg: 'bg-slate-50',
-            border: 'border-slate-300',
-            text: 'text-slate-700',
-            iconColor: 'text-slate-500',
-            badge: 'bg-slate-200 text-slate-700'
+            bg: 'bg-slate-50 dark:bg-slate-800',
+            border: 'border-slate-300 dark:border-slate-600',
+            text: 'text-slate-700 dark:text-slate-300',
+            iconColor: 'text-slate-500 dark:text-slate-400',
+            badge: 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
         };
     }
     if (award.includes('铜') || award.includes('三等')) {
         return {
-            bg: 'bg-orange-50',
-            border: 'border-orange-200',
-            text: 'text-orange-800',
-            iconColor: 'text-orange-600',
-            badge: 'bg-orange-100 text-orange-800'
+            bg: 'bg-orange-50 dark:bg-orange-900/20',
+            border: 'border-orange-200 dark:border-orange-800',
+            text: 'text-orange-800 dark:text-orange-400',
+            iconColor: 'text-orange-600 dark:text-orange-400',
+            badge: 'bg-orange-100 dark:bg-orange-900/40 text-orange-800 dark:text-orange-300'
         };
     }
     // Default blue for others
     return {
-        bg: 'bg-blue-50',
-        border: 'border-blue-200',
-        text: 'text-blue-700',
-        iconColor: 'text-blue-500',
-        badge: 'bg-blue-100 text-blue-800'
+        bg: 'bg-blue-50 dark:bg-blue-900/20',
+        border: 'border-blue-200 dark:border-blue-800',
+        text: 'text-blue-700 dark:text-blue-400',
+        iconColor: 'text-blue-500 dark:text-blue-400',
+        badge: 'bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300'
     };
 };
 
@@ -79,12 +79,12 @@ export const Competitions: React.FC = () => {
   return (
     <section id="competitions" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-[calc(100vh-64px)]">
       <div className="flex items-center gap-3 mb-12 justify-center text-center">
-        <div className="p-3 bg-amber-100 rounded-full text-amber-600 shadow-sm">
+        <div className="p-3 bg-amber-100 dark:bg-amber-900/30 rounded-full text-amber-600 dark:text-amber-400 shadow-sm">
           <Trophy className="w-8 h-8" />
         </div>
         <div className="text-left">
-            <h2 className="text-3xl font-bold text-slate-900">竞赛经历</h2>
-            <p className="text-slate-500 font-medium mt-1">Competition Experience</p>
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white">竞赛经历</h2>
+            <p className="text-slate-500 dark:text-slate-400 font-medium mt-1">Competition Experience</p>
         </div>
       </div>
 
@@ -102,27 +102,27 @@ export const Competitions: React.FC = () => {
                                 <Medal className="w-3.5 h-3.5" />
                                 {comp.award}
                             </span>
-                            <span className="text-xs font-mono text-slate-500 bg-white/60 px-2 py-1 rounded border border-white/50">
+                            <span className="text-xs font-mono text-slate-500 dark:text-slate-400 bg-white/60 dark:bg-slate-800/60 px-2 py-1 rounded border border-white/50 dark:border-slate-600/50">
                                 {comp.date}
                             </span>
                         </div>
 
-                        <h3 className="text-lg font-bold text-slate-900 mb-2 leading-snug min-h-[3.5rem] flex items-center">
+                        <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 leading-snug min-h-[3.5rem] flex items-center">
                             {comp.name}
                         </h3>
 
                         <div className="space-y-2 text-sm">
-                            <div className="flex items-center gap-2 text-slate-600">
-                                <Award className="w-4 h-4 text-slate-400" />
+                            <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                                <Award className="w-4 h-4 text-slate-400 dark:text-slate-500" />
                                 <span className="font-semibold">角色:</span> {comp.role}
                             </div>
-                            <div className="flex items-center gap-2 text-slate-600">
-                                <Crown className="w-4 h-4 text-slate-400" />
+                            <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                                <Crown className="w-4 h-4 text-slate-400 dark:text-slate-500" />
                                 <span className="font-semibold">主办方:</span> {comp.organizer}
                             </div>
                         </div>
 
-                        <div className="mt-4 pt-3 border-t border-slate-200/50 flex justify-between items-center">
+                        <div className="mt-4 pt-3 border-t border-slate-200/50 dark:border-slate-600/50 flex justify-between items-center">
                              <span className={`text-xs font-bold uppercase tracking-wider ${style.text}`}>
                                 {comp.level} Level
                              </span>
