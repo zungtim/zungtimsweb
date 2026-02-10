@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
         <div>
             <span className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">ZungTim.</span>
             <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-                Chemical Engineering x Computer Science
+                ChemEng x CS x GeoSci
             </p>
         </div>
         <div className="text-center md:text-right text-sm text-slate-500 dark:text-slate-400">
