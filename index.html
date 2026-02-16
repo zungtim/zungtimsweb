@@ -1,69 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <title>Zungtim Wong | Personal website</title>
-    
-    <meta name="robots" content="noindex, nofollow" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Zungtim Wong | Personal website</title>
+  
+  <meta name="robots" content="noindex, nofollow" />
 
-    <meta property="og:title" content="ZungTim 的个人主页" />
-    <meta property="og:description" content="Hi，这是我的个人作品集。内含化学工程研究与计算机科学项目的详细介绍，欢迎查阅。" />
-    <meta property="og:image" content="/photo/avatar.jpg" />
-<script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              primary: '#2563eb', // blue-600
-              secondary: '#475569', // slate-600
-              accent: '#f59e0b', // amber-500
+  <meta property="og:title" content="ZungTim 的个人主页" />
+  <meta property="og:description" content="Hi，这是我的个人作品集。内含化学工程研究与计算机科学项目的详细介绍，欢迎查阅。" />
+  <meta property="og:image" content="/photo/avatar.jpg" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2563eb',
+            secondary: '#475569',
+            accent: '#f59e0b',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-out',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
             },
-            fontFamily: {
-              sans: ['Inter', 'system-ui', 'sans-serif'],
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
             },
           },
         },
-      }
-    </script>
+      },
+    }
+  </script>
+  
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
     
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-      /* Prevent FOUC (Flash of Unstyled Content) */
-      html.dark {
-        color-scheme: dark;
-      }
-      /* Custom scrollbar for better aesthetics */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #f1f5f9;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #94a3b8;
-      }
-      /* Dark mode scrollbar */
-      html.dark ::-webkit-scrollbar-track {
-        background: #1e293b;
-      }
-      html.dark ::-webkit-scrollbar-thumb {
-        background: #475569;
-      }
-      html.dark ::-webkit-scrollbar-thumb:hover {
-        background: #64748b;
-      }
-    </style>
-<script type="importmap">
+    html.dark {
+      color-scheme: dark;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    html.dark ::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+    html.dark ::-webkit-scrollbar-thumb:hover {
+      background: #64748b;
+    }
+    
+    /* Card Styles - Improved contrast in light mode */
+    .card-base {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 1.5rem;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    .card-base:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .dark .card-base {
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+    }
+    
+    /* Glass card - keep for dark mode mainly */
+    .glass-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 1.5rem;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    }
+    .glass-card:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+    }
+    .dark .glass-card {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+    }
+    
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+    }
+    .dark .hover-lift:hover {
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
+    }
+    
+    .text-gradient {
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #db2777 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    ::selection {
+      background: rgba(37, 99, 235, 0.2);
+      color: inherit;
+    }
+    
+    /* ImageLoader Skeleton Shimmer */
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    .animate-shimmer {
+      animation: shimmer 1.5s infinite;
+    }
+  </style>
+  
+  <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@^19.2.4",
@@ -73,11 +167,11 @@
     "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
   }
 }
-</script>
+  </script>
 </head>
-  <body class="bg-slate-50 text-slate-900 antialiased">
-    <div id="root"></div>
-    
-    <script type="module" src="/index.tsx"></script> 
-  </body>
+<body class="bg-slate-50 text-slate-900 antialiased">
+  <div id="root"></div>
+  
+  <script type="module" src="/index.tsx"></script> 
+</body>
 </html>

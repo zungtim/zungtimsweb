@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MapPin, Calendar, Camera, X, Quote, ZoomIn } from 'lucide-react';
+import { ImageLoader } from './ImageLoader';
 
 // 1. 定义数据接口
 interface Trip {
@@ -357,6 +358,14 @@ const trips: Trip[] = [
 
 export const Travel: React.FC = () => {
   const [selectedTrip, setSelectedTrip] = useState<Trip | null>(null);
+  const [visibleImageCount, setVisibleImageCount] = useState(6);
+
+  // 当切换选中的旅行时，重置可见图片数量
+  useEffect(() => {
+    if (selectedTrip) {
+      setVisibleImageCount(6);
+    }
+  }, [selectedTrip?.id]);
 
   // 禁用/启用背景滚动
   useEffect(() => {
@@ -371,12 +380,12 @@ export const Travel: React.FC = () => {
   }, [selectedTrip]);
 
   return (
-    <section id="travel" className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900 min-h-screen">
+    <section id="travel" className="py-24 px-4 sm:px-6 lg:px-8 min-h-screen">
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center p-3 bg-teal-100 dark:bg-teal-900/30 rounded-full text-teal-600 dark:text-teal-400 mb-4 shadow-sm">
+          <div className="inline-flex items-center justify-center p-3 bg-teal-100 dark:bg-teal-900/30 rounded-2xl text-teal-600 dark:text-teal-400 mb-6">
             <Camera className="w-8 h-8" />
           </div>
           <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">旅行足迹</h2>
@@ -385,18 +394,19 @@ export const Travel: React.FC = () => {
 
         {/* Gallery Grid (Level 1) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {trips.map((trip) => (
+          {trips.map((trip, idx) => (
             <div
               key={trip.id}
               onClick={() => setSelectedTrip(trip)}
-              className="group cursor-pointer bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-slate-100 dark:border-slate-700 flex flex-col h-full"
+              className={`break-inside-avoid group cursor-pointer bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-slate-200 dark:border-slate-700 ${
+                idx === 0 ? 'md:col-span-2' : ''
+              }`}
             >
               {/* Cover Image Wrapper */}
               <div className="relative h-64 overflow-hidden bg-slate-100 dark:bg-slate-800">
                  <img
                      src={trip.coverImage}
                      alt={trip.title}
-                     loading="lazy"
                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                  />
                  <div className="absolute top-4 right-4 bg-white/90 dark:bg-slate-700/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm z-10">
@@ -449,7 +459,7 @@ export const Travel: React.FC = () => {
             />
 
             {/* Modal Content */}
-            <div className="relative w-full max-w-5xl max-h-[90vh] bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-200">
+            <div className="relative w-full max-w-5xl max-h-[90vh] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-200">
 
                 {/* Close Button */}
                 <button
@@ -462,13 +472,14 @@ export const Travel: React.FC = () => {
                 {/* Modal Header & Content Scroll Area */}
                 <div className="overflow-y-auto custom-scrollbar">
                     
-                    {/* Hero Section of Modal */}
-                    <div className="relative h-64 sm:h-80 w-full shrink-0">
-                        <img 
-                            src={selectedTrip.coverImage} 
-                            alt={selectedTrip.title}
-                            className="w-full h-full object-cover"
-                        />
+                     {/* Hero Section of Modal */}
+                     <div className="relative h-64 sm:h-80 w-full shrink-0">
+                         <ImageLoader 
+                             src={selectedTrip.coverImage} 
+                             alt={selectedTrip.title}
+                             priority={true}
+                             containerClassName="w-full h-full"
+                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div className="p-8 text-white w-full">
                                 <div className="flex items-center gap-2 text-teal-300 font-bold mb-2 uppercase tracking-wide text-sm">
@@ -482,7 +493,7 @@ export const Travel: React.FC = () => {
 
                     <div className="p-8">
                         {/* Text Description */}
-                        <div className="bg-slate-50 dark:bg-slate-700/50 border-l-4 border-teal-500 p-6 rounded-r-xl mb-10">
+                        <div className="bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 border-l-4 border-l-teal-500 p-6 rounded-xl mb-10">
                             <Quote className="w-8 h-8 text-teal-200 mb-2" />
 
                             {/* 🌟 修改点 3：外层改为 div，因为内部可能包含 p 和 div 标签 */}
@@ -497,20 +508,46 @@ export const Travel: React.FC = () => {
                             旅途剪影
                         </h3>
                         
-                        <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
-                            {selectedTrip.galleryImages.map((img, idx) => (
-                                <div key={idx} className="break-inside-avoid rounded-xl overflow-hidden group/img relative">
-                                    <img 
-                                        src={img} 
-                                        alt={`Gallery ${idx}`}
-                                        loading="lazy"
-                                        className="w-full h-auto object-cover transform transition-transform duration-500 group-hover/img:scale-105"
-                                    />
-                                    {/* Optional: download or view icon on hover */}
-                                    <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/10 transition-colors" />
-                                </div>
-                            ))}
-                        </div>
+                         <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
+                             {selectedTrip.galleryImages.slice(0, visibleImageCount).map((img, idx) => (
+                                 <div key={idx} className="break-inside-avoid rounded-xl overflow-hidden group/img relative">
+                                     <ImageLoader 
+                                         src={img} 
+                                         alt={`Gallery ${idx}`}
+                                         containerClassName="w-full h-auto"
+                                         className="transform transition-transform duration-500 group-hover/img:scale-105"
+                                     />
+                                     {/* Optional: download or view icon on hover */}
+                                     <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/10 transition-colors" />
+                                 </div>
+                             ))}
+                         </div>
+                         
+                         {/* Auto Load More Trigger */}
+                         {visibleImageCount < selectedTrip.galleryImages.length && (
+                             <div 
+                                 className="h-20 mt-8 flex items-center justify-center"
+                                 ref={(el) => {
+                                     if (!el) return;
+                                     const observer = new IntersectionObserver(
+                                         ([entry]) => {
+                                             if (entry.isIntersecting) {
+                                                 setVisibleImageCount(prev => Math.min(prev + 6, selectedTrip.galleryImages.length));
+                                             }
+                                         },
+                                         { threshold: 0.1 }
+                                     );
+                                     observer.observe(el);
+                                     return () => observer.disconnect();
+                                 }}
+                             >
+                                 <div className="flex items-center gap-2 text-slate-400 dark:text-slate-500">
+                                     <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                                     <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                                     <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                                 </div>
+                             </div>
+                         )}
 
                         {/* Footer Spacer */}
                         <div className="h-12" />
