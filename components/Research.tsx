@@ -83,7 +83,7 @@ export const Research: React.FC = () => {
           <div className="inline-flex items-center justify-center p-3 bg-purple-100 dark:bg-purple-900/30 rounded-2xl text-purple-600 dark:text-purple-400 mb-6">
             <Microscope className="w-8 h-8" />
           </div>
-          <h2 className=" font-bold text-slate-900 dark:text-white mb-3">科研实践</h2>
+          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-3">科研实践</h2>
           <p className="text-slate-500 dark:text-slate-400 text-lg">Research & Projects Portfolio</p>
         </div>
 
