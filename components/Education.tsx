@@ -13,7 +13,7 @@ export const Education: React.FC = () => {
           <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-3">教育背景</h2>
           <p className="text-slate-500 dark:text-slate-400 text-lg">Education Background</p>
         </div>
-
+      
         {/* Timeline Container */}
         <div className="relative">
           {/* Timeline Line */}
@@ -30,12 +30,23 @@ export const Education: React.FC = () => {
             <div className="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               {/* Header */}
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6">
-                <div>
-                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-1">广东工业大学</h3>
-                  <p className="text-lg text-blue-600 dark:text-blue-400 font-medium">化学工程与工艺</p>
-                  <span className="inline-block mt-2 px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-sm font-semibold rounded-full">
-                    学科评估 B+
-                  </span>
+                <div className="flex items-start gap-4">
+                  {/* School Logo */}
+                  <div className="w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-600">
+                    <img 
+                      src="/photo/education/gdutlogo.png" 
+                      alt="广东工业大学校徽"
+                      className="w-full h-full object-contain bg-white dark:bg-slate-100"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-1">广东工业大学</h3>
+                    <p className="text-lg text-blue-600 dark:text-blue-400 font-medium">化学工程与工艺</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Bachelor of Engineering (工学学士)</p>
+                    <span className="inline-block mt-2 px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-sm font-semibold rounded-full">
+                      学科评估 B+
+                    </span>
+                  </div>
                 </div>
                 <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700/50 px-4 py-2 rounded-full text-sm border border-slate-200 dark:border-slate-600">
                   <Calendar className="w-4 h-4" />
@@ -105,12 +116,31 @@ export const Education: React.FC = () => {
                 <h4 className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-3">
                   <BookOpen className="w-4 h-4" /> 主修课程
                 </h4>
-                <div className="flex flex-wrap gap-2">
-                  {['化工原理', '反应工程', '分离工程', '化工热力学', '物理化学'].map((course) => (
-                    <span key={course} className="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-sm rounded-lg border border-slate-200 dark:border-slate-700">
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {['化工原理', '化学反应工程', '分离工程', '化工热力学', '物理化学', '分析化学', '有机化学', '无机化学'].map((course) => (
+                    <span key={course} className="px-3 py-1.5 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-sm rounded-lg border border-blue-200 dark:border-blue-800">
                       {course}
                     </span>
                   ))}
+                </div>
+              </div>
+
+              {/* Campus Experience */}
+              <div>
+                <h4 className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-3">
+                  <Award className="w-4 h-4" /> 在校经历
+                </h4>
+                <div className="space-y-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
+                    <span className="text-slate-500 dark:text-slate-400 font-mono whitespace-nowrap">2024.09 — 2025.07</span>
+                    <span className="text-slate-700 dark:text-slate-300">化工专业第二党支部党支部副书记</span>
+                    <span className="text-slate-500 dark:text-slate-400">| 总体负责支部日常事务处理与党员管理</span>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
+                    <span className="text-slate-500 dark:text-slate-400 font-mono whitespace-nowrap">2024.09 — 2025.07</span>
+                    <span className="text-slate-700 dark:text-slate-300">轻工化工学院团委学生副书记</span>
+                    <span className="text-slate-500 dark:text-slate-400">| 总体负责学院团委科技创新板块事务</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -126,22 +156,37 @@ export const Education: React.FC = () => {
             {/* Card */}
             <div className="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 md:ml-12">
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">印制电子电路技术 (PCB) 创新学院</h3>
-                    <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 text-xs font-semibold rounded-full">
-                      辅修
-                    </span>
+                <div className="flex items-start gap-4 flex-1">
+                  {/* School Logo */}
+                  <div className="w-12 h-12 flex-shrink-0 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-600">
+                    <img 
+                      src="/photo/education/gdutlogo.png" 
+                      alt="广东工业大学校徽"
+                      className="w-full h-full object-contain bg-white dark:bg-slate-100"
+                    />
                   </div>
-                  <p className="text-slate-500 dark:text-slate-400 text-sm mb-4">广东工业大学</p>
-
-                  {/* Courses */}
-                  <div className="flex flex-wrap gap-2">
-                    {['印制电子电路原理与工艺', '电子装联工艺', '印制电路板加工技术', '印制电路板电镀技术'].map((course) => (
-                      <span key={course} className="px-3 py-1.5 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-sm rounded-lg border border-purple-200 dark:border-purple-800">
-                        {course}
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-1">
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-white">印制电子电路技术 (PCB) 创新学院</h3>
+                      <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 text-xs font-semibold rounded-full">
+                        辅修
                       </span>
-                    ))}
+                    </div>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">广东工业大学 · 辅修学位</p>
+                    
+                    {/* 简短描述 */}
+                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
+                      对印制电子电路学科进行学习，拓宽专业视野并探索学科交叉可能性
+                    </p>
+
+                    {/* Courses */}
+                    <div className="flex flex-wrap gap-2">
+                      {['印制电子电路原理与工艺', '电子装联工艺', '印制电路板加工技术', '印制电路板电镀技术'].map((course) => (
+                        <span key={course} className="px-3 py-1.5 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-sm rounded-lg border border-purple-200 dark:border-purple-800">
+                          {course}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
