@@ -42,6 +42,17 @@ npm install
 
 ## Code Style Guidelines
 
+### ⚠️ Content Integrity (IMPORTANT)
+
+- **NEVER modify user's content text** - This includes but is not limited to:
+  - Personal descriptions/bio text
+  - Project titles and descriptions
+  - Achievement descriptions
+  - Any user-provided content
+- Only modify code structure and styling
+- If content needs to be reformatted for layout reasons, keep the original meaning intact
+- Ask for confirmation before making any content-related changes
+
 ### TypeScript & React
 
 - Use **React 19** with functional components
