@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { Microscope, FileText, FlaskConical, ChevronRight, Beaker, Cpu, Atom, BarChart3, Image as ImageIcon, Lightbulb, Clock, User } from 'lucide-react';
+import { Microscope, FileText, FlaskConical, ChevronRight, Beaker, BarChart3, Image as ImageIcon, Lightbulb, Clock, TrendingDown, Zap, Shield, X } from 'lucide-react';
+
+const MetricIcon = ({ index }: { index: number }) => {
+  const icons = [TrendingDown, Zap, Shield];
+  const Icon = icons[index % icons.length];
+  return <Icon className="w-5 h-5" />;
+};
 
 interface ResearchImage {
   url: string;
@@ -17,27 +23,26 @@ interface ResearchItem {
   methodology: string;
   metrics: string[];
   images: ResearchImage[];
-  citation?: string;
+  citation?: React.ReactNode;
 }
 
 const researchData: ResearchItem[] = [
   {
     id: '1',
     type: 'research',
-    title: '聚苯胺-碳纳米管/离子液体/ABS 复合材料的制备及性能研究',
+    title: '聚苯胺-氨基化碳纳米管/离子液体/ABS 抗静电复合材料的制备及性能研究',
     role: '第一负责人',
     date: '2025.10 - 2026.07',
-    tags: ['SEM', '熔融共混', '电化学阻抗谱', '导电高分子', '材料表征'],
-    background: '随着电子器件向轻量化、柔性化方向发展，传统金属导电材料已难以满足复杂场景需求。导电高分子材料因其可调节的电学性能和加工优势成为研究热点，然而如何实现导电填料在 ABS 基体中的均匀分散并构建高效导电网络仍面临挑战。',
-    methodology: '本项目采用熔融共混法将聚苯胺-碳纳米管（PANI-MWCNT）导电填料与 ABS 基体复合，通过调控填料含量、偶联剂处理工艺及混合参数，优化复合材料的导电网络结构。利用扫描电镜（SEM）观察复合材料微观形貌，通过电化学阻抗谱（EIS）和四探针法表征其导电性能。',
+    tags: ['原位聚合', '熔融共混', 'SEM表征', '高分子复合材料', '抗静电技术'],
+    background: 'ABS 树脂作为通用工程塑料，因高绝缘性易积聚静电而限制了其在精密电子领域的应用。传统碳纳米管 (CNT) 填料虽导电性好，但极易团聚，导致添加量大且严重损害材料力学性能。本课题旨在开发一种低添加量、高分散性且机械性能优异的新型抗静电复合材料。',
+    methodology: '采用"核壳结构设计 + 离子液体协同"双重策略。首先通过原位乳液聚合，将导电聚苯胺 (PANI) 接枝于氨基化碳纳米管表面，构建 PANI-A-CNT 核壳结构以改善界面相容性；随后引入离子液体 (C12mimBr) 作为分散助剂，通过熔融共混法制备复合材料，成功构建了高效的三维导电网络。',
     metrics: [
-      '电导率提升 3 个数量级',
-      '渗滤阈值降至 2.5 wt%',
-      '室温电导率达 10 S/m'
+      '表面电阻率降至 10⁸ Ω (抗静电级)',
+      '填料分散性显著提升 (SEM证实)',
+      '耐水洗性能与力学强度同步增强'
     ],
     images: [
-      { url: 'https://placehold.co/600x400/e2e8f0/475569?text=原理示意图', caption: '导电网络构建机理示意图' },
-      { url: 'https://placehold.co/600x400/e2e8f0/475569?text=微观形貌图', caption: 'PANI-MWCNT/ABS 复合材料 SEM 形貌图' }
+      { url: '/photo/Research/1.png', caption: '图1. PANI-A-CNT抗静电剂的合成路线及在ABS基体中的分散机理示意图' }
     ]
   },
   {
@@ -46,23 +51,28 @@ const researchData: ResearchItem[] = [
     title: '一种通过改性硅烷偶联剂增强粘附性的有机硅压敏胶',
     role: '第二发明人',
     date: '2025.07.01',
-    tags: ['有机合成', '剥离强度测试', '压敏胶', '硅烷偶联剂'],
-    background: '有机硅压敏胶广泛应用于电子制造、医疗器械等领域，但现有产品对金属、塑料等基材的粘附力不足，限制了其在复杂环境下的应用。开发高性能增粘剂是解决这一问题的关键。',
-    methodology: '本专利通过合成改性硅烷偶联剂作为增粘剂，引入活性基团增强与压敏胶体系的相容性。改性偶联剂中的硅烷氧基可与基材表面形成化学键锚定，同时其有机链段与压敏胶产生物理缠绕，显著提升界面粘附强度。',
+    tags: ['有机合成', '改性硅烷', '仿生粘附', '压敏胶(PSA)', 'CN发明专利'],
+    background: '随着电子工业的发展，对耐高温胶带的需求日益增加。传统的有机硅压敏胶虽然耐候性好，但对聚酰亚胺（PI）、聚酯（PET）等极性基材的初始粘附力较差，且在高温高湿环境下容易出现残胶或脱落现象，难以满足高端制程保护的需求。',
+    methodology: '本项目创新性地引入"仿生化学"理念。首先利用盐酸多巴胺、纳米硅溶胶和羟基磷灰石制备复合改性液，对硅烷偶联剂（KH-570）进行表面功能化修饰，合成了一种新型增粘剂。随后将其与有机硅树脂、丙烯酸酯单体进行交联共聚。该改性剂利用多巴胺的强粘附基团和纳米粒子的锚定作用，在胶层与基材界面形成了牢固的化学键合与物理嵌锁。',
     metrics: [
-      '剥离强度提升 80%',
-      '耐高温性能提高至 200°C',
-      '粘接耐久性测试 > 1000h'
+      '显著提升剥离强度 (Peel Strength)',
+      '优异的耐高温性能 (180°C/24h无残胶)',
+      '解决了传统胶粘剂对极性基材界面结合力差的痛点'
     ],
     images: [
-      { url: 'https://placehold.co/600x400/e2e8f0/475569?text=专利证书', caption: '专利授权证书' }
+      { url: '/photo/Research/patent-cert.png', caption: '图2. 发明专利公开说明书首页 (CN 120230511 A)' }
     ],
-    citation: '朱贵有, 黄颂添, 刘毅. 一种通过改性硅烷偶联剂增强粘附性的有机硅压敏胶 [P]. 广东省: CN120230511A, 2025-07-01.'
+    citation: (
+      <>
+        [1] 朱贵有, <span className="font-bold text-slate-900 dark:text-slate-100 border-b-2 border-blue-300 dark:border-blue-600">黄颂添</span>, 刘毅. 一种通过改性硅烷偶联剂增强粘附性的有机硅压敏胶 [P]. 广东省: CN120230511A, 2025-07-01.
+      </>
+    )
   }
 ];
 
 export const Research: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>(researchData[0].id);
+  const [selectedImage, setSelectedImage] = useState<ResearchImage | null>(null);
   const currentItem = researchData.find(item => item.id === activeItem) || researchData[0];
 
   const getTypeIcon = (type: 'research' | 'patent') => {
@@ -176,16 +186,19 @@ export const Research: React.FC = () => {
                     {currentItem.metrics.length > 0 && (
                       <div className="mb-6">
                         <div className="flex items-center gap-2 mb-3">
-                          <BarChart3 className="w-4 h-4 text-purple-500 dark:text-purple-400" />
+                          <BarChart3 className={`w-4 h-4 ${colors.text}`} />
                           <span className="text-sm font-semibold text-slate-900 dark:text-white uppercase tracking-wider">Key Metrics</span>
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                           {currentItem.metrics.map((metric, idx) => (
                             <div 
                               key={idx}
-                              className={`bg-gradient-to-br ${colors.accent} bg-opacity-10 p-4 rounded-xl border border-transparent hover:border-current transition-all`}
+                              className={`flex items-start gap-3 bg-gradient-to-br ${colors.accent.includes('purple') ? 'from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20' : 'from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20'} p-4 rounded-xl border ${colors.border} hover:shadow-md transition-all`}
                             >
-                              <div className="text-sm font-medium text-slate-700 dark:text-slate-200">
+                              <div className={`p-2 rounded-lg ${colors.bg} ${colors.text}`}>
+                                <MetricIcon index={idx} />
+                              </div>
+                              <div className="text-sm font-medium text-slate-700 dark:text-slate-200 leading-snug">
                                 {metric}
                               </div>
                             </div>
@@ -242,21 +255,22 @@ export const Research: React.FC = () => {
                           <ImageIcon className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                           <span className="text-sm font-semibold text-slate-900 dark:text-white uppercase tracking-wider">Gallery</span>
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 gap-4">
                           {currentItem.images.map((img, idx) => (
                             <div 
                               key={idx}
-                              className="group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-600"
+                              onClick={() => setSelectedImage(img)}
+                              className="group cursor-pointer rounded-xl overflow-hidden border border-slate-200 dark:border-slate-600 hover:shadow-lg transition-all"
                             >
-                              <div className="relative aspect-video bg-slate-100 dark:bg-slate-700">
+                              <div className="relative bg-slate-100 dark:bg-slate-700">
                                 <img 
                                   src={img.url} 
                                   alt={img.caption}
-                                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                  className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02]"
                                 />
                               </div>
                               <div className="p-3 bg-slate-50 dark:bg-slate-700/50">
-                                <p className="text-xs text-slate-600 dark:text-slate-300 font-medium">
+                                <p className="text-xs text-slate-600 dark:text-slate-300 font-medium text-center">
                                   {img.caption}
                                 </p>
                               </div>
@@ -271,6 +285,34 @@ export const Research: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Image Modal */}
+        {selectedImage && (
+          <div 
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 pt-20 pb-4 px-4"
+            onClick={() => setSelectedImage(null)}
+          >
+            <button 
+              onClick={() => setSelectedImage(null)}
+              className="fixed top-20 right-4 z-10 p-3 rounded-full bg-white/90 text-slate-700 hover:bg-white shadow-lg transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <div 
+              className="relative max-w-5xl w-full h-full flex flex-col items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img 
+                src={selectedImage.url} 
+                alt={selectedImage.caption}
+                className="max-w-full max-h-[calc(100%-40px)] object-contain rounded-lg shadow-2xl"
+              />
+              <p className="text-sm text-white/80 font-medium text-center mt-3">
+                {selectedImage.caption}
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

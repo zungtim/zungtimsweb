@@ -23,6 +23,25 @@ export interface ResearchData {
   result?: string;
 }
 
+export interface ResearchImage {
+  url: string;
+  caption: string;
+}
+
+export interface ResearchItem {
+  id: string;
+  type: 'research' | 'patent';
+  title: string;
+  role: string;
+  date: string;
+  tags: string[];
+  background: string;
+  methodology: string;
+  metrics: string[];
+  images: ResearchImage[];
+  citation?: string;
+}
+
 export interface CompetitionData {
   name: string;
   role: string;

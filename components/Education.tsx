@@ -57,55 +57,57 @@ export const Education: React.FC = () => {
               {/* Stats Visualization */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 {/* GPA Circle */}
-                <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-6 border border-blue-100 dark:border-blue-800 flex flex-col items-center">
+                <div className="bg-white dark:bg-slate-800/80 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 flex flex-col items-center">
                   <div className="relative w-28 h-28 mb-3">
                     <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                      <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="8" className="text-blue-100 dark:text-blue-800" />
+                      <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="8" className="text-slate-100 dark:text-slate-700" />
                       <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="8" strokeDasharray={`${(3.46/5) * 251.2} 251.2`} strokeLinecap="round" className="text-blue-600 dark:text-blue-400" />
                     </svg>
                     <div className="absolute inset-0 flex flex-col items-center justify-center">
-                      <span className="text-2xl font-bold text-blue-700 dark:text-blue-300">3.46</span>
-                      <span className="text-xs text-blue-500 dark:text-blue-400">/ 5.0</span>
+                      <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">3.46</span>
+                      <span className="text-xs text-slate-400">/ 5.0</span>
                     </div>
                   </div>
-                  <div className="text-sm font-semibold text-blue-700 dark:text-blue-300">GPA</div>
-                  <div className="text-xs text-blue-500 dark:text-blue-400 mt-1">69.2%</div>
+                  <div className="text-sm font-semibold text-blue-600 dark:text-blue-400">GPA</div>
+                  <div className="text-xs text-slate-400 dark:text-slate-500 mt-1">69.2%</div>
                 </div>
 
                 {/* Year 1 Ranking */}
-                <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-4 border border-green-100 dark:border-green-800 flex flex-col justify-between min-h-[180px]">
+                <div className="bg-white dark:bg-slate-800/80 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 flex flex-col justify-between min-h-[180px]">
                   <div className="text-center">
-                    <div className="text-xs text-green-600 dark:text-green-400 font-medium">大一综合测评</div>
-                    <div className="text-xs text-green-500 dark:text-green-500 uppercase tracking-wider">Year 1 Ranking</div>
+                    <div className="text-xs text-blue-600 dark:text-blue-400 font-medium">大一综合测评</div>
+                    <div className="text-xs text-slate-400 dark:text-slate-500 uppercase tracking-wider">Year 1 Ranking</div>
                   </div>
                   <div className="text-center py-2">
-                    <span className="text-3xl font-bold text-green-700 dark:text-green-300">Top 1.28%</span>
+                    <span className="text-4xl font-black text-blue-600 dark:text-blue-400">Top 1.28%</span>
+                    <div className="text-sm text-slate-500 dark:text-slate-400 mt-1">Rank: 2 / 156</div>
                   </div>
-                  <div>
-                    <div className="relative h-5 border-2 border-dashed border-green-300 dark:border-green-600 rounded-full overflow-hidden mb-1">
-                      <div className="absolute left-0 top-0 h-full bg-gradient-to-r from-green-400 via-emerald-400 to-teal-300 rounded-full" style={{ width: '98.7%' }} />
-                    </div>
-                    <div className="text-center text-green-600 dark:text-green-400 text-sm font-medium">
-                      2 / 156
+                  <div className="relative">
+                    <div className="h-2 bg-slate-100 dark:bg-slate-700 rounded-full">
+                      <div 
+                        className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-blue-600 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.5)]"
+                        style={{ left: 'calc(2% + 0.5%)' }}
+                      />
                     </div>
                   </div>
                 </div>
 
                 {/* Year 2 Ranking */}
-                <div className="bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20 rounded-2xl p-4 border border-purple-100 dark:border-purple-800 flex flex-col justify-between min-h-[180px]">
+                <div className="bg-white dark:bg-slate-800/80 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 flex flex-col justify-between min-h-[180px]">
                   <div className="text-center">
-                    <div className="text-xs text-purple-600 dark:text-purple-400 font-medium">大二综合测评</div>
-                    <div className="text-xs text-purple-500 dark:text-purple-500 uppercase tracking-wider">Year 2 Ranking</div>
+                    <div className="text-xs text-blue-600 dark:text-blue-400 font-medium">大二综合测评</div>
+                    <div className="text-xs text-slate-400 dark:text-slate-500 uppercase tracking-wider">Year 2 Ranking</div>
                   </div>
                   <div className="text-center py-2">
-                    <span className="text-3xl font-bold text-purple-700 dark:text-purple-300">Top 1.95%</span>
+                    <span className="text-4xl font-black text-blue-600 dark:text-blue-400">Top 1.95%</span>
+                    <div className="text-sm text-slate-500 dark:text-slate-400 mt-1">Rank: 3 / 154</div>
                   </div>
-                  <div>
-                    <div className="relative h-5 border-2 border-dashed border-purple-300 dark:border-purple-600 rounded-full overflow-hidden mb-1">
-                      <div className="absolute left-0 top-0 h-full bg-gradient-to-r from-purple-400 via-violet-400 to-fuchsia-300 rounded-full" style={{ width: '98.1%' }} />
-                    </div>
-                    <div className="text-center text-purple-600 dark:text-purple-400 text-sm font-medium">
-                      3 / 154
+                  <div className="relative">
+                    <div className="h-2 bg-slate-100 dark:bg-slate-700 rounded-full">
+                      <div 
+                        className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-blue-600 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.5)]"
+                        style={{ left: 'calc(3% + 0.5%)' }}
+                      />
                     </div>
                   </div>
                 </div>
