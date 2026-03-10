@@ -19,15 +19,87 @@ interface Trip {
 // 2. 模拟数据
 const trips: Trip[] = [
   {
+    id: 'cbs-2026',
+    year: 2026,
+    date: '2026.03.01',
+    title: '北纬42°之上的冰与火之歌',
+    location: '吉林长白山 (Changbai Mountain)',
+    emoji: '🌋',
+    description: (
+      <>
+        <div className="font-bold text-slate-900 dark:text-slate-200 mb-2">
+          北纬42°00′、东经128°03′ | 穹顶火山口·中朝界峰 [ 踏过极寒，觐见十六峰拥吻的冰封之眸 ]
+        </div>
+        <p className="leading-relaxed">
+          “西伯利亚寒潮与日本海暖流在此处相会，跨越两千米的垂直植被带，零下三十度的极寒白毛风肆虐而过，我站在这座休眠了三百年的穹顶火山口与天池相遇。传说中幽蓝的天池已成为纯白世界的一员，被十六座冷峻的灰白奇峰死死护在怀中。大自然用最壮烈的地质运动撕裂出这道深渊，又用最温柔的极致纯白将它填满。站在这道横亘中朝的地质分野线上，极寒冻结了高山苔原的呼吸，却封印不住冰层之下那股蛰伏的炽热。据悉每个冬季只有不超过十天可以站在天池之上，当狂风卷起千堆雪，渺小与苍茫完成了一场无声的对望，所有的执念都在这地球的绝美留白中释怀。”
+        </p>
+      </>
+    ),
+    coverImage: '/photo/travel/2026.03.01/cover.webp', 
+    galleryImages: [
+      '/photo/travel/2026.03.01/cover.webp',
+      '/photo/travel/2026.03.01/1.webp',
+      '/photo/travel/2026.03.01/2.webp',
+      '/photo/travel/2026.03.01/3.webp',
+      '/photo/travel/2026.03.01/4.webp',
+      '/photo/travel/2026.03.01/5.webp',
+      '/photo/travel/2026.03.01/6.webp',
+      '/photo/travel/2026.03.01/7.webp',
+      '/photo/travel/2026.03.01/8.webp',
+    ]
+  },
+  {
+    id: 'llkh-2026',
+    year: 2026,
+    date: '2026.03.04',
+    title: '坠入泰加林海的纯白',
+    location: '延边·老里克湖 (Long neck of the lake)',
+    emoji: '❄️',
+    description: (
+      <>
+        <div className="font-bold text-slate-900 dark:text-slate-200 mb-2">
+          北纬42°16′、东经128°34′ | 高山雪沼·泰加林海 [ 深入亚欧大陆东缘的白色流浪 ]
+        </div>
+        <p className="leading-relaxed">
+          “随着长白山脉的断裂带向林海深处下切，一头闯入老里克湖这片被高山沼泽孕育的雪国结界。日本海的湿润气流在这里被迎风坡无情截留，化作漫山遍野晶莹剔透的雾凇群落与齐膝的粉雪。这里没有被人工雕琢的坐标，只有冷杉与岳桦交织的泰加林带。厚重的积雪像是一层天然的隔音网，吸附了世间所有的回音，耳畔只剩脚步碾压过雪地的嘎吱作响。在这场极致孤独的白色流浪里，每一步都是与古老地质的私语，让躁动的心跳在林海的静谧中彻底安顿。”
+        </p>
+      </>
+    ),
+    coverImage: '/photo/travel/2026.03.04/cover.webp', 
+    galleryImages: [
+      '/photo/travel/2026.03.04/cover.webp',
+      '/photo/travel/2026.03.04/1.webp',
+      '/photo/travel/2026.03.04/2.webp',
+      '/photo/travel/2026.03.04/3.webp',
+      '/photo/travel/2026.03.04/4.webp',
+      '/photo/travel/2026.03.04/5.webp',
+      '/photo/travel/2026.03.04/6.webp',
+      '/photo/travel/2026.03.04/7.webp',
+      '/photo/travel/2026.03.04/8.webp',
+      '/photo/travel/2026.03.04/9.webp',
+    ]
+  },
+  {
     id: 'sz-2026',
     year: 2026,
     date: '2026.01.30',
-    title: '鲲鹏十九径之深圳天文台海岸徒步',
+    title: '鲲鹏十九径海岸徒步',
     location: '深圳天文台 (Shenzhen Observatory)',
     emoji: '🌊',
     // 普通文本描述：依然完美支持
-    description: '定位在北纬22°29′、东经114°32′的大鹏半岛南端，我们沿着西涌崎岖的海岸线，在海浪与礁石碰撞的狭缝中攀爬前行。少年的眼中没有对日落缺席海天之际的失望，只有在逐渐降临的夜幕中迎着海风与浪潮不断向前的激动，直到终点海岸微弱灯光照在脸上。',
-    
+    description: (
+      <>
+        {/* 第一段标题 */}
+        <div className="font-bold text-slate-900 dark:text-slate-200 mb-2">
+          定位在北纬22°29′、东经114°32 | 大鹏半岛南端 [ 鲲鹏十九径之深圳天文台海岸徒步 ]
+        </div>
+        
+        {/* 第一段正文 */}
+        <p className="leading-relaxed">
+          “我们沿着西涌崎岖的海岸线，在海浪与礁石碰撞的狭缝中攀爬前行。少年的眼中没有对日落缺席海天之际的失望，只有在逐渐降临的夜幕中迎着海风与浪潮不断向前的激动，直到终点海岸微弱灯光照在脸上。”
+        </p>
+      </>
+    ),
     coverImage: '/photo/travel/2026.01.30sz/cover.webp', 
     galleryImages: [
       '/photo/travel/2026.01.30sz/3.webp',
@@ -398,26 +470,28 @@ export const Travel: React.FC = () => {
             <div
               key={trip.id}
               onClick={() => setSelectedTrip(trip)}
-              className={`break-inside-avoid group cursor-pointer bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-slate-200 dark:border-slate-700 ${
+              className={`break-inside-avoid group cursor-pointer bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-1 border border-slate-200 dark:border-slate-700 ${
                 idx === 0 ? 'md:col-span-2' : ''
               }`}
             >
               {/* Cover Image Wrapper */}
               <div className="relative h-64 overflow-hidden bg-slate-100 dark:bg-slate-800">
-                 <img
-                     src={trip.coverImage}
-                     alt={trip.title}
-                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                 />
-                 <div className="absolute top-4 right-4 bg-white/90 dark:bg-slate-700/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm z-10">
-                    {trip.year}
-                 </div>
-                 {/* Overlay hint */}
-                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 text-white flex items-center gap-2 font-semibold bg-black/40 px-4 py-2 rounded-full backdrop-blur-md transition-opacity duration-300">
-                        <ZoomIn className="w-4 h-4" /> 查看图集
-                    </div>
-                 </div>
+                  <ImageLoader
+                      src={trip.coverImage}
+                      alt={trip.title}
+                      priority={idx < 3}
+                      containerClassName="w-full h-full"
+                      className="transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute top-4 right-4 bg-white/80 dark:bg-slate-800/80 px-3 py-1 rounded-full text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm z-10">
+                     {trip.year}
+                  </div>
+                  {/* Overlay hint */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
+                     <div className="opacity-0 group-hover:opacity-100 text-white flex items-center gap-2 font-semibold bg-black/40 px-4 py-2 rounded-full transition-opacity duration-300">
+                         <ZoomIn className="w-4 h-4" /> 查看图集
+                     </div>
+                  </div>
               </div>
 
               {/* Card Content */}
@@ -438,7 +512,7 @@ export const Travel: React.FC = () => {
                     <span className="flex items-center gap-1">
                         <Camera className="w-3.5 h-3.5" /> {trip.galleryImages.length} Photos
                     </span>
-                    <span className="text-xl filter grayscale group-hover:grayscale-0 transition-all">{trip.emoji}</span>
+                    <span className="text-xl opacity-60 group-hover:opacity-100 transition-opacity">{trip.emoji}</span>
                 </div>
               </div>
             </div>
@@ -448,7 +522,7 @@ export const Travel: React.FC = () => {
         {/* Modal (Level 2) */}
         {selectedTrip && (
           <div 
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+            className="fixed top-16 left-0 right-0 bottom-0 z-[100] flex items-center justify-center p-4 sm:p-6"
             role="dialog"
             aria-modal="true"
           >
