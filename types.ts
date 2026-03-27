@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 export interface NavItem {
   label: string;
   href: string;
@@ -39,7 +41,7 @@ export interface ResearchItem {
   methodology: string;
   metrics: string[];
   images: ResearchImage[];
-  citation?: string;
+  citation?: ReactNode;
 }
 
 export interface CompetitionData {

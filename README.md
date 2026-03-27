@@ -1,20 +1,60 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Zungtim Wong Personal Website
 
-# Run and deploy your AI Studio app
+Personal portfolio website built with React 19, TypeScript, Vite, and Tailwind CSS.
 
-This contains everything you need to run your app locally.
+## Tech Stack
 
-View your app in AI Studio: https://ai.studio/apps/drive/1OHmGZK526t4VFdN9iqL8nI_MtU2F9QWs
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS (CDN config in `index.html`)
+- React Router (`HashRouter`)
+- Lucide React icons
 
-## Run Locally
+## Getting Started
 
-**Prerequisites:**  Node.js
+**Prerequisite:** Node.js
 
+```bash
+npm install
+npm run dev
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+The dev server runs on `http://localhost:3000`.
+
+## Scripts
+
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run preview  # Preview production build
+```
+
+## Project Structure
+
+```text
+.
+├── App.tsx
+├── index.tsx
+├── types.ts
+├── components/
+│   ├── Hero.tsx
+│   ├── Navbar.tsx
+│   ├── Education.tsx
+│   ├── Research.tsx
+│   ├── Competitions.tsx
+│   ├── Travel.tsx
+│   ├── ImageLoader.tsx
+│   └── Footer.tsx
+├── context/
+│   └── ThemeContext.tsx
+├── hooks/
+│   ├── useIntersectionObserver.ts
+│   └── useImagePreloadQueue.ts
+└── public/photo/
+```
+
+## Notes
+
+- No test framework is configured yet.
+- No lint/format pipeline is configured yet.

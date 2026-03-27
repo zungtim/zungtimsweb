@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MapPin, Calendar, Camera, X, Quote, ZoomIn } from 'lucide-react';
 import { ImageLoader } from './ImageLoader';
 
@@ -428,9 +428,12 @@ const trips: Trip[] = [
   },
 ];
 
+export const TRAVEL_COVER_IMAGES: string[] = trips.map((trip) => trip.coverImage);
+
 export const Travel: React.FC = () => {
   const [selectedTrip, setSelectedTrip] = useState<Trip | null>(null);
   const [visibleImageCount, setVisibleImageCount] = useState(6);
+  const loadMoreTriggerRef = useRef<HTMLDivElement | null>(null);
 
   // 当切换选中的旅行时，重置可见图片数量
   useEffect(() => {
@@ -450,6 +453,41 @@ export const Travel: React.FC = () => {
       document.body.style.overflow = 'unset';
     };
   }, [selectedTrip]);
+
+  useEffect(() => {
+    if (!selectedTrip) {
+      return;
+    }
+
+    const totalImages = selectedTrip.galleryImages.length;
+    if (visibleImageCount >= totalImages) {
+      return;
+    }
+
+    const target = loadMoreTriggerRef.current;
+    if (!target) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisibleImageCount((prev) => Math.min(prev + 6, totalImages));
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '200px',
+      }
+    );
+
+    observer.observe(target);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [selectedTrip, visibleImageCount]);
 
   return (
     <section id="travel" className="py-24 px-4 sm:px-6 lg:px-8 min-h-screen">
@@ -601,19 +639,7 @@ export const Travel: React.FC = () => {
                          {visibleImageCount < selectedTrip.galleryImages.length && (
                              <div 
                                  className="h-20 mt-8 flex items-center justify-center"
-                                 ref={(el) => {
-                                     if (!el) return;
-                                     const observer = new IntersectionObserver(
-                                         ([entry]) => {
-                                             if (entry.isIntersecting) {
-                                                 setVisibleImageCount(prev => Math.min(prev + 6, selectedTrip.galleryImages.length));
-                                             }
-                                         },
-                                         { threshold: 0.1 }
-                                     );
-                                     observer.observe(el);
-                                     return () => observer.disconnect();
-                                 }}
+                                 ref={loadMoreTriggerRef}
                              >
                                  <div className="flex items-center gap-2 text-slate-400 dark:text-slate-500">
                                      <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />

@@ -1,30 +1,12 @@
 import React, { useState } from 'react';
 import { Microscope, FileText, FlaskConical, ChevronRight, Beaker, BarChart3, Image as ImageIcon, Lightbulb, Clock, TrendingDown, Zap, Shield, X } from 'lucide-react';
+import type { ResearchImage, ResearchItem } from '../types';
 
 const MetricIcon = ({ index }: { index: number }) => {
   const icons = [TrendingDown, Zap, Shield];
   const Icon = icons[index % icons.length];
   return <Icon className="w-5 h-5" />;
 };
-
-interface ResearchImage {
-  url: string;
-  caption: string;
-}
-
-interface ResearchItem {
-  id: string;
-  type: 'research' | 'patent';
-  title: string;
-  role: string;
-  date: string;
-  tags: string[];
-  background: string;
-  methodology: string;
-  metrics: string[];
-  images: ResearchImage[];
-  citation?: React.ReactNode;
-}
 
 const researchData: ResearchItem[] = [
   {

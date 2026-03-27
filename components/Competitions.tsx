@@ -84,7 +84,6 @@ const getAwardConfig = (award: string) => {
 
 export const Competitions: React.FC = () => {
   const goldAwards = competitions.filter(c => c.award.includes('金'));
-  const otherAwards = competitions.filter(c => !c.award.includes('金'));
 
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8 min-h-screen">
