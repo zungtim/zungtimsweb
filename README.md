@@ -1,4 +1,4 @@
-# Zungtim Wong Personal Website
+﻿# Zungtim Wong Personal Website
 
 Personal portfolio website built with React 19, TypeScript, Vite, and Tailwind CSS.
 
@@ -11,23 +11,47 @@ Personal portfolio website built with React 19, TypeScript, Vite, and Tailwind C
 - React Router (`HashRouter`)
 - Lucide React icons
 
-## Getting Started
+## Content + Media Workflow (Long-term)
 
-**Prerequisite:** Node.js
+The website now uses a **content-data + source-images** pipeline.
+
+### 1) Add/Edit content
+
+- Travel data: `content/travel.tsx`
+- Competition data: `content/competitions.ts`
+
+### 2) Put source images
+
+- Travel source folder: `public/photo-src/travel/<entry-id>/`
+- Competition source folder: `public/photo-src/competitions/<entry-id>/`
+
+Filename rules (strict):
+- Cover image: `cover.*`
+- Gallery images: `1.*`, `2.*`, `3.*` ...
+
+### 3) Build pipeline runs automatically
+
+`npm run dev` and `npm run build` both trigger `media:build` first.
+
+`media:build` will:
+- Generate responsive WebP variants (`sm/md/lg`) into `public/photo-gen`
+- Generate runtime manifest for rendering
+- Run media budget checks (fails build when over limits)
+
+## Commands
 
 ```bash
 npm install
 npm run dev
+npm run build
+npm run preview
 ```
 
-The dev server runs on `http://localhost:3000`.
-
-## Scripts
+Optional (run manually):
 
 ```bash
-npm run dev      # Start development server
-npm run build    # Build for production
-npm run preview  # Preview production build
+npm run media:build
+npx tsc --noEmit
 ```
 
 ## Project Structure
@@ -36,22 +60,19 @@ npm run preview  # Preview production build
 .
 ├── App.tsx
 ├── index.tsx
-├── types.ts
 ├── components/
-│   ├── Hero.tsx
-│   ├── Navbar.tsx
-│   ├── Education.tsx
-│   ├── Research.tsx
-│   ├── Competitions.tsx
-│   ├── Travel.tsx
-│   ├── ImageLoader.tsx
-│   └── Footer.tsx
-├── context/
-│   └── ThemeContext.tsx
+├── content/
+│   ├── travel.tsx
+│   ├── competitions.ts
+│   └── generated/media-manifest.ts
 ├── hooks/
-│   ├── useIntersectionObserver.ts
-│   └── useImagePreloadQueue.ts
-└── public/photo/
+├── scripts/media/build-media.mjs
+├── types/
+│   └── content.ts
+├── public/
+│   ├── photo-src/
+│   └── photo-gen/ (generated)
+└── context/
 ```
 
 ## Notes

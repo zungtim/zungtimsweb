@@ -6,12 +6,13 @@ import { Hero } from './components/Hero';
 import { Education } from './components/Education';
 import { Research } from './components/Research';
 import { Competitions } from './components/Competitions';
-import { Travel, TRAVEL_COVER_IMAGES } from './components/Travel';
+import { Travel } from './components/Travel';
 import { Footer } from './components/Footer';
 import { useImagePreloadQueue } from './hooks/useImagePreloadQueue';
+import { getModuleCoverUrls } from './content/media';
 
 function App() {
-  useImagePreloadQueue(TRAVEL_COVER_IMAGES, 4);
+  useImagePreloadQueue(getModuleCoverUrls('travel', 'md'), 4);
 
   return (
     <ThemeProvider>

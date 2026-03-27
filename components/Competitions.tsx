@@ -1,41 +1,8 @@
-import React from 'react';
+﻿import React from 'react';
 import { Trophy, Medal, Star, Crown, TrendingUp } from 'lucide-react';
-import { CompetitionData } from '../types';
-
-const competitions: CompetitionData[] = [
-  {
-    name: '中国国际大学生创新大赛(2024)',
-    role: '第三作者',
-    award: '金奖 (国赛)',
-    date: '2024.10',
-    organizer: '中国教育部',
-    level: 'National'
-  },
-  {
-    name: '中国国际大学生创新大赛(2025)广东省分赛',
-    role: '第一作者',
-    award: '银奖',
-    date: '2025.08',
-    organizer: '广东省教育厅',
-    level: 'Provincial'
-  },
-  {
-    name: '2025年全国大学生数学建模竞赛广东赛区',
-    role: '共同一作',
-    award: '三等奖',
-    date: '2025.10',
-    organizer: '广东省教育厅',
-    level: 'Provincial'
-  },
-  {
-    name: '第十三届"赢在广州"暨粤港澳大湾区大学生创业大赛',
-    role: '第一作者',
-    award: '一等奖',
-    date: '2025.05',
-    organizer: '广州市人社局',
-    level: 'Municipal'
-  }
-];
+import { competitionEntries } from '../content/competitions';
+import { getMediaEntry, resolveMediaImage } from '../content/media';
+import { ImageLoader } from './ImageLoader';
 
 const getAwardConfig = (award: string) => {
   if (award.includes('金')) {
@@ -46,7 +13,7 @@ const getAwardConfig = (award: string) => {
       text: 'text-yellow-700 dark:text-yellow-400',
       badge: 'bg-yellow-100 dark:bg-yellow-900/40 text-yellow-800 dark:text-yellow-300',
       icon: Crown,
-      size: 'large' // Gold award gets larger card
+      size: 'large'
     };
   }
   if (award.includes('银')) {
@@ -83,12 +50,11 @@ const getAwardConfig = (award: string) => {
 };
 
 export const Competitions: React.FC = () => {
-  const goldAwards = competitions.filter(c => c.award.includes('金'));
+  const goldAwards = competitionEntries.filter((entry) => entry.award.includes('金'));
 
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8 min-h-screen">
       <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center justify-center p-3 bg-amber-100 dark:bg-amber-900/30 rounded-2xl text-amber-600 dark:text-amber-400 mb-6">
             <Trophy className="w-8 h-8" />
@@ -97,10 +63,9 @@ export const Competitions: React.FC = () => {
           <p className="text-slate-500 dark:text-slate-400 text-lg">Competition Experience</p>
         </div>
 
-        {/* Stats Summary */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           <div className="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-            <div className="text-3xl font-bold text-amber-600 dark:text-amber-400 mb-1">{competitions.length}</div>
+            <div className="text-3xl font-bold text-amber-600 dark:text-amber-400 mb-1">{competitionEntries.length}</div>
             <div className="text-sm text-slate-500 dark:text-slate-400">Total Awards</div>
           </div>
           <div className="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
@@ -109,7 +74,7 @@ export const Competitions: React.FC = () => {
           </div>
           <div className="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">
-              {competitions.filter(c => c.level === 'National').length}
+              {competitionEntries.filter((entry) => entry.level === 'National').length}
             </div>
             <div className="text-sm text-slate-500 dark:text-slate-400">National Level</div>
           </div>
@@ -119,63 +84,70 @@ export const Competitions: React.FC = () => {
           </div>
         </div>
 
-        {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {competitions.map((comp, idx) => {
-            const config = getAwardConfig(comp.award);
+          {competitionEntries.map((entry) => {
+            const config = getAwardConfig(entry.award);
             const Icon = config.icon;
             const isLarge = config.size === 'large';
+            const entryMedia = getMediaEntry(entry.media);
+            const coverImage = resolveMediaImage(entryMedia?.cover, 'md');
 
             return (
               <div
-                key={idx}
+                key={entry.id}
                 className={`group relative overflow-hidden rounded-3xl shadow-md ${config.bg} ${config.border} transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 ${
                   isLarge ? 'md:col-span-2 lg:col-span-1' : ''
                 }`}
               >
-                {/* Accent Bar */}
                 <div className={`absolute top-0 left-0 right-0 h-1 ${config.accent}`} />
-
-                {/* Background Icon */}
                 <Icon className={`absolute -right-6 -bottom-6 w-40 h-40 opacity-5 rotate-12 transition-transform duration-500 group-hover:rotate-0 ${config.text}`} />
 
+                {coverImage && (
+                  <div className="relative h-44 w-full overflow-hidden bg-slate-100 dark:bg-slate-700/50 border-b border-slate-200 dark:border-slate-700">
+                    <ImageLoader
+                      src={coverImage.src}
+                      srcSet={coverImage.srcSet}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      alt={entry.title}
+                      loading="lazy"
+                      fetchPriority="low"
+                      containerClassName="w-full h-full"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                )}
+
                 <div className="relative p-8">
-                  {/* Header */}
                   <div className="flex justify-between items-start mb-6">
                     <span className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-bold ${config.badge}`}>
                       <Icon className="w-4 h-4" />
-                      {comp.award}
+                      {entry.award}
                     </span>
-                    <span className="text-sm font-mono text-slate-500 dark:text-slate-400">
-                      {comp.date}
-                    </span>
+                    <span className="text-sm font-mono text-slate-500 dark:text-slate-400">{entry.date}</span>
                   </div>
 
-                  {/* Title */}
                   <h3 className={`font-bold text-slate-900 dark:text-white mb-4 leading-snug ${isLarge ? 'text-xl' : 'text-lg'}`}>
-                    {comp.name}
+                    {entry.title}
                   </h3>
 
-                  {/* Details */}
                   <div className="space-y-3 text-sm">
                     <div className="flex items-center gap-3 text-slate-600 dark:text-slate-400">
                       <div className={`w-8 h-8 rounded-lg ${config.bg} flex items-center justify-center`}>
                         <Medal className={`w-4 h-4 ${config.text}`} />
                       </div>
-                      <span><span className="font-semibold text-slate-900 dark:text-white">Role:</span> {comp.role}</span>
+                      <span><span className="font-semibold text-slate-900 dark:text-white">Role:</span> {entry.role}</span>
                     </div>
                     <div className="flex items-center gap-3 text-slate-600 dark:text-slate-400">
                       <div className={`w-8 h-8 rounded-lg ${config.bg} flex items-center justify-center`}>
                         <TrendingUp className={`w-4 h-4 ${config.text}`} />
                       </div>
-                      <span><span className="font-semibold text-slate-900 dark:text-white">Organizer:</span> {comp.organizer}</span>
+                      <span><span className="font-semibold text-slate-900 dark:text-white">Organizer:</span> {entry.organizer}</span>
                     </div>
                   </div>
 
-                  {/* Level Badge */}
                   <div className="mt-6 pt-4 border-t border-slate-200/50 dark:border-slate-700/50">
                     <span className={`text-xs font-bold uppercase tracking-wider ${config.text}`}>
-                      {comp.level} Level
+                      {entry.level} Level
                     </span>
                   </div>
                 </div>

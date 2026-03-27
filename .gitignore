@@ -10,6 +10,8 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+.cache
+public/photo-gen
 *.local
 
 # Editor directories and files

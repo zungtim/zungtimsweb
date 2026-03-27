@@ -5,6 +5,11 @@ import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 interface ImageLoaderProps {
   src: string;
   alt: string;
+  srcSet?: string;
+  sizes?: string;
+  loading?: 'lazy' | 'eager';
+  decoding?: 'async' | 'auto' | 'sync';
+  fetchPriority?: 'high' | 'low' | 'auto';
   className?: string;
   containerClassName?: string;
   priority?: boolean; // 是否优先加载（首屏内容）
@@ -17,6 +22,11 @@ type LoadingState = 'idle' | 'loading' | 'loaded' | 'error';
 export const ImageLoader: React.FC<ImageLoaderProps> = ({
   src,
   alt,
+  srcSet,
+  sizes,
+  loading = 'lazy',
+  decoding = 'async',
+  fetchPriority = 'auto',
   className = '',
   containerClassName = '',
   priority = false,
@@ -82,6 +92,11 @@ export const ImageLoader: React.FC<ImageLoaderProps> = ({
         <img
           src={src}
           alt={alt}
+          srcSet={srcSet}
+          sizes={sizes}
+          loading={priority ? 'eager' : loading}
+          decoding={decoding}
+          fetchPriority={priority ? 'high' : fetchPriority}
           onLoad={handleLoad}
           onError={handleError}
           className={`
