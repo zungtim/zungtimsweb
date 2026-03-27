@@ -21,7 +21,7 @@ const trips: Trip[] = [
   {
     id: 'cbs-2026',
     year: 2026,
-    date: '2026.03.01',
+    date: '2026.03',
     title: '北纬42°之上的冰与火之歌',
     location: '吉林长白山 (Changbai Mountain)',
     emoji: '🌋',
@@ -51,7 +51,7 @@ const trips: Trip[] = [
   {
     id: 'llkh-2026',
     year: 2026,
-    date: '2026.03.04',
+    date: '2026.03',
     title: '坠入泰加林海的纯白',
     location: '延边·老里克湖 (Long neck of the lake)',
     emoji: '❄️',
@@ -82,7 +82,7 @@ const trips: Trip[] = [
   {
     id: 'sz-2026',
     year: 2026,
-    date: '2026.01.30',
+    date: '2026.01',
     title: '鲲鹏十九径海岸徒步',
     location: '深圳天文台 (Shenzhen Observatory)',
     emoji: '🌊',
@@ -120,7 +120,7 @@ const trips: Trip[] = [
   {
     id: 'htx&wdh-2025',
     year: 2025,
-    date: '2025.10.05',
+    date: '2025.10',
     title: '虎跳峡&无底湖徒步',
     location: '云南丽江&迪庆 (Lijiang & Diqing)',
     emoji: '⛰️',
@@ -165,7 +165,7 @@ const trips: Trip[] = [
   {
     id: 'meili-2025',
     year: 2025,
-    date: '2025.10.02',
+    date: '2025.10',
     title: '雪神的仪仗队——卡瓦格博',
     location: '梅里雪山 (Meri Snow Mountain)',
     emoji: '🗻',
@@ -197,7 +197,7 @@ const trips: Trip[] = [
    {
     id: 'Ganzi-2025',
     year: 2025,
-    date: '2025.09.30',
+    date: '2025.09',
     title: '稻城亚丁长线徒步',
     location: '稻城亚丁 (Scenic Spot of Daocheng Yading)',
     emoji: '🏞️',
@@ -233,7 +233,7 @@ const trips: Trip[] = [
   {
     id: 'km-2025',
     year: 2025,
-    date: '2025.01.22',
+    date: '2025.01',
     title: '春城的老街漫游',
     location: '昆明 (Kunming Yunnan)',
     emoji: '🌸',
@@ -315,7 +315,7 @@ const trips: Trip[] = [
   {
     id: 'ylxs-2025',
     year: 2025,
-    date: '2025.01.18',
+    date: '2025.01',
     title: '一抹古韵撞入巍峨',
     location: '丽江·玉龙雪山 (Lijiang)',
     emoji: '🎐',
@@ -354,7 +354,7 @@ const trips: Trip[] = [
   {
     id: 'dali-2025',
     year: 2025,
-    date: '2025.01.15',
+    date: '2025.01',
     title: '我们如此热爱大理',
     location: '大理·苍山洱海 (DaLi)',
     emoji: '🍃',
@@ -393,7 +393,7 @@ const trips: Trip[] = [
   {
     id: 'qinghai&gansu-2024',
     year: 2024,
-    date: '2024.08.05',
+    date: '2024.08',
     title: '把灵魂流放于大西北',
     location: '青甘大环线 (青海 & 甘肃)',
     emoji: '🐪',
