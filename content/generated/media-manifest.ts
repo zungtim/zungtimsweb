@@ -1,7 +1,7 @@
 import type { MediaManifest } from '../../types/content';
 
 export const mediaManifest: MediaManifest = {
-    "generatedAt": "2026-03-27T10:39:06.260Z",
+    "generatedAt": "2026-03-27T14:03:58.720Z",
     "modules": {
         "travel": {
             "2024.08.05": {
@@ -3237,6 +3237,298 @@ export const mediaManifest: MediaManifest = {
                             }
                         },
                         "srcSet": "/photo-gen/travel/2026.03.04/9-sm.webp 480w, /photo-gen/travel/2026.03.04/9-md.webp 960w, /photo-gen/travel/2026.03.04/9-lg.webp 1600w"
+                    }
+                ]
+            },
+            "2026.03.06": {
+                "cover": {
+                    "id": "cover",
+                    "variants": {
+                        "sm": {
+                            "src": "/photo-gen/travel/2026.03.06/cover-sm.webp",
+                            "width": 480,
+                            "height": 360,
+                            "bytes": 16968
+                        },
+                        "md": {
+                            "src": "/photo-gen/travel/2026.03.06/cover-md.webp",
+                            "width": 960,
+                            "height": 720,
+                            "bytes": 52392
+                        },
+                        "lg": {
+                            "src": "/photo-gen/travel/2026.03.06/cover-lg.webp",
+                            "width": 1600,
+                            "height": 1200,
+                            "bytes": 128958
+                        }
+                    },
+                    "srcSet": "/photo-gen/travel/2026.03.06/cover-sm.webp 480w, /photo-gen/travel/2026.03.06/cover-md.webp 960w, /photo-gen/travel/2026.03.06/cover-lg.webp 1600w"
+                },
+                "gallery": [
+                    {
+                        "id": "1",
+                        "variants": {
+                            "sm": {
+                                "src": "/photo-gen/travel/2026.03.06/1-sm.webp",
+                                "width": 480,
+                                "height": 360,
+                                "bytes": 36570
+                            },
+                            "md": {
+                                "src": "/photo-gen/travel/2026.03.06/1-md.webp",
+                                "width": 960,
+                                "height": 720,
+                                "bytes": 107812
+                            },
+                            "lg": {
+                                "src": "/photo-gen/travel/2026.03.06/1-lg.webp",
+                                "width": 1600,
+                                "height": 1200,
+                                "bytes": 228184
+                            }
+                        },
+                        "srcSet": "/photo-gen/travel/2026.03.06/1-sm.webp 480w, /photo-gen/travel/2026.03.06/1-md.webp 960w, /photo-gen/travel/2026.03.06/1-lg.webp 1600w"
+                    },
+                    {
+                        "id": "2",
+                        "variants": {
+                            "sm": {
+                                "src": "/photo-gen/travel/2026.03.06/2-sm.webp",
+                                "width": 480,
+                                "height": 360,
+                                "bytes": 11316
+                            },
+                            "md": {
+                                "src": "/photo-gen/travel/2026.03.06/2-md.webp",
+                                "width": 960,
+                                "height": 720,
+                                "bytes": 25030
+                            },
+                            "lg": {
+                                "src": "/photo-gen/travel/2026.03.06/2-lg.webp",
+                                "width": 1600,
+                                "height": 1200,
+                                "bytes": 46726
+                            }
+                        },
+                        "srcSet": "/photo-gen/travel/2026.03.06/2-sm.webp 480w, /photo-gen/travel/2026.03.06/2-md.webp 960w, /photo-gen/travel/2026.03.06/2-lg.webp 1600w"
+                    },
+                    {
+                        "id": "3",
+                        "variants": {
+                            "sm": {
+                                "src": "/photo-gen/travel/2026.03.06/3-sm.webp",
+                                "width": 480,
+                                "height": 360,
+                                "bytes": 18376
+                            },
+                            "md": {
+                                "src": "/photo-gen/travel/2026.03.06/3-md.webp",
+                                "width": 960,
+                                "height": 720,
+                                "bytes": 69476
+                            },
+                            "lg": {
+                                "src": "/photo-gen/travel/2026.03.06/3-lg.webp",
+                                "width": 1600,
+                                "height": 1200,
+                                "bytes": 194814
+                            }
+                        },
+                        "srcSet": "/photo-gen/travel/2026.03.06/3-sm.webp 480w, /photo-gen/travel/2026.03.06/3-md.webp 960w, /photo-gen/travel/2026.03.06/3-lg.webp 1600w"
+                    },
+                    {
+                        "id": "4",
+                        "variants": {
+                            "sm": {
+                                "src": "/photo-gen/travel/2026.03.06/4-sm.webp",
+                                "width": 480,
+                                "height": 360,
+                                "bytes": 36412
+                            },
+                            "md": {
+                                "src": "/photo-gen/travel/2026.03.06/4-md.webp",
+                                "width": 960,
+                                "height": 720,
+                                "bytes": 122208
+                            },
+                            "lg": {
+                                "src": "/photo-gen/travel/2026.03.06/4-lg.webp",
+                                "width": 1600,
+                                "height": 1200,
+                                "bytes": 273446
+                            }
+                        },
+                        "srcSet": "/photo-gen/travel/2026.03.06/4-sm.webp 480w, /photo-gen/travel/2026.03.06/4-md.webp 960w, /photo-gen/travel/2026.03.06/4-lg.webp 1600w"
+                    },
+                    {
+                        "id": "5",
+                        "variants": {
+                            "sm": {
+                                "src": "/photo-gen/travel/2026.03.06/5-sm.webp",
+                                "width": 480,
+                                "height": 640,
+                                "bytes": 17844
+                            },
+                            "md": {
+                                "src": "/photo-gen/travel/2026.03.06/5-md.webp",
+                                "width": 960,
+                                "height": 1280,
+                                "bytes": 59176
+                            },
+                            "lg": {
+                                "src": "/photo-gen/travel/2026.03.06/5-lg.webp",
+                                "width": 1600,
+                                "height": 2133,
+                                "bytes": 133742
+                            }
+                        },
+                        "srcSet": "/photo-gen/travel/2026.03.06/5-sm.webp 480w, /photo-gen/travel/2026.03.06/5-md.webp 960w, /photo-gen/travel/2026.03.06/5-lg.webp 1600w"
+                    },
+                    {
+                        "id": "6",
+                        "variants": {
+                            "sm": {
+                                "src": "/photo-gen/travel/2026.03.06/6-sm.webp",
+                                "width": 480,
+                                "height": 360,
+                                "bytes": 38868
+                            },
+                            "md": {
+                                "src": "/photo-gen/travel/2026.03.06/6-md.webp",
+                                "width": 960,
+                                "height": 720,
+                                "bytes": 125802
+                            },
+                            "lg": {
+                                "src": "/photo-gen/travel/2026.03.06/6-lg.webp",
+                                "width": 1600,
+                                "height": 1200,
+                                "bytes": 308482
+                            }
+                        },
+                        "srcSet": "/photo-gen/travel/2026.03.06/6-sm.webp 480w, /photo-gen/travel/2026.03.06/6-md.webp 960w, /photo-gen/travel/2026.03.06/6-lg.webp 1600w"
+                    },
+                    {
+                        "id": "7",
+                        "variants": {
+                            "sm": {
+                                "src": "/photo-gen/travel/2026.03.06/7-sm.webp",
+                                "width": 480,
+                                "height": 640,
+                                "bytes": 23710
+                            },
+                            "md": {
+                                "src": "/photo-gen/travel/2026.03.06/7-md.webp",
+                                "width": 960,
+                                "height": 1280,
+                                "bytes": 73008
+                            },
+                            "lg": {
+                                "src": "/photo-gen/travel/2026.03.06/7-lg.webp",
+                                "width": 1600,
+                                "height": 2133,
+                                "bytes": 167418
+                            }
+                        },
+                        "srcSet": "/photo-gen/travel/2026.03.06/7-sm.webp 480w, /photo-gen/travel/2026.03.06/7-md.webp 960w, /photo-gen/travel/2026.03.06/7-lg.webp 1600w"
+                    },
+                    {
+                        "id": "8",
+                        "variants": {
+                            "sm": {
+                                "src": "/photo-gen/travel/2026.03.06/8-sm.webp",
+                                "width": 480,
+                                "height": 640,
+                                "bytes": 34432
+                            },
+                            "md": {
+                                "src": "/photo-gen/travel/2026.03.06/8-md.webp",
+                                "width": 960,
+                                "height": 1280,
+                                "bytes": 103320
+                            },
+                            "lg": {
+                                "src": "/photo-gen/travel/2026.03.06/8-lg.webp",
+                                "width": 1600,
+                                "height": 2133,
+                                "bytes": 227456
+                            }
+                        },
+                        "srcSet": "/photo-gen/travel/2026.03.06/8-sm.webp 480w, /photo-gen/travel/2026.03.06/8-md.webp 960w, /photo-gen/travel/2026.03.06/8-lg.webp 1600w"
+                    },
+                    {
+                        "id": "9",
+                        "variants": {
+                            "sm": {
+                                "src": "/photo-gen/travel/2026.03.06/9-sm.webp",
+                                "width": 480,
+                                "height": 640,
+                                "bytes": 120714
+                            },
+                            "md": {
+                                "src": "/photo-gen/travel/2026.03.06/9-md.webp",
+                                "width": 960,
+                                "height": 1280,
+                                "bytes": 444894
+                            },
+                            "lg": {
+                                "src": "/photo-gen/travel/2026.03.06/9-lg.webp",
+                                "width": 1600,
+                                "height": 2133,
+                                "bytes": 1108034
+                            }
+                        },
+                        "srcSet": "/photo-gen/travel/2026.03.06/9-sm.webp 480w, /photo-gen/travel/2026.03.06/9-md.webp 960w, /photo-gen/travel/2026.03.06/9-lg.webp 1600w"
+                    },
+                    {
+                        "id": "10",
+                        "variants": {
+                            "sm": {
+                                "src": "/photo-gen/travel/2026.03.06/10-sm.webp",
+                                "width": 480,
+                                "height": 360,
+                                "bytes": 26152
+                            },
+                            "md": {
+                                "src": "/photo-gen/travel/2026.03.06/10-md.webp",
+                                "width": 960,
+                                "height": 720,
+                                "bytes": 87368
+                            },
+                            "lg": {
+                                "src": "/photo-gen/travel/2026.03.06/10-lg.webp",
+                                "width": 1600,
+                                "height": 1200,
+                                "bytes": 204144
+                            }
+                        },
+                        "srcSet": "/photo-gen/travel/2026.03.06/10-sm.webp 480w, /photo-gen/travel/2026.03.06/10-md.webp 960w, /photo-gen/travel/2026.03.06/10-lg.webp 1600w"
+                    },
+                    {
+                        "id": "11",
+                        "variants": {
+                            "sm": {
+                                "src": "/photo-gen/travel/2026.03.06/11-sm.webp",
+                                "width": 480,
+                                "height": 640,
+                                "bytes": 30836
+                            },
+                            "md": {
+                                "src": "/photo-gen/travel/2026.03.06/11-md.webp",
+                                "width": 960,
+                                "height": 1280,
+                                "bytes": 77246
+                            },
+                            "lg": {
+                                "src": "/photo-gen/travel/2026.03.06/11-lg.webp",
+                                "width": 1600,
+                                "height": 2133,
+                                "bytes": 148246
+                            }
+                        },
+                        "srcSet": "/photo-gen/travel/2026.03.06/11-sm.webp 480w, /photo-gen/travel/2026.03.06/11-md.webp 960w, /photo-gen/travel/2026.03.06/11-lg.webp 1600w"
                     }
                 ]
             }

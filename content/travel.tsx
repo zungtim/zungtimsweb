@@ -3,7 +3,7 @@ import type { TravelContentEntry } from '../types/content';
 
 export const travelEntries: TravelContentEntry[] = [
     {
-        id: 'cbs-2026',
+        id: '长白山-2026',
         year: 2026,
         date: '2026.03',
         title: '北纬42°之上的冰与火之歌',
@@ -25,7 +25,29 @@ export const travelEntries: TravelContentEntry[] = [
         ),
     },
     {
-        id: 'llkh-2026',
+        id: '南京-2026',
+        year: 2026,
+        date: '2026.03',
+        title: '步入六朝烟雨的梧桐旧梦',
+        location: '江苏·南京 (nanjing)',
+        emoji: '🏮',
+        media: {
+            module: 'travel',
+            entryId: '2026.03.06',
+        },
+        description: (
+            <>
+                <div className="font-bold text-slate-900 dark:text-slate-200 mb-2">
+                    北纬32°04′、东经118°46′ | 扬子江畔·钟山南麓 [ 叩问金陵城垣的时光漫步 ]
+                </div>
+                <p className="leading-relaxed">
+                   “在宁镇山脉西段的钟山脚下，扬子江的浩荡水汽在此化作氤氲了千年的六朝烟雨。在明城墙斑驳的青砖之下，是鸡鸣寺缭绕了千年的梵音，也是玄武湖泛起微澜的浩渺烟波，古刹明黄的院墙与湖畔的依依垂柳交织，历史的厚重与自然的轻盈在这里达成了最温柔的妥协，那些宏大的历史叙事都被江南的晚风温柔揉碎。在这座写满离合的古都里，不必追问岁月的答案，只消将灵魂安放于这满城树影与烟火之中，便是一场极致的松弛与救赎。”
+                </p>
+            </>
+        ),
+    },
+    {
+        id: '老里克湖-2026',
         year: 2026,
         date: '2026.03',
         title: '坠入泰加林海的纯白',
@@ -47,7 +69,7 @@ export const travelEntries: TravelContentEntry[] = [
         ),
     },
     {
-        id: 'sz-2026',
+        id: '深圳-2026',
         year: 2026,
         date: '2026.01',
         title: '鲲鹏十九径海岸徒步',
@@ -69,7 +91,7 @@ export const travelEntries: TravelContentEntry[] = [
         ),
     },
     {
-        id: 'htx&wdh-2025',
+        id: '丽江&迪庆-2025',
         year: 2025,
         date: '2025.10',
         title: '虎跳峡&无底湖徒步',
@@ -97,7 +119,7 @@ export const travelEntries: TravelContentEntry[] = [
         ),
     },
     {
-        id: 'meili-2025',
+        id: '德钦-2025',
         year: 2025,
         date: '2025.10',
         title: '雪神的仪仗队——卡瓦格博',
@@ -119,7 +141,7 @@ export const travelEntries: TravelContentEntry[] = [
         ),
     },
     {
-        id: 'Ganzi-2025',
+        id: '甘孜-2025',
         year: 2025,
         date: '2025.09',
         title: '稻城亚丁长线徒步',
@@ -141,7 +163,7 @@ export const travelEntries: TravelContentEntry[] = [
         ),
     },
     {
-        id: 'km-2025',
+        id: '昆明-2025',
         year: 2025,
         date: '2025.01',
         title: '春城的老街漫游',
@@ -163,7 +185,7 @@ export const travelEntries: TravelContentEntry[] = [
         ),
     },
     {
-        id: 'xgll-2025',
+        id: '香格里拉-2025',
         year: 2025,
         date: '2025.10 & 2025.01',
         title: '找寻心中的日月',
@@ -185,7 +207,7 @@ export const travelEntries: TravelContentEntry[] = [
         ),
     },
     {
-        id: 'ylxs-2025',
+        id: '丽江-2025',
         year: 2025,
         date: '2025.01',
         title: '一抹古韵撞入巍峨',
@@ -207,7 +229,7 @@ export const travelEntries: TravelContentEntry[] = [
         ),
     },
     {
-        id: 'dali-2025',
+        id: '大理-2025',
         year: 2025,
         date: '2025.01',
         title: '我们如此热爱大理',
@@ -229,7 +251,7 @@ export const travelEntries: TravelContentEntry[] = [
         ),
     },
     {
-        id: 'qinghai&gansu-2024',
+        id: '青海&甘肃-2024',
         year: 2024,
         date: '2024.08',
         title: '把灵魂流放于大西北',
