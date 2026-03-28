@@ -37,6 +37,23 @@ export const Travel: React.FC = () => {
       return;
     }
 
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setSelectedTrip(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleEsc);
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, [selectedTrip]);
+
+  useEffect(() => {
+    if (!selectedTrip) {
+      return;
+    }
+
     const entryMedia = getMediaEntry(selectedTrip.media);
     const totalImages = entryMedia?.gallery.length ?? 0;
     if (visibleImageCount >= totalImages) {
@@ -69,10 +86,10 @@ export const Travel: React.FC = () => {
   }, [selectedTrip, visibleImageCount]);
 
   return (
-    <section id="travel" className="py-24 px-4 sm:px-6 lg:px-8 min-h-screen">
-      <div className="max-w-7xl mx-auto">
+    <section id="travel" className="ui-section px-4 sm:px-6 lg:px-8">
+      <div className="ui-shell">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center p-3 bg-teal-100 dark:bg-teal-900/30 rounded-2xl text-teal-600 dark:text-teal-400 mb-6">
+          <div className="ui-chip inline-flex items-center justify-center p-3 rounded-2xl text-teal-600 dark:text-teal-400 mb-6">
             <Camera className="w-8 h-8" />
           </div>
           <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">旅行足迹</h2>
@@ -89,9 +106,17 @@ export const Travel: React.FC = () => {
               <div
                 key={trip.id}
                 onClick={() => setSelectedTrip(trip)}
-                className={`break-inside-avoid group cursor-pointer bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-1 border border-slate-200 dark:border-slate-700 ${
+                className={`break-inside-avoid group cursor-pointer ui-surface ui-focus-ring rounded-3xl overflow-hidden transition-transform duration-300 hover:-translate-y-1 ${
                   idx === 0 ? 'md:col-span-2' : ''
                 }`}
+                tabIndex={0}
+                role="button"
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    setSelectedTrip(trip);
+                  }
+                }}
               >
                 <div className="relative h-64 overflow-hidden bg-slate-100 dark:bg-slate-800">
                   {coverImage && (
@@ -152,16 +177,18 @@ export const Travel: React.FC = () => {
               className="fixed top-16 left-0 right-0 bottom-0 z-[100] flex items-center justify-center p-4 sm:p-6"
               role="dialog"
               aria-modal="true"
+              aria-label={`${selectedTrip.title} travel gallery`}
             >
               <div
                 className="absolute inset-0 bg-slate-900/80 transition-opacity"
                 onClick={() => setSelectedTrip(null)}
               />
 
-              <div className="relative w-full max-w-5xl max-h-[90vh] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-200">
+              <div className="relative w-full max-w-5xl max-h-[90vh] ui-surface rounded-3xl overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-200">
                 <button
                   onClick={() => setSelectedTrip(null)}
-                  className="absolute top-4 right-4 z-20 p-2 bg-black/10 hover:bg-black/20 text-slate-800 dark:text-slate-200 rounded-full transition-colors"
+                  className="ui-focus-ring absolute top-4 right-4 z-20 p-2 bg-black/10 hover:bg-black/20 text-slate-800 dark:text-slate-200 rounded-full transition-colors"
+                  aria-label="Close travel gallery"
                 >
                   <X className="w-6 h-6" />
                 </button>

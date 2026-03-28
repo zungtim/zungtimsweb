@@ -17,17 +17,10 @@ function App() {
   return (
     <ThemeProvider>
       <HashRouter>
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 font-sans transition-colors duration-500">
+        <div className="min-h-screen font-sans transition-colors duration-300">
+          <div className="fixed inset-0 pointer-events-none ui-page-bg" />
           <Navbar />
           <main className="flex-grow relative">
-            {/* Background decoration */}
-            <div className="fixed inset-0 overflow-hidden pointer-events-none">
-              <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl animate-float" />
-              <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-              <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }} />
-            </div>
-            
-            {/* Content */}
             <div className="relative z-10">
               <Routes>
                 <Route path="/" element={<Hero />} />

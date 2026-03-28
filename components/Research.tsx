@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Microscope, FileText, FlaskConical, ChevronRight, Beaker, BarChart3, Image as ImageIcon, Lightbulb, Clock, TrendingDown, Zap, Shield, X } from 'lucide-react';
 import type { ResearchImage, ResearchItem } from '../types';
 
@@ -57,42 +57,59 @@ export const Research: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<ResearchImage | null>(null);
   const currentItem = researchData.find(item => item.id === activeItem) || researchData[0];
 
+  useEffect(() => {
+    if (!selectedImage) {
+      return;
+    }
+
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setSelectedImage(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleEsc);
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, [selectedImage]);
+
   const getTypeIcon = (type: 'research' | 'patent') => {
     return type === 'research' ? <FlaskConical className="w-6 h-6" /> : <FileText className="w-6 h-6" />;
   };
 
   const getTypeColor = (type: 'research' | 'patent') => {
     return type === 'research'
-      ? { bg: 'bg-purple-100 dark:bg-purple-900/30', text: 'text-purple-600 dark:text-purple-400', border: 'border-purple-300 dark:border-purple-600', accent: 'from-purple-500 to-indigo-500' }
-      : { bg: 'bg-blue-100 dark:bg-blue-900/30', text: 'text-blue-600 dark:text-blue-400', border: 'border-blue-300 dark:border-blue-600', accent: 'from-blue-500 to-cyan-500' };
+      ? { bg: 'bg-slate-100 dark:bg-slate-800', text: 'text-secondary dark:text-slate-300', border: 'border-secondary/35 dark:border-slate-500' }
+      : { bg: 'bg-slate-100 dark:bg-slate-800', text: 'text-accent dark:text-teal-300', border: 'border-teal-300/70 dark:border-teal-700/60' };
   };
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 min-h-screen">
-      <div className="max-w-6xl mx-auto">
+    <section className="ui-section px-4 sm:px-6 lg:px-8">
+      <div className="ui-shell">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center p-3 bg-purple-100 dark:bg-purple-900/30 rounded-2xl text-purple-600 dark:text-purple-400 mb-6">
+        <div className="ui-section-head">
+          <div className="ui-chip inline-flex items-center justify-center p-3 rounded-2xl text-secondary dark:text-slate-300 mb-6">
             <Microscope className="w-8 h-8" />
           </div>
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-3">科研实践</h2>
-          <p className="text-slate-500 dark:text-slate-400 text-lg">Research & Projects Portfolio</p>
+          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">科研实践</h2>
+          <p className="text-slate-500 dark:text-slate-400 text-lg font-serif">Research & Projects Portfolio</p>
         </div>
 
         {/* Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
           {/* Left Sidebar - Navigation */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="lg:col-span-4 space-y-4 lg:sticky lg:top-24 self-start">
             {researchData.map((item) => {
               const colors = getTypeColor(item.type);
               return (
                 <button
                   key={item.id}
                   onClick={() => setActiveItem(item.id)}
-                  className={`w-full text-left p-5 rounded-2xl transition-all duration-300 border ${
+                  className={`ui-focus-ring w-full text-left p-5 rounded-2xl transition-all duration-300 border ${
                     activeItem === item.id
-                      ? `bg-white dark:bg-slate-800 shadow-lg ${colors.border}`
-                      : 'bg-white dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 hover:border-purple-300 dark:hover:border-purple-600 hover:shadow-md'
+                      ? `ui-surface shadow-lg ${colors.border}`
+                      : 'ui-subtle-panel border-slate-200/90 dark:border-slate-700/80 hover:border-secondary/30 dark:hover:border-slate-500 hover:shadow-sm'
                   }`}
                 >
                   <div className="flex items-start gap-3">
@@ -113,7 +130,7 @@ export const Research: React.FC = () => {
                       </div>
                     </div>
                     <ChevronRight className={`w-4 h-4 transition-transform flex-shrink-0 mt-1 ${
-                      activeItem === item.id ? 'rotate-90 text-purple-500' : 'text-slate-400'
+                      activeItem === item.id ? 'rotate-90 text-secondary dark:text-slate-300' : 'text-slate-400'
                     }`} />
                   </div>
                 </button>
@@ -123,7 +140,7 @@ export const Research: React.FC = () => {
 
           {/* Right Content Area */}
           <div className="lg:col-span-8">
-            <div className="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-3xl p-8 h-full shadow-md hover:shadow-xl transition-all duration-300">
+            <div className="ui-surface rounded-3xl p-7 sm:p-8 h-full">
               {(() => {
                 const colors = getTypeColor(currentItem.type);
                 return (
@@ -131,7 +148,7 @@ export const Research: React.FC = () => {
                     {/* Header */}
                     <div className="flex items-start justify-between mb-6 pb-6 border-b border-slate-200 dark:border-slate-700">
                       <div>
-                        <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-3 ${colors.bg} ${colors.text}`}>
+                        <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-3 ui-chip ${colors.text}`}>
                           {getTypeIcon(currentItem.type)}
                           {currentItem.type === 'research' ? 'Research Project' : 'Patent'}
                         </div>
@@ -144,7 +161,7 @@ export const Research: React.FC = () => {
                           <Clock className="w-4 h-4" />
                           {currentItem.date}
                         </div>
-                        <div className={`inline-block mt-2 px-3 py-1 rounded-full text-xs font-semibold ${colors.bg} ${colors.text}`}>
+                        <div className={`inline-block mt-2 px-3 py-1 rounded-full text-xs font-semibold ui-chip ${colors.text}`}>
                           {currentItem.role}
                         </div>
                       </div>
@@ -156,7 +173,7 @@ export const Research: React.FC = () => {
                         {currentItem.tags.map((tag, idx) => (
                           <span 
                             key={idx} 
-                            className="px-3 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium rounded-full border border-slate-200 dark:border-slate-600"
+                            className="px-3 py-1.5 ui-chip text-slate-600 dark:text-slate-300 text-xs font-medium rounded-full"
                           >
                             {tag}
                           </span>
@@ -175,7 +192,7 @@ export const Research: React.FC = () => {
                           {currentItem.metrics.map((metric, idx) => (
                             <div 
                               key={idx}
-                              className={`flex items-start gap-3 bg-gradient-to-br ${colors.accent.includes('purple') ? 'from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20' : 'from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20'} p-4 rounded-xl border ${colors.border} hover:shadow-md transition-all`}
+                              className={`flex items-start gap-3 ui-subtle-panel p-4 rounded-xl border ${colors.border} hover:shadow-md transition-all`}
                             >
                               <div className={`p-2 rounded-lg ${colors.bg} ${colors.text}`}>
                                 <MetricIcon index={idx} />
@@ -195,7 +212,7 @@ export const Research: React.FC = () => {
                         <Lightbulb className="w-4 h-4 text-amber-500 dark:text-amber-400" />
                         <span className="text-sm font-semibold text-slate-900 dark:text-white uppercase tracking-wider">Background</span>
                       </div>
-                      <div className="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-5 border border-slate-200 dark:border-slate-600">
+                      <div className="ui-subtle-panel rounded-xl p-5">
                         <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
                           {currentItem.background}
                         </p>
@@ -208,7 +225,7 @@ export const Research: React.FC = () => {
                         <Beaker className="w-4 h-4 text-cyan-500 dark:text-cyan-400" />
                         <span className="text-sm font-semibold text-slate-900 dark:text-white uppercase tracking-wider">Methodology</span>
                       </div>
-                      <div className="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-5 border border-slate-200 dark:border-slate-600">
+                      <div className="ui-subtle-panel rounded-xl p-5">
                         <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
                           {currentItem.methodology}
                         </p>
@@ -222,7 +239,7 @@ export const Research: React.FC = () => {
                           <FileText className="w-4 h-4 text-blue-500 dark:text-blue-400" />
                           <span className="text-sm font-semibold text-slate-900 dark:text-white uppercase tracking-wider">Citation</span>
                         </div>
-                        <div className="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl border border-blue-200 dark:border-blue-800">
+                        <div className="ui-subtle-panel p-5 rounded-xl border border-slate-300/80 dark:border-slate-600/70">
                           <p className="font-mono text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
                             {currentItem.citation}
                           </p>
@@ -242,7 +259,15 @@ export const Research: React.FC = () => {
                             <div 
                               key={idx}
                               onClick={() => setSelectedImage(img)}
-                              className="group cursor-pointer rounded-xl overflow-hidden border border-slate-200 dark:border-slate-600 hover:shadow-lg transition-all"
+                              className="ui-focus-ring group cursor-pointer rounded-xl overflow-hidden border border-slate-200 dark:border-slate-600 hover:shadow-lg transition-all"
+                              tabIndex={0}
+                              role="button"
+                              onKeyDown={(event) => {
+                                if (event.key === 'Enter' || event.key === ' ') {
+                                  event.preventDefault();
+                                  setSelectedImage(img);
+                                }
+                              }}
                             >
                               <div className="relative bg-slate-100 dark:bg-slate-700">
                                 <img 
@@ -276,7 +301,8 @@ export const Research: React.FC = () => {
           >
             <button 
               onClick={() => setSelectedImage(null)}
-              className="fixed top-20 right-4 z-10 p-3 rounded-full bg-white/90 text-slate-700 hover:bg-white shadow-lg transition-colors"
+              className="ui-focus-ring fixed top-20 right-4 z-10 p-3 rounded-full bg-white/90 text-slate-700 hover:bg-white shadow-lg transition-colors"
+              aria-label="Close research image preview"
             >
               <X className="w-6 h-6" />
             </button>

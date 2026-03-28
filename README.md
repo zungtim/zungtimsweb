@@ -79,3 +79,23 @@ npx tsc --noEmit
 
 - No test framework is configured yet.
 - No lint/format pipeline is configured yet.
+
+## UI Design System Maintenance Rules
+
+To keep the new UI consistent while adding future content/pages:
+
+1. Reuse semantic UI classes from `index.html` style tokens:
+   - Layout: `ui-section`, `ui-shell`
+   - Surface/Card: `ui-surface`
+   - Chips: `ui-chip`
+   - Focus accessibility: `ui-focus-ring`
+   - Buttons: `ui-primary-btn`, `ui-ghost-btn`
+2. Keep animation subtle and meaningful:
+   - Avoid long-running decorative animations.
+   - Respect `prefers-reduced-motion` behavior.
+3. Preserve readability first:
+   - Maintain clear heading hierarchy and comfortable line-height.
+   - Keep light/dark contrast readable for text and controls.
+4. For Travel/Competition updates:
+   - Continue using `content/*` + `public/photo-src/*` + `media:build`.
+   - Do not re-introduce hardcoded image path arrays in components.

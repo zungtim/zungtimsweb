@@ -1,7 +1,7 @@
 import type { MediaManifest } from '../../types/content';
 
 export const mediaManifest: MediaManifest = {
-    "generatedAt": "2026-03-27T14:03:58.720Z",
+    "generatedAt": "2026-03-28T03:50:22.522Z",
     "modules": {
         "travel": {
             "2024.08.05": {

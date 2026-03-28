@@ -3,31 +3,31 @@ import { GraduationCap, BookOpen, Award, TrendingUp, Calendar } from 'lucide-rea
 
 export const Education: React.FC = () => {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 min-h-screen">
-      <div className="max-w-5xl mx-auto">
+    <section className="ui-section px-4 sm:px-6 lg:px-8">
+      <div className="ui-shell max-w-6xl">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center p-3 bg-blue-100 dark:bg-blue-900/30 rounded-2xl text-blue-600 dark:text-blue-400 mb-6">
+        <div className="ui-section-head">
+          <div className="ui-chip inline-flex items-center justify-center p-3 rounded-2xl text-secondary dark:text-slate-300 mb-6">
             <GraduationCap className="w-8 h-8" />
           </div>
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-3">教育背景</h2>
-          <p className="text-slate-500 dark:text-slate-400 text-lg">Education Background</p>
+          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">教育背景</h2>
+          <p className="text-slate-500 dark:text-slate-400 text-lg font-serif">Education Background</p>
         </div>
       
         {/* Timeline Container */}
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 timeline-line hidden md:block" />
+          <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-slate-300 via-slate-300/70 to-transparent dark:from-slate-600 dark:via-slate-700 hidden md:block" />
 
           {/* Main Degree - Larger Card */}
           <div className="relative mb-12 md:pl-20">
             {/* Timeline Dot */}
-            <div className="absolute left-4 top-8 w-8 h-8 bg-blue-500 rounded-full border-4 border-white dark:border-slate-900 hidden md:flex items-center justify-center shadow-lg z-10">
+            <div className="absolute left-4 top-8 w-8 h-8 bg-secondary rounded-full border-4 border-white dark:border-slate-900 hidden md:flex items-center justify-center shadow-lg z-10">
               <GraduationCap className="w-4 h-4 text-white" />
             </div>
 
             {/* Card */}
-            <div className="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div className="ui-surface rounded-3xl p-8">
               {/* Header */}
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6">
                 <div className="flex items-start gap-4">
@@ -41,14 +41,14 @@ export const Education: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-1">广东工业大学</h3>
-                    <p className="text-lg text-blue-600 dark:text-blue-400 font-medium">化学工程与工艺</p>
+                    <p className="text-lg text-secondary dark:text-slate-300 font-medium">化学工程与工艺</p>
                     <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Bachelor of Engineering (工学学士)</p>
-                    <span className="inline-block mt-2 px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-sm font-semibold rounded-full">
+                    <span className="inline-block mt-2 px-3 py-1 ui-chip text-sm font-semibold rounded-full">
                       学科评估 B+
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700/50 px-4 py-2 rounded-full text-sm border border-slate-200 dark:border-slate-600">
+                <div className="ui-chip flex items-center gap-2 px-4 py-2 text-sm">
                   <Calendar className="w-4 h-4" />
                   2023.09 - 2027.06
                 </div>
@@ -57,35 +57,35 @@ export const Education: React.FC = () => {
               {/* Stats Visualization */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 {/* GPA Circle */}
-                <div className="bg-white dark:bg-slate-800/80 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 flex flex-col items-center">
+                <div className="ui-subtle-panel rounded-2xl p-5 flex flex-col items-center">
                   <div className="relative w-28 h-28 mb-3">
                     <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
                       <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="8" className="text-slate-100 dark:text-slate-700" />
-                      <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="8" strokeDasharray={`${(3.46/5) * 251.2} 251.2`} strokeLinecap="round" className="text-blue-600 dark:text-blue-400" />
+                      <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="8" strokeDasharray={`${(3.46/5) * 251.2} 251.2`} strokeLinecap="round" className="text-secondary dark:text-slate-300" />
                     </svg>
                     <div className="absolute inset-0 flex flex-col items-center justify-center">
-                      <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">3.46</span>
+                      <span className="text-2xl font-bold text-secondary dark:text-slate-300">3.46</span>
                       <span className="text-xs text-slate-400">/ 5.0</span>
                     </div>
                   </div>
-                  <div className="text-sm font-semibold text-blue-600 dark:text-blue-400">GPA</div>
+                  <div className="text-sm font-semibold text-secondary dark:text-slate-300">GPA</div>
                   <div className="text-xs text-slate-400 dark:text-slate-500 mt-1">69.2%</div>
                 </div>
 
                 {/* Year 1 Ranking */}
-                <div className="bg-white dark:bg-slate-800/80 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 flex flex-col justify-between min-h-[180px]">
+                <div className="ui-subtle-panel rounded-2xl p-5 flex flex-col justify-between min-h-[180px]">
                   <div className="text-center">
-                    <div className="text-xs text-blue-600 dark:text-blue-400 font-medium">大一综合测评</div>
+                    <div className="text-xs text-secondary dark:text-slate-300 font-medium">大一综合测评</div>
                     <div className="text-xs text-slate-400 dark:text-slate-500 uppercase tracking-wider">Year 1 Ranking</div>
                   </div>
                   <div className="text-center py-2">
-                    <span className="text-4xl font-black text-blue-600 dark:text-blue-400">Top 1.28%</span>
+                    <span className="text-4xl font-black text-secondary dark:text-slate-300">Top 1.28%</span>
                     <div className="text-sm text-slate-500 dark:text-slate-400 mt-1">Rank: 2 / 156</div>
                   </div>
                   <div className="relative">
                     <div className="h-2 bg-slate-100 dark:bg-slate-700 rounded-full">
                       <div 
-                        className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-blue-600 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.5)]"
+                        className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-secondary rounded-full shadow-[0_0_10px_rgba(53,84,111,0.35)]"
                         style={{ left: 'calc(2% + 0.5%)' }}
                       />
                     </div>
@@ -93,19 +93,19 @@ export const Education: React.FC = () => {
                 </div>
 
                 {/* Year 2 Ranking */}
-                <div className="bg-white dark:bg-slate-800/80 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 flex flex-col justify-between min-h-[180px]">
+                <div className="ui-subtle-panel rounded-2xl p-5 flex flex-col justify-between min-h-[180px]">
                   <div className="text-center">
-                    <div className="text-xs text-blue-600 dark:text-blue-400 font-medium">大二综合测评</div>
+                    <div className="text-xs text-secondary dark:text-slate-300 font-medium">大二综合测评</div>
                     <div className="text-xs text-slate-400 dark:text-slate-500 uppercase tracking-wider">Year 2 Ranking</div>
                   </div>
                   <div className="text-center py-2">
-                    <span className="text-4xl font-black text-blue-600 dark:text-blue-400">Top 1.95%</span>
+                    <span className="text-4xl font-black text-secondary dark:text-slate-300">Top 1.95%</span>
                     <div className="text-sm text-slate-500 dark:text-slate-400 mt-1">Rank: 3 / 154</div>
                   </div>
                   <div className="relative">
                     <div className="h-2 bg-slate-100 dark:bg-slate-700 rounded-full">
                       <div 
-                        className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-blue-600 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.5)]"
+                        className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-secondary rounded-full shadow-[0_0_10px_rgba(53,84,111,0.35)]"
                         style={{ left: 'calc(3% + 0.5%)' }}
                       />
                     </div>
@@ -120,7 +120,7 @@ export const Education: React.FC = () => {
                 </h4>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {['化工原理', '化学反应工程', '分离工程', '化工热力学', '物理化学', '分析化学', '有机化学', '无机化学'].map((course) => (
-                    <span key={course} className="px-3 py-1.5 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-sm rounded-lg border border-blue-200 dark:border-blue-800">
+                    <span key={course} className="px-3 py-1.5 ui-subtle-panel text-secondary dark:text-slate-300 text-sm rounded-lg">
                       {course}
                     </span>
                   ))}
@@ -151,12 +151,12 @@ export const Education: React.FC = () => {
           {/* Minor Degree - Smaller Card */}
           <div className="relative md:pl-20">
             {/* Timeline Dot */}
-            <div className="absolute left-4 top-8 w-8 h-8 bg-purple-500 rounded-full border-4 border-white dark:border-slate-900 hidden md:flex items-center justify-center shadow-lg z-10">
+            <div className="absolute left-4 top-8 w-8 h-8 bg-accent rounded-full border-4 border-white dark:border-slate-900 hidden md:flex items-center justify-center shadow-lg z-10">
               <Award className="w-4 h-4 text-white" />
             </div>
 
             {/* Card */}
-            <div className="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 md:ml-12">
+            <div className="ui-surface rounded-3xl p-6 md:ml-12">
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
                 <div className="flex items-start gap-4 flex-1">
                   {/* School Logo */}
@@ -170,21 +170,21 @@ export const Education: React.FC = () => {
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-1">
                       <h3 className="text-lg font-bold text-slate-900 dark:text-white">印制电子电路技术 (PCB) 创新学院</h3>
-                      <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 text-xs font-semibold rounded-full">
+                      <span className="px-3 py-1 ui-chip text-xs font-semibold rounded-full">
                         辅修
                       </span>
                     </div>
-                    <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">广东工业大学 · 辅修学位</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">广东工业大学 · 辅修专业</p>
                     
                     {/* 简短描述 */}
                     <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
-                      对印制电子电路学科进行学习，拓宽专业视野并探索学科交叉可能性
+                      对印制电子电路制造工艺进行学习，拓宽专业视野并探索学科交叉可能性
                     </p>
 
                     {/* Courses */}
                     <div className="flex flex-wrap gap-2">
                       {['印制电子电路原理与工艺', '电子装联工艺', '印制电路板加工技术', '印制电路板电镀技术'].map((course) => (
-                        <span key={course} className="px-3 py-1.5 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-sm rounded-lg border border-purple-200 dark:border-purple-800">
+                        <span key={course} className="px-3 py-1.5 ui-subtle-panel text-secondary dark:text-slate-300 text-sm rounded-lg">
                           {course}
                         </span>
                       ))}
@@ -192,7 +192,7 @@ export const Education: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700/50 px-4 py-2 rounded-full text-sm whitespace-nowrap border border-slate-200 dark:border-slate-600">
+                <div className="ui-chip flex items-center gap-2 px-4 py-2 text-sm whitespace-nowrap">
                   <Calendar className="w-4 h-4" />
                   2025.09 - 2026.09
                 </div>

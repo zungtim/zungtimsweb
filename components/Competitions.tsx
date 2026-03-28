@@ -7,43 +7,35 @@ import { ImageLoader } from './ImageLoader';
 const getAwardConfig = (award: string) => {
   if (award.includes('金')) {
     return {
-      bg: 'bg-white dark:bg-slate-800',
-      border: 'border border-slate-200 dark:border-slate-700',
-      accent: 'bg-yellow-500',
-      text: 'text-yellow-700 dark:text-yellow-400',
-      badge: 'bg-yellow-100 dark:bg-yellow-900/40 text-yellow-800 dark:text-yellow-300',
+      accent: 'bg-amber-500',
+      text: 'text-amber-700 dark:text-amber-300',
+      badge: 'bg-amber-50 dark:bg-amber-900/25 text-amber-700 dark:text-amber-300 border border-amber-200/80 dark:border-amber-700/40',
       icon: Crown,
       size: 'large'
     };
   }
   if (award.includes('银')) {
     return {
-      bg: 'bg-white dark:bg-slate-800',
-      border: 'border border-slate-200 dark:border-slate-700',
       accent: 'bg-slate-400',
       text: 'text-slate-700 dark:text-slate-300',
-      badge: 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300',
+      badge: 'bg-slate-100 dark:bg-slate-700/70 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-600',
       icon: Medal,
       size: 'medium'
     };
   }
   if (award.includes('铜') || award.includes('三等')) {
     return {
-      bg: 'bg-white dark:bg-slate-800',
-      border: 'border border-slate-200 dark:border-slate-700',
       accent: 'bg-orange-500',
-      text: 'text-orange-700 dark:text-orange-400',
-      badge: 'bg-orange-100 dark:bg-orange-900/40 text-orange-800 dark:text-orange-300',
+      text: 'text-orange-700 dark:text-orange-300',
+      badge: 'bg-orange-50 dark:bg-orange-900/25 text-orange-700 dark:text-orange-300 border border-orange-200/80 dark:border-orange-700/40',
       icon: Star,
       size: 'medium'
     };
   }
   return {
-    bg: 'bg-white dark:bg-slate-800',
-    border: 'border border-slate-200 dark:border-slate-700',
-    accent: 'bg-blue-500',
-    text: 'text-blue-700 dark:text-blue-400',
-    badge: 'bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300',
+    accent: 'bg-teal-500',
+    text: 'text-teal-700 dark:text-teal-300',
+    badge: 'bg-teal-50 dark:bg-teal-900/25 text-teal-700 dark:text-teal-300 border border-teal-200/80 dark:border-teal-700/40',
     icon: Trophy,
     size: 'medium'
   };
@@ -53,34 +45,34 @@ export const Competitions: React.FC = () => {
   const goldAwards = competitionEntries.filter((entry) => entry.award.includes('金'));
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 min-h-screen">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center p-3 bg-amber-100 dark:bg-amber-900/30 rounded-2xl text-amber-600 dark:text-amber-400 mb-6">
+    <section className="ui-section px-4 sm:px-6 lg:px-8">
+      <div className="ui-shell">
+        <div className="ui-section-head">
+          <div className="ui-chip inline-flex items-center justify-center p-3 rounded-2xl text-secondary dark:text-slate-300 mb-6">
             <Trophy className="w-8 h-8" />
           </div>
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-3">竞赛经历</h2>
-          <p className="text-slate-500 dark:text-slate-400 text-lg">Competition Experience</p>
+          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">竞赛经历</h2>
+          <p className="text-slate-500 dark:text-slate-400 text-lg font-serif">Competition Experience</p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          <div className="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-            <div className="text-3xl font-bold text-amber-600 dark:text-amber-400 mb-1">{competitionEntries.length}</div>
-            <div className="text-sm text-slate-500 dark:text-slate-400">Total Awards</div>
+          <div className="ui-surface rounded-2xl p-5 text-center">
+            <div className="text-3xl font-bold text-secondary dark:text-slate-200 mb-1">{competitionEntries.length}</div>
+            <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Total Awards</div>
           </div>
-          <div className="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-            <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-1">{goldAwards.length}</div>
-            <div className="text-sm text-slate-500 dark:text-slate-400">Gold Awards</div>
+          <div className="ui-surface rounded-2xl p-5 text-center">
+            <div className="text-3xl font-bold text-secondary dark:text-slate-200 mb-1">{goldAwards.length}</div>
+            <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Gold Awards</div>
           </div>
-          <div className="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-            <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">
+          <div className="ui-surface rounded-2xl p-5 text-center">
+            <div className="text-3xl font-bold text-secondary dark:text-slate-200 mb-1">
               {competitionEntries.filter((entry) => entry.level === 'National').length}
             </div>
-            <div className="text-sm text-slate-500 dark:text-slate-400">National Level</div>
+            <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">National Level</div>
           </div>
-          <div className="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">100%</div>
-            <div className="text-sm text-slate-500 dark:text-slate-400">Win Rate</div>
+          <div className="ui-surface rounded-2xl p-5 text-center">
+            <div className="text-3xl font-bold text-secondary dark:text-slate-200 mb-1">100%</div>
+            <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Win Rate</div>
           </div>
         </div>
 
@@ -95,7 +87,7 @@ export const Competitions: React.FC = () => {
             return (
               <div
                 key={entry.id}
-                className={`group relative overflow-hidden rounded-3xl shadow-md ${config.bg} ${config.border} transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 ${
+                className={`group ui-surface relative overflow-hidden rounded-3xl transition-all duration-300 hover:-translate-y-1 ${
                   isLarge ? 'md:col-span-2 lg:col-span-1' : ''
                 }`}
               >
@@ -123,7 +115,7 @@ export const Competitions: React.FC = () => {
                       <Icon className="w-4 h-4" />
                       {entry.award}
                     </span>
-                    <span className="text-sm font-mono text-slate-500 dark:text-slate-400">{entry.date}</span>
+                    <span className="text-sm font-mono text-slate-500 dark:text-slate-400 tracking-wide">{entry.date}</span>
                   </div>
 
                   <h3 className={`font-bold text-slate-900 dark:text-white mb-4 leading-snug ${isLarge ? 'text-xl' : 'text-lg'}`}>
@@ -132,13 +124,13 @@ export const Competitions: React.FC = () => {
 
                   <div className="space-y-3 text-sm">
                     <div className="flex items-center gap-3 text-slate-600 dark:text-slate-400">
-                      <div className={`w-8 h-8 rounded-lg ${config.bg} flex items-center justify-center`}>
+                      <div className="w-8 h-8 rounded-lg ui-subtle-panel flex items-center justify-center">
                         <Medal className={`w-4 h-4 ${config.text}`} />
                       </div>
                       <span><span className="font-semibold text-slate-900 dark:text-white">Role:</span> {entry.role}</span>
                     </div>
                     <div className="flex items-center gap-3 text-slate-600 dark:text-slate-400">
-                      <div className={`w-8 h-8 rounded-lg ${config.bg} flex items-center justify-center`}>
+                      <div className="w-8 h-8 rounded-lg ui-subtle-panel flex items-center justify-center">
                         <TrendingUp className={`w-4 h-4 ${config.text}`} />
                       </div>
                       <span><span className="font-semibold text-slate-900 dark:text-white">Organizer:</span> {entry.organizer}</span>
