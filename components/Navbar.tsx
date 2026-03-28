@@ -63,10 +63,11 @@ export const Navbar: React.FC = () => {
           <div className="flex h-16 items-center justify-between">
             <Link
               to="/"
-              className="ui-focus-ring text-lg sm:text-xl font-semibold tracking-tight text-primary hover:opacity-90 transition-opacity"
+              className="ui-focus-ring text-lg sm:text-xl font-semibold tracking-tight hover:opacity-90 transition-opacity"
               aria-label="Go to homepage"
             >
-              ZungTim.
+              <span className="text-slate-900 dark:text-slate-100">Zung</span>
+              <span className="text-teal-600 dark:text-teal-300">Tim.</span>
             </Link>
 
             <nav className="hidden md:flex items-center gap-2" aria-label="Desktop navigation">

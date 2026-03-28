@@ -13,16 +13,35 @@ export const Education: React.FC = () => {
           <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">教育背景</h2>
           <p className="text-slate-500 dark:text-slate-400 text-lg font-serif">Education Background</p>
         </div>
-      
+
+        <div className="mb-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="ui-surface rounded-2xl p-4 sm:p-5">
+            <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Degree Track</div>
+            <div className="mt-2 text-sm sm:text-base font-semibold text-slate-900 dark:text-white">Chemical Engineering</div>
+          </div>
+          <div className="ui-surface rounded-2xl p-4 sm:p-5">
+            <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Current GPA</div>
+            <div className="mt-2 text-2xl font-bold text-secondary dark:text-slate-200">3.46</div>
+          </div>
+          <div className="ui-surface rounded-2xl p-4 sm:p-5">
+            <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Best Ranking</div>
+            <div className="mt-2 text-2xl font-bold text-secondary dark:text-slate-200">Top 1.28%</div>
+          </div>
+          <div className="ui-surface rounded-2xl p-4 sm:p-5">
+            <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Secondary Track</div>
+            <div className="mt-2 text-sm sm:text-base font-semibold text-slate-900 dark:text-white">PCB Innovation Program</div>
+          </div>
+        </div>
+
         {/* Timeline Container */}
-        <div className="relative">
+        <div className="space-y-8">
           {/* Timeline Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-slate-300 via-slate-300/70 to-transparent dark:from-slate-600 dark:via-slate-700 hidden md:block" />
+          <div className="hidden" />
 
           {/* Main Degree - Larger Card */}
-          <div className="relative mb-12 md:pl-20">
+          <div className="relative">
             {/* Timeline Dot */}
-            <div className="absolute left-4 top-8 w-8 h-8 bg-secondary rounded-full border-4 border-white dark:border-slate-900 hidden md:flex items-center justify-center shadow-lg z-10">
+            <div className="absolute left-4 top-8 w-8 h-8 bg-secondary rounded-full border-4 border-white dark:border-slate-900 hidden items-center justify-center shadow-lg z-10">
               <GraduationCap className="w-4 h-4 text-white" />
             </div>
 
@@ -149,14 +168,14 @@ export const Education: React.FC = () => {
           </div>
 
           {/* Minor Degree - Smaller Card */}
-          <div className="relative md:pl-20">
+          <div className="relative">
             {/* Timeline Dot */}
-            <div className="absolute left-4 top-8 w-8 h-8 bg-accent rounded-full border-4 border-white dark:border-slate-900 hidden md:flex items-center justify-center shadow-lg z-10">
+            <div className="absolute left-4 top-8 w-8 h-8 bg-accent rounded-full border-4 border-white dark:border-slate-900 hidden items-center justify-center shadow-lg z-10">
               <Award className="w-4 h-4 text-white" />
             </div>
 
             {/* Card */}
-            <div className="ui-surface rounded-3xl p-6 md:ml-12">
+            <div className="ui-surface rounded-3xl p-6">
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
                 <div className="flex items-start gap-4 flex-1">
                   {/* School Logo */}

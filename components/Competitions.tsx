@@ -43,6 +43,7 @@ const getAwardConfig = (award: string) => {
 
 export const Competitions: React.FC = () => {
   const goldAwards = competitionEntries.filter((entry) => entry.award.includes('金'));
+  const nationalAwards = competitionEntries.filter((entry) => entry.level === 'National').length;
 
   return (
     <section className="ui-section px-4 sm:px-6 lg:px-8">
@@ -66,7 +67,7 @@ export const Competitions: React.FC = () => {
           </div>
           <div className="ui-surface rounded-2xl p-5 text-center">
             <div className="text-3xl font-bold text-secondary dark:text-slate-200 mb-1">
-              {competitionEntries.filter((entry) => entry.level === 'National').length}
+              {nationalAwards}
             </div>
             <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">National Level</div>
           </div>
