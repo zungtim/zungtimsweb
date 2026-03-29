@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+﻿import type { ReactNode } from 'react';
 
 export interface NavItem {
   label: string;
@@ -44,7 +44,7 @@ export interface ResearchItem {
   citation?: ReactNode;
 }
 
-export interface CompetitionData {
+export interface AchievementData {
   name: string;
   role: string;
   award: string;
@@ -59,3 +59,4 @@ export interface TravelData {
   location: string;
   memory: string;
 }
+

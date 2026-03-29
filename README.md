@@ -18,12 +18,12 @@ The website now uses a **content-data + source-images** pipeline.
 ### 1) Add/Edit content
 
 - Travel data: `content/travel.tsx`
-- Competition data: `content/competitions.ts`
+- Achievement data: `content/achievements.ts`
 
 ### 2) Put source images
 
 - Travel source folder: `public/photo-src/travel/<entry-id>/`
-- Competition source folder: `public/photo-src/competitions/<entry-id>/`
+- Achievement source folder: `public/photo-src/competitions/<entry-id>/`
 
 Filename rules (strict):
 - Cover image: `cover.*`
@@ -96,6 +96,7 @@ To keep the new UI consistent while adding future content/pages:
 3. Preserve readability first:
    - Maintain clear heading hierarchy and comfortable line-height.
    - Keep light/dark contrast readable for text and controls.
-4. For Travel/Competition updates:
+4. For Travel/Achievement updates:
    - Continue using `content/*` + `public/photo-src/*` + `media:build`.
    - Do not re-introduce hardcoded image path arrays in components.
+

@@ -1,9 +1,9 @@
 ﻿import React, { useEffect, useState } from 'react';
 import { Trophy, Medal, Star, Crown, TrendingUp, Camera, X } from 'lucide-react';
-import { competitionEntries } from '../content/competitions';
+import { achievementEntries } from '../content/achievements';
 import { getMediaEntry, resolveMediaImage } from '../content/media';
 import { ImageLoader } from './ImageLoader';
-import type { CompetitionContentEntry } from '../types/content';
+import type { AchievementContentEntry } from '../types/content';
 import type { ResolvedMediaImage } from '../content/media';
 
 const getAwardConfig = (award: string) => {
@@ -60,10 +60,8 @@ function getImageAspectStyle(image: ResolvedMediaImage | undefined): React.CSSPr
   };
 }
 
-export const Competitions: React.FC = () => {
-  const goldAwards = competitionEntries.filter((entry) => entry.award.includes('金'));
-  const nationalAwards = competitionEntries.filter((entry) => entry.level === 'National').length;
-  const [selectedEntry, setSelectedEntry] = useState<CompetitionContentEntry | null>(null);
+export const Achievements: React.FC = () => {
+  const [selectedEntry, setSelectedEntry] = useState<AchievementContentEntry | null>(null);
 
   useEffect(() => {
     if (!selectedEntry) {
@@ -98,33 +96,12 @@ export const Competitions: React.FC = () => {
           <div className="ui-chip inline-flex items-center justify-center p-3 rounded-2xl text-secondary dark:text-slate-300 mb-6">
             <Trophy className="w-8 h-8" />
           </div>
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">竞赛经历</h2>
-          <p className="text-slate-500 dark:text-slate-400 text-lg font-serif">Competition Experience</p>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          <div className="ui-surface rounded-2xl p-5 text-center">
-            <div className="text-3xl font-bold text-secondary dark:text-slate-200 mb-1">{competitionEntries.length}</div>
-            <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Total Awards</div>
-          </div>
-          <div className="ui-surface rounded-2xl p-5 text-center">
-            <div className="text-3xl font-bold text-secondary dark:text-slate-200 mb-1">{goldAwards.length}</div>
-            <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Gold Awards</div>
-          </div>
-          <div className="ui-surface rounded-2xl p-5 text-center">
-            <div className="text-3xl font-bold text-secondary dark:text-slate-200 mb-1">
-              {nationalAwards}
-            </div>
-            <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">National Level</div>
-          </div>
-          <div className="ui-surface rounded-2xl p-5 text-center">
-            <div className="text-3xl font-bold text-secondary dark:text-slate-200 mb-1">100%</div>
-            <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Win Rate</div>
-          </div>
+          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">个人成就</h2>
+          <p className="text-slate-500 dark:text-slate-400 text-lg font-serif">Achievements</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {competitionEntries.map((entry) => {
+          {achievementEntries.map((entry) => {
             const config = getAwardConfig(entry.award);
             const Icon = config.icon;
             const isLarge = config.size === 'large';
@@ -215,20 +192,20 @@ export const Competitions: React.FC = () => {
             className="fixed top-16 left-0 right-0 bottom-0 z-[100] flex items-center justify-center p-4 sm:p-6"
             role="dialog"
             aria-modal="true"
-            aria-label={`${selectedEntry.title} competition gallery`}
+            aria-label={`${selectedEntry.title} achievement gallery`}
           >
             <button
               type="button"
               className="absolute inset-0 bg-slate-900/80"
               onClick={() => setSelectedEntry(null)}
-              aria-label="Close competition gallery overlay"
+              aria-label="Close achievement gallery overlay"
             />
             <div className="relative w-full max-w-5xl max-h-[90vh] ui-surface rounded-3xl overflow-hidden flex flex-col">
               <button
                 type="button"
                 onClick={() => setSelectedEntry(null)}
                 className="ui-focus-ring absolute top-4 right-4 z-20 p-2 bg-black/20 hover:bg-black/30 text-slate-100 rounded-full transition-colors"
-                aria-label="Close competition gallery"
+                aria-label="Close achievement gallery"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -250,7 +227,7 @@ export const Competitions: React.FC = () => {
                     <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                       <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider opacity-90">
                         <Camera className="h-3.5 w-3.5" />
-                        Competition Gallery
+                        Achievement Gallery
                       </div>
                       <h3 className="mt-2 text-xl sm:text-2xl font-bold leading-snug">{selectedEntry.title}</h3>
                     </div>
@@ -294,3 +271,4 @@ export const Competitions: React.FC = () => {
     </section>
   );
 };
+

@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+﻿import type { ReactNode } from 'react';
 
 export type MediaModule = 'travel' | 'competitions';
 
@@ -46,10 +46,11 @@ export interface TravelContentEntry extends ContentEntry {
     description: ReactNode;
 }
 
-export interface CompetitionContentEntry extends ContentEntry {
+export interface AchievementContentEntry extends ContentEntry {
     role: string;
     award: string;
     date: string;
     organizer: string;
     level: 'National' | 'Provincial' | 'Municipal';
 }
+

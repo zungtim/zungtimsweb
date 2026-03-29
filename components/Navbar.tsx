@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, User, GraduationCap, Microscope, Plane, Trophy, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
@@ -7,7 +7,7 @@ const navItems = [
   { label: 'About', href: '/', icon: User },
   { label: 'Education', href: '/education', icon: GraduationCap },
   { label: 'Research', href: '/research', icon: Microscope },
-  { label: 'Competitions', href: '/competitions', icon: Trophy },
+  { label: 'Achievements', href: '/achievements', icon: Trophy },
   { label: 'Travel', href: '/travel', icon: Plane },
 ];
 
@@ -162,3 +162,4 @@ export const Navbar: React.FC = () => {
     </>
   );
 };
+

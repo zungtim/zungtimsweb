@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { Routes, Route, HashRouter, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Education } from './components/Education';
 import { Research } from './components/Research';
-import { Competitions } from './components/Competitions';
+import { Achievements } from './components/Achievements';
 import { Travel } from './components/Travel';
 import { Footer } from './components/Footer';
 import { useImagePreloadQueue } from './hooks/useImagePreloadQueue';
@@ -37,7 +37,7 @@ function App() {
                 <Route path="/" element={<Hero />} />
                 <Route path="/education" element={<Education />} />
                 <Route path="/research" element={<Research />} />
-                <Route path="/competitions" element={<Competitions />} />
+                <Route path="/achievements" element={<Achievements />} />
                 <Route path="/travel" element={<Travel />} />
               </Routes>
             </div>
@@ -50,3 +50,4 @@ function App() {
 }
 
 export default App;
+

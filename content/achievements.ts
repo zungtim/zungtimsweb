@@ -1,6 +1,6 @@
-﻿import type { CompetitionContentEntry } from '../types/content';
+﻿import type { AchievementContentEntry } from '../types/content';
 
-export const competitionEntries: CompetitionContentEntry[] = [
+export const achievementEntries: AchievementContentEntry[] = [
     {
         id: 'competition-2024-cic',
         title: '中国国际大学生创新大赛(2024)',
@@ -15,7 +15,7 @@ export const competitionEntries: CompetitionContentEntry[] = [
         },
     },
     {
-        id: 'competition-2025-cic-gd',
+id: 'competition-2025-cic-gd',
         title: '中国国际大学生创新大赛(2025)广东省分赛',
         role: '第一作者',
         award: '银奖',
@@ -54,3 +54,4 @@ export const competitionEntries: CompetitionContentEntry[] = [
         },
     },
 ];
+
