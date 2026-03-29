@@ -106,12 +106,12 @@ export const Travel: React.FC = () => {
   return (
     <section id="travel" className="ui-section px-4 sm:px-6 lg:px-8">
       <div className="ui-shell">
-        <div className="text-center mb-16">
-          <div className="ui-chip inline-flex items-center justify-center p-3 rounded-2xl text-teal-600 dark:text-teal-400 mb-6">
-            <Camera className="w-8 h-8" />
+        <div className="mb-12 max-w-3xl">
+          <div className="ui-chip mb-6 inline-flex items-center justify-center rounded-2xl p-3 text-secondary dark:text-slate-300">
+            <Camera className="h-8 w-8" />
           </div>
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">旅行足迹</h2>
-          <p className="text-slate-500 dark:text-slate-400 font-serif italic text-lg">"The world is a book and those who do not travel read only one page."</p>
+          <h2 className="mb-3 text-4xl font-bold tracking-tight text-slate-900 dark:text-white">旅行足迹</h2>
+          <p className="text-lg font-serif italic leading-relaxed text-slate-500 dark:text-slate-400">"The world is a book and those who do not travel read only one page."</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
