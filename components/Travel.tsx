@@ -4,11 +4,29 @@ import { ImageLoader } from './ImageLoader';
 import { travelEntries } from '../content/travel';
 import { getMediaEntry, resolveMediaImage } from '../content/media';
 import type { TravelContentEntry } from '../types/content';
+import type { ResolvedMediaImage } from '../content/media';
 
 // 内容维护提示：新增/修改旅行经历文字请编辑 content/travel.tsx，本文件仅负责渲染。
 const LIST_SIZES = '(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw';
 const MODAL_HERO_SIZES = '100vw';
 const MODAL_GRID_SIZES = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
+
+function isPortraitImage(image: ResolvedMediaImage | undefined): boolean {
+  if (!image) {
+    return false;
+  }
+  return image.height > image.width;
+}
+
+function getImageAspectStyle(image: ResolvedMediaImage | undefined): React.CSSProperties | undefined {
+  if (!image) {
+    return undefined;
+  }
+
+  return {
+    aspectRatio: `${image.width} / ${image.height}`,
+  };
+}
 
 export const Travel: React.FC = () => {
   const [selectedTrip, setSelectedTrip] = useState<TravelContentEntry | null>(null);
@@ -101,7 +119,6 @@ export const Travel: React.FC = () => {
             const entryMedia = getMediaEntry(trip.media);
             const coverImage = resolveMediaImage(entryMedia?.cover, 'md');
             const galleryCount = entryMedia?.gallery.length ?? 0;
-
             return (
               <div
                 key={trip.id}
@@ -129,7 +146,7 @@ export const Travel: React.FC = () => {
                       loading={idx < 3 ? 'eager' : 'lazy'}
                       fetchPriority={idx < 3 ? 'high' : 'low'}
                       containerClassName="w-full h-full"
-                      className="transition-transform duration-300 group-hover:scale-105"
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   )}
                   <div className="absolute top-4 right-4 bg-white/80 dark:bg-slate-800/80 px-3 py-1 rounded-full text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm z-10">
@@ -170,6 +187,7 @@ export const Travel: React.FC = () => {
         {selectedTrip && (() => {
           const selectedMedia = getMediaEntry(selectedTrip.media);
           const selectedCover = resolveMediaImage(selectedMedia?.cover, 'lg');
+          const selectedCoverIsPortrait = isPortraitImage(selectedCover);
           const visibleImages = (selectedMedia?.gallery ?? []).slice(0, visibleImageCount);
 
           return (
@@ -205,6 +223,7 @@ export const Travel: React.FC = () => {
                         loading="eager"
                         fetchPriority="high"
                         containerClassName="w-full h-full"
+                        className={`h-full w-full ${selectedCoverIsPortrait ? 'object-contain p-1' : 'object-cover'}`}
                       />
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
@@ -231,7 +250,7 @@ export const Travel: React.FC = () => {
                       旅途剪影
                     </h3>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    <div className="columns-1 sm:columns-2 md:columns-3 [column-gap:1rem]">
                       {visibleImages.map((image) => {
                         const mediaImage = resolveMediaImage(image, 'md');
                         if (!mediaImage) {
@@ -239,18 +258,21 @@ export const Travel: React.FC = () => {
                         }
 
                         return (
-                          <div key={image.id} className="rounded-xl overflow-hidden group/img relative bg-slate-100 dark:bg-slate-700 aspect-[4/3]">
+                          <div
+                            key={image.id}
+                            className="mb-4 [break-inside:avoid]"
+                          >
                             <ImageLoader
                               src={mediaImage.src}
                               srcSet={mediaImage.srcSet}
                               sizes={MODAL_GRID_SIZES}
                               alt={`Gallery ${image.id}`}
-                              containerClassName="w-full h-full"
-                              className="h-full w-full object-cover transform transition-transform duration-500 group-hover/img:scale-105"
+                              containerClassName="w-full rounded-xl bg-slate-100 dark:bg-slate-700"
+                              containerStyle={getImageAspectStyle(mediaImage)}
+                              className="h-full w-full rounded-xl object-cover transition-transform duration-500 hover:scale-[1.02]"
                               loading="lazy"
                               fetchPriority="low"
                             />
-                            <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/10 transition-colors" />
                           </div>
                         );
                       })}

@@ -12,6 +12,7 @@ const OUTPUT_ROOT = path.join(repoRoot, 'public', 'photo-gen');
 const JSON_MANIFEST_PATH = path.join(OUTPUT_ROOT, 'manifest.json');
 const TS_MANIFEST_PATH = path.join(repoRoot, 'content', 'generated', 'media-manifest.ts');
 const CACHE_PATH = path.join(repoRoot, '.cache', 'media-cache.json');
+const MEDIA_PIPELINE_VERSION = 'auto-orient-v1';
 
 const MODULES = [
     { name: 'travel', requireCover: true },
@@ -76,8 +77,8 @@ async function validateInputImage(sourcePath) {
     }
 
     const metadata = await sharp(sourcePath).metadata();
-    const width = metadata.width ?? 0;
-    const height = metadata.height ?? 0;
+    const width = metadata.autoOrient?.width ?? metadata.width ?? 0;
+    const height = metadata.autoOrient?.height ?? metadata.height ?? 0;
     const longest = Math.max(width, height);
     if (!width || !height) {
         throw new Error(`Cannot read image dimensions: ${sourcePath}`);
@@ -87,7 +88,12 @@ async function validateInputImage(sourcePath) {
         throw new Error(`Input image dimension too large (>6000px): ${sourcePath}`);
     }
 
-    return { width, height, bytes: stat.size, signature: `${stat.size}:${Math.round(stat.mtimeMs)}` };
+    return {
+        width,
+        height,
+        bytes: stat.size,
+        signature: [MEDIA_PIPELINE_VERSION, stat.size, Math.round(stat.mtimeMs)].join(':'),
+    };
 }
 
 function buildOutputFilePath(moduleName, entryId, imageId, variantKey) {
@@ -129,6 +135,7 @@ async function buildImageVariants({
         const resizeWidth = Math.min(sourceInfo.width, targetWidth);
 
         await sharp(sourcePath)
+            .rotate()
             .resize({ width: resizeWidth, withoutEnlargement: true })
             .webp({ quality: 82 })
             .toFile(outputFilePath);
@@ -286,3 +293,4 @@ main().catch((error) => {
     console.error(`[media] build failed: ${error.message}`);
     process.exit(1);
 });
+

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route, HashRouter } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route, HashRouter, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -11,12 +11,23 @@ import { Footer } from './components/Footer';
 import { useImagePreloadQueue } from './hooks/useImagePreloadQueue';
 import { getModuleCoverUrls } from './content/media';
 
+const ScrollToTop: React.FC = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  return null;
+};
+
 function App() {
   useImagePreloadQueue(getModuleCoverUrls('travel', 'md'), 4);
 
   return (
     <ThemeProvider>
       <HashRouter>
+        <ScrollToTop />
         <div className="min-h-screen font-sans transition-colors duration-300">
           <div className="fixed inset-0 pointer-events-none ui-page-bg" />
           <Navbar />

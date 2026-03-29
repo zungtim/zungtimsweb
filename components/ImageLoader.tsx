@@ -12,6 +12,7 @@ interface ImageLoaderProps {
   fetchPriority?: 'high' | 'low' | 'auto';
   className?: string;
   containerClassName?: string;
+  containerStyle?: React.CSSProperties;
   priority?: boolean; // 是否优先加载（首屏内容）
   onLoad?: () => void;
   onError?: () => void;
@@ -29,6 +30,7 @@ export const ImageLoader: React.FC<ImageLoaderProps> = ({
   fetchPriority = 'auto',
   className = '',
   containerClassName = '',
+  containerStyle,
   priority = false,
   onLoad,
   onError,
@@ -64,6 +66,7 @@ export const ImageLoader: React.FC<ImageLoaderProps> = ({
     <div
       ref={ref}
       className={`relative overflow-hidden ${containerClassName}`}
+      style={containerStyle}
     >
       {/* 骨架屏 */}
       {state !== 'loaded' && (

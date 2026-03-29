@@ -9,6 +9,10 @@ export const competitionEntries: CompetitionContentEntry[] = [
         date: '2024.10',
         organizer: '中国教育部',
         level: 'National',
+        media: {
+        module: 'competitions',
+        entryId: '2024.10.13',
+        },
     },
     {
         id: 'competition-2025-cic-gd',
@@ -18,6 +22,10 @@ export const competitionEntries: CompetitionContentEntry[] = [
         date: '2025.08',
         organizer: '广东省教育厅',
         level: 'Provincial',
+        media: {
+        module: 'competitions',
+        entryId: '2025.08.03',
+        },
     },
     {
         id: 'competition-2025-mcm-gd',
@@ -27,6 +35,10 @@ export const competitionEntries: CompetitionContentEntry[] = [
         date: '2025.10',
         organizer: '广东省教育厅',
         level: 'Provincial',
+        media: {
+        module: 'competitions',
+        entryId: '2025.09.06',
+        },
     },
     {
         id: 'competition-2025-gz-innovation',
@@ -36,5 +48,9 @@ export const competitionEntries: CompetitionContentEntry[] = [
         date: '2025.05',
         organizer: '广州市人社局',
         level: 'Municipal',
+        media: {
+        module: 'competitions',
+        entryId: '2025.04.09',
+        },
     },
 ];
