@@ -99,14 +99,14 @@ export const Education: React.FC = () => {
                                     <div className="mt-2 text-lg font-bold text-slate-600 dark:text-slate-200">百分制成绩87.18</div>
                                 </div>
 
-                                <div className="ui-subtle-panel flex min-h-[180px] flex-col justify-between rounded-2xl p-5">
+                                <div className="ui-subtle-panel flex min-h-[220px] flex-col justify-center gap-7 rounded-2xl p-6">
                                     <div className="text-center">
-                                        <div className="text-xs font-medium text-secondary dark:text-slate-300">大一综合测评</div>
-                                        <div className="text-xs uppercase tracking-wider text-slate-400 dark:text-slate-500">Year 1 Ranking</div>
+                                        <div className="text-base font-semibold text-secondary dark:text-slate-300">大一综合测评</div>
+                                        <div className="mt-1 text-sm font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">Year 1 Ranking</div>
                                     </div>
-                                    <div className="py-2 text-center">
+                                    <div className="text-center">
                                         <span className="text-4xl font-black text-secondary dark:text-slate-300">Top 1.28%</span>
-                                        <div className="mt-1 text-sm text-slate-500 dark:text-slate-400">Rank: 2 / 156</div>
+                                        <div className="mt-2 text-base font-medium text-slate-500 dark:text-slate-400">Rank: 2 / 156</div>
                                     </div>
                                     <div className="relative">
                                         <div className="h-2 rounded-full bg-slate-100 dark:bg-slate-700">
@@ -118,14 +118,14 @@ export const Education: React.FC = () => {
                                     </div>
                                 </div>
 
-                                <div className="ui-subtle-panel flex min-h-[180px] flex-col justify-between rounded-2xl p-5">
+                                <div className="ui-subtle-panel flex min-h-[220px] flex-col justify-center gap-7 rounded-2xl p-6">
                                     <div className="text-center">
-                                        <div className="text-xs font-medium text-secondary dark:text-slate-300">大二综合测评</div>
-                                        <div className="text-xs uppercase tracking-wider text-slate-400 dark:text-slate-500">Year 2 Ranking</div>
+                                        <div className="text-base font-semibold text-secondary dark:text-slate-300">大二综合测评</div>
+                                        <div className="mt-1 text-sm font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">Year 2 Ranking</div>
                                     </div>
-                                    <div className="py-2 text-center">
+                                    <div className="text-center">
                                         <span className="text-4xl font-black text-secondary dark:text-slate-300">Top 1.95%</span>
-                                        <div className="mt-1 text-sm text-slate-500 dark:text-slate-400">Rank: 3 / 154</div>
+                                        <div className="mt-2 text-base font-medium text-slate-500 dark:text-slate-400">Rank: 3 / 154</div>
                                     </div>
                                     <div className="relative">
                                         <div className="h-2 rounded-full bg-slate-100 dark:bg-slate-700">
