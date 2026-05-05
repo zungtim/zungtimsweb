@@ -66,8 +66,8 @@ export const Education: React.FC = () => {
                             </div>
 
                             <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-                                <div className="ui-subtle-panel flex flex-col items-center rounded-2xl p-5">
-                                    <div className="relative mb-3 h-28 w-28">
+                                <div className="ui-subtle-panel flex min-h-[220px] flex-col items-center justify-center rounded-2xl p-6 text-center">
+                                    <div className="relative mb-4 h-32 w-32">
                                         <svg className="h-full w-full -rotate-90 transform" viewBox="0 0 100 100">
                                             <circle
                                                 cx="50"
@@ -91,12 +91,12 @@ export const Education: React.FC = () => {
                                             />
                                         </svg>
                                         <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                            <span className="text-2xl font-bold text-secondary dark:text-slate-300">3.46</span>
-                                            <span className="text-xs text-slate-400">/ 5.0</span>
+                                            <span className="text-3xl font-bold text-secondary dark:text-slate-300">3.46</span>
+                                            <span className="text-sm font-medium text-slate-400">/ 5.0</span>
                                         </div>
                                     </div>
-                                    <div className="text-sm font-semibold text-secondary dark:text-slate-300">GPA</div>
-                                    <div className="mt-1 text-xs text-slate-400 dark:text-slate-500">69.2%</div>
+                                    <div className="text-base font-semibold text-secondary dark:text-slate-300">GPA</div>
+                                    <div className="mt-2 text-lg font-bold text-slate-600 dark:text-slate-200">百分制成绩87.18</div>
                                 </div>
 
                                 <div className="ui-subtle-panel flex min-h-[180px] flex-col justify-between rounded-2xl p-5">
