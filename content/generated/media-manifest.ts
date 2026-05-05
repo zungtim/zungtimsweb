@@ -1,7 +1,7 @@
 import type { MediaManifest } from '../../types/content';
 
 export const mediaManifest: MediaManifest = {
-    "generatedAt": "2026-03-29T13:51:15.643Z",
+    "generatedAt": "2026-05-05T14:08:17.767Z",
     "modules": {
         "travel": {
             "2024.08.05": {
@@ -3837,6 +3837,35 @@ export const mediaManifest: MediaManifest = {
                         "srcSet": "/photo-gen/competitions/2025.09.06/1-sm.webp 480w, /photo-gen/competitions/2025.09.06/1-md.webp 960w, /photo-gen/competitions/2025.09.06/1-lg.webp 1524w"
                     }
                 ]
+            }
+        },
+        "research": {
+            "antistatic-composite": {
+                "cover": {
+                    "id": "cover",
+                    "variants": {
+                        "sm": {
+                            "src": "/photo-gen/research/antistatic-composite/cover-sm.webp",
+                            "width": 480,
+                            "height": 262,
+                            "bytes": 23538
+                        },
+                        "md": {
+                            "src": "/photo-gen/research/antistatic-composite/cover-md.webp",
+                            "width": 960,
+                            "height": 524,
+                            "bytes": 70152
+                        },
+                        "lg": {
+                            "src": "/photo-gen/research/antistatic-composite/cover-lg.webp",
+                            "width": 1600,
+                            "height": 873,
+                            "bytes": 147336
+                        }
+                    },
+                    "srcSet": "/photo-gen/research/antistatic-composite/cover-sm.webp 480w, /photo-gen/research/antistatic-composite/cover-md.webp 960w, /photo-gen/research/antistatic-composite/cover-lg.webp 1600w"
+                },
+                "gallery": []
             }
         }
     }

@@ -17,6 +17,7 @@ const MEDIA_PIPELINE_VERSION = 'auto-orient-v1';
 const MODULES = [
     { name: 'travel', requireCover: true },
     { name: 'competitions', requireCover: false },
+    { name: 'research', requireCover: true },
 ];
 
 const WIDTH_PRESETS = {
@@ -271,6 +272,7 @@ async function main() {
         modules: {
             travel: {},
             competitions: {},
+            research: {},
         },
     };
 

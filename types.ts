@@ -1,5 +1,7 @@
 ﻿import type { ReactNode } from 'react';
 
+import type { EntryMediaRef } from './types/content';
+
 export interface NavItem {
   label: string;
   href: string;
@@ -26,7 +28,8 @@ export interface ResearchData {
 }
 
 export interface ResearchImage {
-  url: string;
+  url?: string;
+  media?: EntryMediaRef;
   caption: string;
 }
 

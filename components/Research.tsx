@@ -1,5 +1,6 @@
 ﻿import React, { useState, useEffect } from 'react';
 import { Microscope, FileText, FlaskConical, ChevronRight, Beaker, BarChart3, Image as ImageIcon, Lightbulb, Clock, TrendingDown, Zap, Shield, X } from 'lucide-react';
+import { getMediaEntry, resolveMediaImage } from '../content/media';
 import type { ResearchImage, ResearchItem } from '../types';
 
 const MetricIcon = ({ index }: { index: number }) => {
@@ -24,7 +25,13 @@ const researchData: ResearchItem[] = [
       '耐水洗性能与力学强度同步增强'
     ],
     images: [
-      { url: '/photo/Research/1.png', caption: '图1. PANI-A-CNT抗静电剂的合成路线及在ABS基体中的分散机理示意图' }
+      {
+        media: {
+          module: 'research',
+          entryId: 'antistatic-composite',
+        },
+        caption: '图1. PANI-A-CNT抗静电剂的合成路线及在ABS基体中的分散机理示意图'
+      }
     ]
   },
   {
@@ -51,6 +58,18 @@ const researchData: ResearchItem[] = [
     )
   }
 ];
+
+const resolveResearchImage = (image: ResearchImage, preferred: 'md' | 'lg') => {
+    if (image.media) {
+        return resolveMediaImage(getMediaEntry(image.media)?.cover, preferred);
+    }
+
+    return image.url ? { src: image.url, srcSet: undefined } : undefined;
+};
+
+const getResearchImageKey = (image: ResearchImage) => {
+    return image.media ? `${image.media.module}-${image.media.entryId}` : image.url ?? image.caption;
+};
 
 export const Research: React.FC = () => {
     const [activeItem, setActiveItem] = useState<string>(researchData[0].id);
@@ -246,32 +265,41 @@ export const Research: React.FC = () => {
                                         Gallery
                                     </div>
                                     <div className="grid gap-5">
-                                        {currentItem.images.map((image) => (
-                                            <div
-                                                key={image.url}
-                                                onClick={() => setSelectedImage(image)}
-                                                className="ui-focus-ring group cursor-pointer overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-slate-50/60 transition-all duration-300 hover:border-slate-300 hover:shadow-md dark:border-slate-700/80 dark:bg-slate-900/45"
-                                                tabIndex={0}
-                                                role="button"
-                                                onKeyDown={(event) => {
-                                                    if (event.key === 'Enter' || event.key === ' ') {
-                                                        event.preventDefault();
-                                                        setSelectedImage(image);
-                                                    }
-                                                }}
-                                            >
-                                                <div className="bg-slate-100 dark:bg-slate-800">
-                                                    <img
-                                                        src={image.url}
-                                                        alt={image.caption}
-                                                        className="h-auto w-full object-contain transition-transform duration-500 group-hover:scale-[1.01]"
-                                                    />
+                                        {currentItem.images.map((image) => {
+                                            const resolvedImage = resolveResearchImage(image, 'md');
+                                            if (!resolvedImage) {
+                                                return null;
+                                            }
+
+                                            return (
+                                                <div
+                                                    key={getResearchImageKey(image)}
+                                                    onClick={() => setSelectedImage(image)}
+                                                    className="ui-focus-ring group cursor-pointer overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-slate-50/60 transition-all duration-300 hover:border-slate-300 hover:shadow-md dark:border-slate-700/80 dark:bg-slate-900/45"
+                                                    tabIndex={0}
+                                                    role="button"
+                                                    onKeyDown={(event) => {
+                                                        if (event.key === 'Enter' || event.key === ' ') {
+                                                            event.preventDefault();
+                                                            setSelectedImage(image);
+                                                        }
+                                                    }}
+                                                >
+                                                    <div className="bg-slate-100 dark:bg-slate-800">
+                                                        <img
+                                                            src={resolvedImage.src}
+                                                            srcSet={resolvedImage.srcSet}
+                                                            sizes="(max-width: 1024px) 100vw, 900px"
+                                                            alt={image.caption}
+                                                            className="h-auto w-full object-contain transition-transform duration-500 group-hover:scale-[1.01]"
+                                                        />
+                                                    </div>
+                                                    <div className="border-t border-slate-200/80 px-4 py-3 dark:border-slate-700/80">
+                                                        <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300">{image.caption}</p>
+                                                    </div>
                                                 </div>
-                                                <div className="border-t border-slate-200/80 px-4 py-3 dark:border-slate-700/80">
-                                                    <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300">{image.caption}</p>
-                                                </div>
-                                            </div>
-                                        ))}
+                                            );
+                                        })}
                                     </div>
                                 </section>
                             )}
@@ -280,30 +308,41 @@ export const Research: React.FC = () => {
                 </div>
 
                 {selectedImage && (
-                    <div
-                        className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 px-4 pb-4 pt-20"
-                        onClick={() => setSelectedImage(null)}
-                    >
-                        <button
-                            type="button"
-                            onClick={() => setSelectedImage(null)}
-                            className="ui-focus-ring fixed right-4 top-20 z-10 rounded-full bg-white/90 p-3 text-slate-700 shadow-lg transition-colors hover:bg-white"
-                            aria-label="Close research image preview"
-                        >
-                            <X className="h-6 w-6" />
-                        </button>
-                        <div
-                            className="relative flex h-full w-full max-w-5xl flex-col items-center justify-center"
-                            onClick={(event) => event.stopPropagation()}
-                        >
-                            <img
-                                src={selectedImage.url}
-                                alt={selectedImage.caption}
-                                className="max-h-[calc(100%-40px)] max-w-full rounded-2xl object-contain shadow-2xl"
-                            />
-                            <p className="mt-3 text-center text-sm font-medium text-white/80">{selectedImage.caption}</p>
-                        </div>
-                    </div>
+                    (() => {
+                        const resolvedImage = resolveResearchImage(selectedImage, 'lg');
+                        if (!resolvedImage) {
+                            return null;
+                        }
+
+                        return (
+                            <div
+                                className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 px-4 pb-4 pt-20"
+                                onClick={() => setSelectedImage(null)}
+                            >
+                                <button
+                                    type="button"
+                                    onClick={() => setSelectedImage(null)}
+                                    className="ui-focus-ring fixed right-4 top-20 z-10 rounded-full bg-white/90 p-3 text-slate-700 shadow-lg transition-colors hover:bg-white"
+                                    aria-label="Close research image preview"
+                                >
+                                    <X className="h-6 w-6" />
+                                </button>
+                                <div
+                                    className="relative flex h-full w-full max-w-5xl flex-col items-center justify-center"
+                                    onClick={(event) => event.stopPropagation()}
+                                >
+                                    <img
+                                        src={resolvedImage.src}
+                                        srcSet={resolvedImage.srcSet}
+                                        sizes="100vw"
+                                        alt={selectedImage.caption}
+                                        className="max-h-[calc(100%-40px)] max-w-full rounded-2xl object-contain shadow-2xl"
+                                    />
+                                    <p className="mt-3 text-center text-sm font-medium text-white/80">{selectedImage.caption}</p>
+                                </div>
+                            </div>
+                        );
+                    })()
                 )}
             </div>
         </section>
