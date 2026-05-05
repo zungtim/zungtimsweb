@@ -58,6 +58,21 @@ async function readJson(filePath, fallbackValue) {
     }
 }
 
+async function readTsManifest(filePath, fallbackValue) {
+    try {
+        const raw = await fs.readFile(filePath, 'utf8');
+        const start = raw.indexOf('= ');
+        const end = raw.lastIndexOf(';');
+        if (start === -1 || end === -1 || end <= start) {
+            return fallbackValue;
+        }
+
+        return JSON.parse(raw.slice(start + 2, end));
+    } catch {
+        return fallbackValue;
+    }
+}
+
 async function ensureDir(dirPath) {
     await fs.mkdir(dirPath, { recursive: true });
 }
@@ -168,6 +183,25 @@ function buildSrcSet(variants) {
         .join(', ');
 }
 
+function stableJson(value) {
+    return JSON.stringify(value);
+}
+
+function preserveGeneratedAtIfUnchanged(nextManifest, previousManifest) {
+    if (!previousManifest?.generatedAt || !previousManifest.modules) {
+        return nextManifest;
+    }
+
+    if (stableJson(previousManifest.modules) !== stableJson(nextManifest.modules)) {
+        return nextManifest;
+    }
+
+    return {
+        ...nextManifest,
+        generatedAt: previousManifest.generatedAt,
+    };
+}
+
 async function collectModuleManifest(moduleConfig, cacheState, nextCacheState) {
     const moduleName = moduleConfig.name;
     const moduleRoot = path.join(SOURCE_ROOT, moduleName);
@@ -267,7 +301,10 @@ async function main() {
     const cacheState = await readJson(CACHE_PATH, { files: {} });
     const nextCacheState = { files: {} };
 
-    const manifest = {
+    const previousManifest =
+        (await readTsManifest(TS_MANIFEST_PATH, undefined)) ??
+        (await readJson(JSON_MANIFEST_PATH, undefined));
+    const nextManifest = {
         generatedAt: new Date().toISOString(),
         modules: {
             travel: {},
@@ -277,8 +314,10 @@ async function main() {
     };
 
     for (const moduleConfig of MODULES) {
-        manifest.modules[moduleConfig.name] = await collectModuleManifest(moduleConfig, cacheState, nextCacheState);
+        nextManifest.modules[moduleConfig.name] = await collectModuleManifest(moduleConfig, cacheState, nextCacheState);
     }
+
+    const manifest = preserveGeneratedAtIfUnchanged(nextManifest, previousManifest);
 
     const jsonContent = `${JSON.stringify(manifest, null, 4)}\n`;
     await fs.writeFile(JSON_MANIFEST_PATH, jsonContent, 'utf8');

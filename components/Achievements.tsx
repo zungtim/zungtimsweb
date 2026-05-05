@@ -127,7 +127,7 @@ export const Achievements: React.FC = () => {
                         return (
                             <article
                                 key={entry.id}
-                                className="group overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white/85 shadow-[0_1px_2px_rgba(15,39,66,0.04),0_18px_34px_rgba(15,39,66,0.06)] transition-all duration-300 hover:border-slate-300/80 hover:-translate-y-1 dark:border-slate-700/80 dark:bg-slate-900/78 dark:shadow-[0_1px_2px_rgba(0,0,0,0.2),0_18px_34px_rgba(0,0,0,0.22)]"
+                                className="group overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white/90 shadow-[0_1px_2px_rgba(15,39,66,0.04),0_18px_34px_rgba(15,39,66,0.06)] transition-all duration-300 hover:border-slate-300/80 hover:-translate-y-1 dark:border-slate-700/80 dark:bg-slate-900/90 dark:shadow-[0_1px_2px_rgba(0,0,0,0.2),0_18px_34px_rgba(0,0,0,0.22)]"
                             >
                                 <div className="grid lg:grid-cols-[280px_minmax(0,1fr)]">
                                     {coverImage && (
@@ -169,7 +169,7 @@ export const Achievements: React.FC = () => {
                                                 <button
                                                     type="button"
                                                     onClick={() => setSelectedEntry(entry)}
-                                                    className="ui-focus-ring inline-flex items-center justify-center gap-2 rounded-full border border-slate-200/80 px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100/80 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800/80"
+                                                    className="ui-focus-ring inline-flex items-center justify-center gap-2 rounded-full border border-slate-200/80 bg-white/60 px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100/80 dark:border-slate-600 dark:bg-slate-800/70 dark:text-slate-200 dark:hover:bg-slate-800"
                                                     aria-label={`Open ${entry.title} photo gallery`}
                                                 >
                                                     <Camera className="h-4 w-4" />
