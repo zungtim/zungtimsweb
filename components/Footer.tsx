@@ -3,7 +3,7 @@ import { Heart, Github, Mail, MapPin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="relative z-10 border-t border-slate-200/80 dark:border-slate-800/80 py-10 mt-auto">
+    <footer className="relative border-t border-slate-200/80 dark:border-slate-800/80 py-10 mt-auto">
       <div className="ui-shell px-4 sm:px-6 lg:px-8">
         <div className="ui-surface rounded-3xl p-6 sm:p-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">

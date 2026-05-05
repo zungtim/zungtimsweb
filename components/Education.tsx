@@ -20,11 +20,11 @@ export const Education: React.FC = () => {
                     </div>
                     <div className="ui-surface rounded-2xl p-4 sm:p-5">
                         <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Current GPA</div>
-                        <div className="mt-2 text-2xl font-bold text-secondary dark:text-slate-200">3.46</div>
+                        <div className="mt-2 whitespace-nowrap text-lg font-bold leading-tight text-secondary dark:text-slate-200 sm:text-xl lg:text-lg xl:text-xl">3.46/5（87.18/100）</div>
                     </div>
                     <div className="ui-surface rounded-2xl p-4 sm:p-5">
-                        <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Best Ranking</div>
-                        <div className="mt-2 text-2xl font-bold text-secondary dark:text-slate-200">Top 1.28%</div>
+                        <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Comprehensive Evaluation</div>
+                        <div className="mt-2 text-2xl font-bold text-secondary dark:text-slate-200">Top 2%</div>
                     </div>
                     <div className="ui-surface rounded-2xl p-4 sm:p-5">
                         <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Secondary Track</div>
