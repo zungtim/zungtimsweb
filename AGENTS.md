@@ -76,6 +76,7 @@ npm install
   - Travel descriptions
   - Any user-provided content in Chinese or English
 - Only modify code structure, styling, layout, and data wiring unless the user asks for content edits.
+- Any website change must remain compatible with both light and dark modes.
 - If content needs reformatting, preserve the original meaning exactly.
 - Always ask for confirmation before making content-related changes.
 
@@ -153,6 +154,8 @@ import type { NavItem } from '@/types';
   - Accessibility: `ui-focus-ring`
   - Text: `ui-text-gradient`
 - Dark mode uses the `dark:` prefix and CSS variables attached to `html.dark`.
+- Every visual change must be reviewed in both light and dark themes, including text, cards, borders, overlays, badges, icons, hover states, and disabled/secondary text.
+- Avoid hardcoded colors that only work in one theme; pair Tailwind color utilities with matching `dark:` variants or use existing semantic UI classes/CSS variables.
 - Current Tailwind custom colors:
   - `primary`: `#0f2742`
   - `secondary`: `#35546f`
@@ -165,7 +168,7 @@ import type { NavItem } from '@/types';
 - Current default theme on first visit is `light`.
 - Theme is persisted in `localStorage`.
 - Use the `useTheme()` hook to access theme state.
-- Always provide appropriate `dark:` variants for colors.
+- Always provide appropriate `dark:` variants for colors and verify contrast/readability in both themes before considering the change complete.
 
 ```typescript
 const { theme, toggleTheme } = useTheme();
