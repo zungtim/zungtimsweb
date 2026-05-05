@@ -63,7 +63,7 @@ npx tsc --noEmit
 ├── components/
 ├── content/
 │   ├── travel.tsx
-│   ├── competitions.ts
+│   ├── achievements.ts
 │   └── generated/media-manifest.ts
 ├── hooks/
 ├── scripts/media/build-media.mjs
