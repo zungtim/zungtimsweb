@@ -131,7 +131,12 @@ export const Achievements: React.FC = () => {
                             >
                                 <div className="grid lg:grid-cols-[280px_minmax(0,1fr)]">
                                     {coverImage && (
-                                        <div className="relative overflow-hidden border-b border-slate-200/80 bg-slate-100 dark:border-slate-700/80 dark:bg-slate-800 lg:border-b-0 lg:border-r">
+                                        <button
+                                            type="button"
+                                            onClick={() => setSelectedEntry(entry)}
+                                            className="ui-focus-ring group/cover relative block cursor-pointer overflow-hidden border-b border-slate-200/80 bg-slate-100 p-0 text-left dark:border-slate-700/80 dark:bg-slate-800 lg:border-b-0 lg:border-r"
+                                            aria-label={`Open ${entry.title} photo gallery`}
+                                        >
                                             <ImageLoader
                                                 src={coverImage.src}
                                                 srcSet={coverImage.srcSet}
@@ -142,8 +147,14 @@ export const Achievements: React.FC = () => {
                                                 containerClassName="h-full min-h-[220px] w-full"
                                                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                                             />
+                                            <div className="absolute inset-0 flex items-center justify-center bg-slate-950/0 transition-colors duration-300 group-hover/cover:bg-slate-950/35 group-focus-visible/cover:bg-slate-950/35">
+                                                <span className="inline-flex translate-y-2 items-center gap-2 rounded-full border border-white/30 bg-white/15 px-4 py-2 text-sm font-semibold text-white opacity-0 shadow-lg backdrop-blur-md transition-all duration-300 group-hover/cover:translate-y-0 group-hover/cover:opacity-100 group-focus-visible/cover:translate-y-0 group-focus-visible/cover:opacity-100">
+                                                    <Camera className="h-4 w-4" />
+                                                    View Gallery
+                                                </span>
+                                            </div>
                                             <div className={`absolute left-0 top-0 h-full w-1 ${config.accent}`} />
-                                        </div>
+                                        </button>
                                     )}
 
                                     <div className="p-6 sm:p-7">

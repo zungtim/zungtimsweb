@@ -42,7 +42,7 @@ id: 'competition-2025-cic-gd',
     },
     {
         id: 'competition-2025-gz-innovation',
-        title: '第十三届"赢在广州"暨粤港澳大湾区大学生创业大赛',
+        title: '第十三届"赢在广州"大赛',
         role: '第一作者',
         award: '一等奖',
         date: '2025.05',
@@ -54,4 +54,3 @@ id: 'competition-2025-cic-gd',
         },
     },
 ];
-
