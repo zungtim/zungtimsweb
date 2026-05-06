@@ -89,7 +89,7 @@ content/achievements.ts
 
 ```ts
 {
-  id: 'competition-2026-example',
+  id: 'achievement-2026-example',
   title: '比赛或成就标题',
   role: '第一作者',
   award: '金奖',
@@ -97,7 +97,7 @@ content/achievements.ts
   organizer: '主办方',
   level: 'National',
   media: {
-    module: 'competitions',
+    module: 'achievements',
     entryId: '2026.05.01',
   },
 }
@@ -112,13 +112,13 @@ content/achievements.ts
 ### 需要添加的图片目录
 
 ```text
-public/photo-src/competitions/<entryId>/
+public/photo-src/achievements/<entryId>/
 ```
 
 例子：
 
 ```text
-public/photo-src/competitions/2026.05.01/
+public/photo-src/achievements/2026.05.01/
 ├── cover.jpg
 ├── 1.jpg
 └── 2.jpg
@@ -208,4 +208,3 @@ npm run build
 - 点击图集是否能打开。
 - 明暗模式下文字、按钮、卡片、边框、弹窗是否都清晰可读。
 - `content/generated/media-manifest.ts` 不要手动改，它应该由脚本自动维护。
-

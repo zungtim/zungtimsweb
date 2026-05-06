@@ -39,7 +39,7 @@ npm install
 │   ├── Navbar.tsx               # Navigation with theme toggle
 │   ├── Education.tsx            # Education background cards
 │   ├── Research.tsx             # Research projects portfolio
-│   ├── Achievements.tsx         # Competition and achievement cards/gallery
+│   ├── Achievements.tsx         # Achievement cards/gallery
 │   ├── Travel.tsx               # Travel photo gallery
 │   ├── Footer.tsx               # Site footer
 │   └── ImageLoader.tsx          # Lazy image loading utility
@@ -82,22 +82,25 @@ npm install
 
 ## Content And Media Workflow
 
-Travel and achievement galleries use a content-data plus generated-media workflow.
+Travel, achievement, and selected research images use a content-data plus generated-media workflow.
 
 - Travel content lives in `content/travel.tsx`.
 - Achievement content lives in `content/achievements.ts`.
+- Research content currently lives in the `researchData` array inside `components/Research.tsx`.
 - Travel source images live in `public/photo-src/travel/<entry-id>/`.
-- Achievement source images live in `public/photo-src/competitions/<entry-id>/`.
+- Achievement source images live in `public/photo-src/achievements/<entry-id>/`.
+- Research source images live in `public/photo-src/research/<entry-id>/`.
 - Source image filenames must be `cover.*` for covers and numeric names such as `1.*`, `2.*`, `3.*` for gallery images.
 - `scripts/media/build-media.mjs` generates WebP variants into `public/photo-gen/`.
 - `content/generated/media-manifest.ts` is generated and consumed by `content/media.ts`.
-- Components should use `getMediaEntry()` and `resolveMediaImage()` instead of hardcoding travel/achievement image arrays.
+- The media builder preserves the existing `generatedAt` value when generated media content has not changed.
+- Components should use `getMediaEntry()` and `resolveMediaImage()` instead of hardcoding generated travel/achievement/research image arrays.
 
 Static one-off images are still used directly in some pages:
 
 - Avatar: `public/photo/avatar.jpg`
 - Education logo: `public/photo/education/gdutlogo.png`
-- Research images: `public/photo/Research/*`
+- Research patent certificate image: `public/photo/Research/patent-cert.png`
 
 ## TypeScript & React
 

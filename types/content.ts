@@ -1,6 +1,6 @@
 ﻿import type { ReactNode } from 'react';
 
-export type MediaModule = 'travel' | 'competitions' | 'research';
+export type MediaModule = 'travel' | 'achievements' | 'research';
 
 export type MediaVariantKey = 'sm' | 'md' | 'lg';
 

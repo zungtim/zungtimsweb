@@ -1,7 +1,7 @@
 import type { MediaManifest } from '../../types/content';
 
 export const mediaManifest: MediaManifest = {
-    "generatedAt": "2026-05-05T14:49:03.229Z",
+    "generatedAt": "2026-05-06T05:04:29.354Z",
     "modules": {
         "travel": {
             "2024.08.05": {
@@ -3533,104 +3533,104 @@ export const mediaManifest: MediaManifest = {
                 ]
             }
         },
-        "competitions": {
+        "achievements": {
             "2024.10.13": {
                 "cover": {
                     "id": "cover",
                     "variants": {
                         "sm": {
-                            "src": "/photo-gen/competitions/2024.10.13/cover-sm.webp",
+                            "src": "/photo-gen/achievements/2024.10.13/cover-sm.webp",
                             "width": 480,
                             "height": 360,
                             "bytes": 26234
                         },
                         "md": {
-                            "src": "/photo-gen/competitions/2024.10.13/cover-md.webp",
+                            "src": "/photo-gen/achievements/2024.10.13/cover-md.webp",
                             "width": 960,
                             "height": 720,
                             "bytes": 75090
                         },
                         "lg": {
-                            "src": "/photo-gen/competitions/2024.10.13/cover-lg.webp",
+                            "src": "/photo-gen/achievements/2024.10.13/cover-lg.webp",
                             "width": 1600,
                             "height": 1200,
                             "bytes": 168102
                         }
                     },
-                    "srcSet": "/photo-gen/competitions/2024.10.13/cover-sm.webp 480w, /photo-gen/competitions/2024.10.13/cover-md.webp 960w, /photo-gen/competitions/2024.10.13/cover-lg.webp 1600w"
+                    "srcSet": "/photo-gen/achievements/2024.10.13/cover-sm.webp 480w, /photo-gen/achievements/2024.10.13/cover-md.webp 960w, /photo-gen/achievements/2024.10.13/cover-lg.webp 1600w"
                 },
                 "gallery": [
                     {
                         "id": "1",
                         "variants": {
                             "sm": {
-                                "src": "/photo-gen/competitions/2024.10.13/1-sm.webp",
+                                "src": "/photo-gen/achievements/2024.10.13/1-sm.webp",
                                 "width": 480,
                                 "height": 360,
                                 "bytes": 37834
                             },
                             "md": {
-                                "src": "/photo-gen/competitions/2024.10.13/1-md.webp",
+                                "src": "/photo-gen/achievements/2024.10.13/1-md.webp",
                                 "width": 960,
                                 "height": 720,
                                 "bytes": 125272
                             },
                             "lg": {
-                                "src": "/photo-gen/competitions/2024.10.13/1-lg.webp",
+                                "src": "/photo-gen/achievements/2024.10.13/1-lg.webp",
                                 "width": 1600,
                                 "height": 1200,
                                 "bytes": 303564
                             }
                         },
-                        "srcSet": "/photo-gen/competitions/2024.10.13/1-sm.webp 480w, /photo-gen/competitions/2024.10.13/1-md.webp 960w, /photo-gen/competitions/2024.10.13/1-lg.webp 1600w"
+                        "srcSet": "/photo-gen/achievements/2024.10.13/1-sm.webp 480w, /photo-gen/achievements/2024.10.13/1-md.webp 960w, /photo-gen/achievements/2024.10.13/1-lg.webp 1600w"
                     },
                     {
                         "id": "2",
                         "variants": {
                             "sm": {
-                                "src": "/photo-gen/competitions/2024.10.13/2-sm.webp",
+                                "src": "/photo-gen/achievements/2024.10.13/2-sm.webp",
                                 "width": 480,
                                 "height": 360,
                                 "bytes": 31398
                             },
                             "md": {
-                                "src": "/photo-gen/competitions/2024.10.13/2-md.webp",
+                                "src": "/photo-gen/achievements/2024.10.13/2-md.webp",
                                 "width": 960,
                                 "height": 720,
                                 "bytes": 96084
                             },
                             "lg": {
-                                "src": "/photo-gen/competitions/2024.10.13/2-lg.webp",
+                                "src": "/photo-gen/achievements/2024.10.13/2-lg.webp",
                                 "width": 1600,
                                 "height": 1200,
                                 "bytes": 211416
                             }
                         },
-                        "srcSet": "/photo-gen/competitions/2024.10.13/2-sm.webp 480w, /photo-gen/competitions/2024.10.13/2-md.webp 960w, /photo-gen/competitions/2024.10.13/2-lg.webp 1600w"
+                        "srcSet": "/photo-gen/achievements/2024.10.13/2-sm.webp 480w, /photo-gen/achievements/2024.10.13/2-md.webp 960w, /photo-gen/achievements/2024.10.13/2-lg.webp 1600w"
                     },
                     {
                         "id": "3",
                         "variants": {
                             "sm": {
-                                "src": "/photo-gen/competitions/2024.10.13/3-sm.webp",
+                                "src": "/photo-gen/achievements/2024.10.13/3-sm.webp",
                                 "width": 480,
                                 "height": 680,
                                 "bytes": 74262
                             },
                             "md": {
-                                "src": "/photo-gen/competitions/2024.10.13/3-md.webp",
+                                "src": "/photo-gen/achievements/2024.10.13/3-md.webp",
                                 "width": 860,
                                 "height": 1218,
                                 "bytes": 215426
                             },
                             "lg": {
-                                "src": "/photo-gen/competitions/2024.10.13/3-lg.webp",
+                                "src": "/photo-gen/achievements/2024.10.13/3-lg.webp",
                                 "width": 860,
                                 "height": 1218,
                                 "bytes": 215426
                             }
                         },
-                        "srcSet": "/photo-gen/competitions/2024.10.13/3-sm.webp 480w, /photo-gen/competitions/2024.10.13/3-md.webp 860w, /photo-gen/competitions/2024.10.13/3-lg.webp 860w"
+                        "srcSet": "/photo-gen/achievements/2024.10.13/3-sm.webp 480w, /photo-gen/achievements/2024.10.13/3-md.webp 860w, /photo-gen/achievements/2024.10.13/3-lg.webp 860w"
                     }
                 ]
             },
@@ -3639,74 +3639,74 @@ export const mediaManifest: MediaManifest = {
                     "id": "cover",
                     "variants": {
                         "sm": {
-                            "src": "/photo-gen/competitions/2025.04.09/cover-sm.webp",
+                            "src": "/photo-gen/achievements/2025.04.09/cover-sm.webp",
                             "width": 480,
                             "height": 320,
                             "bytes": 28700
                         },
                         "md": {
-                            "src": "/photo-gen/competitions/2025.04.09/cover-md.webp",
+                            "src": "/photo-gen/achievements/2025.04.09/cover-md.webp",
                             "width": 960,
                             "height": 640,
                             "bytes": 82090
                         },
                         "lg": {
-                            "src": "/photo-gen/competitions/2025.04.09/cover-lg.webp",
+                            "src": "/photo-gen/achievements/2025.04.09/cover-lg.webp",
                             "width": 1600,
                             "height": 1067,
                             "bytes": 177438
                         }
                     },
-                    "srcSet": "/photo-gen/competitions/2025.04.09/cover-sm.webp 480w, /photo-gen/competitions/2025.04.09/cover-md.webp 960w, /photo-gen/competitions/2025.04.09/cover-lg.webp 1600w"
+                    "srcSet": "/photo-gen/achievements/2025.04.09/cover-sm.webp 480w, /photo-gen/achievements/2025.04.09/cover-md.webp 960w, /photo-gen/achievements/2025.04.09/cover-lg.webp 1600w"
                 },
                 "gallery": [
                     {
                         "id": "1",
                         "variants": {
                             "sm": {
-                                "src": "/photo-gen/competitions/2025.04.09/1-sm.webp",
+                                "src": "/photo-gen/achievements/2025.04.09/1-sm.webp",
                                 "width": 480,
                                 "height": 320,
                                 "bytes": 12342
                             },
                             "md": {
-                                "src": "/photo-gen/competitions/2025.04.09/1-md.webp",
+                                "src": "/photo-gen/achievements/2025.04.09/1-md.webp",
                                 "width": 960,
                                 "height": 640,
                                 "bytes": 31830
                             },
                             "lg": {
-                                "src": "/photo-gen/competitions/2025.04.09/1-lg.webp",
+                                "src": "/photo-gen/achievements/2025.04.09/1-lg.webp",
                                 "width": 1600,
                                 "height": 1067,
                                 "bytes": 67086
                             }
                         },
-                        "srcSet": "/photo-gen/competitions/2025.04.09/1-sm.webp 480w, /photo-gen/competitions/2025.04.09/1-md.webp 960w, /photo-gen/competitions/2025.04.09/1-lg.webp 1600w"
+                        "srcSet": "/photo-gen/achievements/2025.04.09/1-sm.webp 480w, /photo-gen/achievements/2025.04.09/1-md.webp 960w, /photo-gen/achievements/2025.04.09/1-lg.webp 1600w"
                     },
                     {
                         "id": "2",
                         "variants": {
                             "sm": {
-                                "src": "/photo-gen/competitions/2025.04.09/2-sm.webp",
+                                "src": "/photo-gen/achievements/2025.04.09/2-sm.webp",
                                 "width": 480,
                                 "height": 347,
                                 "bytes": 27634
                             },
                             "md": {
-                                "src": "/photo-gen/competitions/2025.04.09/2-md.webp",
+                                "src": "/photo-gen/achievements/2025.04.09/2-md.webp",
                                 "width": 960,
                                 "height": 694,
                                 "bytes": 74750
                             },
                             "lg": {
-                                "src": "/photo-gen/competitions/2025.04.09/2-lg.webp",
+                                "src": "/photo-gen/achievements/2025.04.09/2-lg.webp",
                                 "width": 1392,
                                 "height": 1006,
                                 "bytes": 125550
                             }
                         },
-                        "srcSet": "/photo-gen/competitions/2025.04.09/2-sm.webp 480w, /photo-gen/competitions/2025.04.09/2-md.webp 960w, /photo-gen/competitions/2025.04.09/2-lg.webp 1392w"
+                        "srcSet": "/photo-gen/achievements/2025.04.09/2-sm.webp 480w, /photo-gen/achievements/2025.04.09/2-md.webp 960w, /photo-gen/achievements/2025.04.09/2-lg.webp 1392w"
                     }
                 ]
             },
@@ -3715,74 +3715,74 @@ export const mediaManifest: MediaManifest = {
                     "id": "cover",
                     "variants": {
                         "sm": {
-                            "src": "/photo-gen/competitions/2025.08.03/cover-sm.webp",
+                            "src": "/photo-gen/achievements/2025.08.03/cover-sm.webp",
                             "width": 480,
                             "height": 360,
                             "bytes": 33208
                         },
                         "md": {
-                            "src": "/photo-gen/competitions/2025.08.03/cover-md.webp",
+                            "src": "/photo-gen/achievements/2025.08.03/cover-md.webp",
                             "width": 960,
                             "height": 720,
                             "bytes": 106660
                         },
                         "lg": {
-                            "src": "/photo-gen/competitions/2025.08.03/cover-lg.webp",
+                            "src": "/photo-gen/achievements/2025.08.03/cover-lg.webp",
                             "width": 1600,
                             "height": 1200,
                             "bytes": 243348
                         }
                     },
-                    "srcSet": "/photo-gen/competitions/2025.08.03/cover-sm.webp 480w, /photo-gen/competitions/2025.08.03/cover-md.webp 960w, /photo-gen/competitions/2025.08.03/cover-lg.webp 1600w"
+                    "srcSet": "/photo-gen/achievements/2025.08.03/cover-sm.webp 480w, /photo-gen/achievements/2025.08.03/cover-md.webp 960w, /photo-gen/achievements/2025.08.03/cover-lg.webp 1600w"
                 },
                 "gallery": [
                     {
                         "id": "1",
                         "variants": {
                             "sm": {
-                                "src": "/photo-gen/competitions/2025.08.03/1-sm.webp",
+                                "src": "/photo-gen/achievements/2025.08.03/1-sm.webp",
                                 "width": 480,
                                 "height": 360,
                                 "bytes": 39380
                             },
                             "md": {
-                                "src": "/photo-gen/competitions/2025.08.03/1-md.webp",
+                                "src": "/photo-gen/achievements/2025.08.03/1-md.webp",
                                 "width": 960,
                                 "height": 720,
                                 "bytes": 133354
                             },
                             "lg": {
-                                "src": "/photo-gen/competitions/2025.08.03/1-lg.webp",
+                                "src": "/photo-gen/achievements/2025.08.03/1-lg.webp",
                                 "width": 1600,
                                 "height": 1200,
                                 "bytes": 339336
                             }
                         },
-                        "srcSet": "/photo-gen/competitions/2025.08.03/1-sm.webp 480w, /photo-gen/competitions/2025.08.03/1-md.webp 960w, /photo-gen/competitions/2025.08.03/1-lg.webp 1600w"
+                        "srcSet": "/photo-gen/achievements/2025.08.03/1-sm.webp 480w, /photo-gen/achievements/2025.08.03/1-md.webp 960w, /photo-gen/achievements/2025.08.03/1-lg.webp 1600w"
                     },
                     {
                         "id": "2",
                         "variants": {
                             "sm": {
-                                "src": "/photo-gen/competitions/2025.08.03/2-sm.webp",
+                                "src": "/photo-gen/achievements/2025.08.03/2-sm.webp",
                                 "width": 480,
                                 "height": 337,
                                 "bytes": 19300
                             },
                             "md": {
-                                "src": "/photo-gen/competitions/2025.08.03/2-md.webp",
+                                "src": "/photo-gen/achievements/2025.08.03/2-md.webp",
                                 "width": 960,
                                 "height": 674,
                                 "bytes": 53370
                             },
                             "lg": {
-                                "src": "/photo-gen/competitions/2025.08.03/2-lg.webp",
+                                "src": "/photo-gen/achievements/2025.08.03/2-lg.webp",
                                 "width": 1530,
                                 "height": 1074,
                                 "bytes": 98572
                             }
                         },
-                        "srcSet": "/photo-gen/competitions/2025.08.03/2-sm.webp 480w, /photo-gen/competitions/2025.08.03/2-md.webp 960w, /photo-gen/competitions/2025.08.03/2-lg.webp 1530w"
+                        "srcSet": "/photo-gen/achievements/2025.08.03/2-sm.webp 480w, /photo-gen/achievements/2025.08.03/2-md.webp 960w, /photo-gen/achievements/2025.08.03/2-lg.webp 1530w"
                     }
                 ]
             },
@@ -3791,50 +3791,50 @@ export const mediaManifest: MediaManifest = {
                     "id": "cover",
                     "variants": {
                         "sm": {
-                            "src": "/photo-gen/competitions/2025.09.06/cover-sm.webp",
+                            "src": "/photo-gen/achievements/2025.09.06/cover-sm.webp",
                             "width": 480,
                             "height": 270,
                             "bytes": 19256
                         },
                         "md": {
-                            "src": "/photo-gen/competitions/2025.09.06/cover-md.webp",
+                            "src": "/photo-gen/achievements/2025.09.06/cover-md.webp",
                             "width": 960,
                             "height": 540,
                             "bytes": 65120
                         },
                         "lg": {
-                            "src": "/photo-gen/competitions/2025.09.06/cover-lg.webp",
+                            "src": "/photo-gen/achievements/2025.09.06/cover-lg.webp",
                             "width": 1600,
                             "height": 900,
                             "bytes": 153800
                         }
                     },
-                    "srcSet": "/photo-gen/competitions/2025.09.06/cover-sm.webp 480w, /photo-gen/competitions/2025.09.06/cover-md.webp 960w, /photo-gen/competitions/2025.09.06/cover-lg.webp 1600w"
+                    "srcSet": "/photo-gen/achievements/2025.09.06/cover-sm.webp 480w, /photo-gen/achievements/2025.09.06/cover-md.webp 960w, /photo-gen/achievements/2025.09.06/cover-lg.webp 1600w"
                 },
                 "gallery": [
                     {
                         "id": "1",
                         "variants": {
                             "sm": {
-                                "src": "/photo-gen/competitions/2025.09.06/1-sm.webp",
+                                "src": "/photo-gen/achievements/2025.09.06/1-sm.webp",
                                 "width": 480,
                                 "height": 339,
                                 "bytes": 15538
                             },
                             "md": {
-                                "src": "/photo-gen/competitions/2025.09.06/1-md.webp",
+                                "src": "/photo-gen/achievements/2025.09.06/1-md.webp",
                                 "width": 960,
                                 "height": 678,
                                 "bytes": 44548
                             },
                             "lg": {
-                                "src": "/photo-gen/competitions/2025.09.06/1-lg.webp",
+                                "src": "/photo-gen/achievements/2025.09.06/1-lg.webp",
                                 "width": 1524,
                                 "height": 1076,
                                 "bytes": 82462
                             }
                         },
-                        "srcSet": "/photo-gen/competitions/2025.09.06/1-sm.webp 480w, /photo-gen/competitions/2025.09.06/1-md.webp 960w, /photo-gen/competitions/2025.09.06/1-lg.webp 1524w"
+                        "srcSet": "/photo-gen/achievements/2025.09.06/1-sm.webp 480w, /photo-gen/achievements/2025.09.06/1-md.webp 960w, /photo-gen/achievements/2025.09.06/1-lg.webp 1524w"
                     }
                 ]
             }

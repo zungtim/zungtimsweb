@@ -16,7 +16,7 @@ const MEDIA_PIPELINE_VERSION = 'auto-orient-v1';
 
 const MODULES = [
     { name: 'travel', requireCover: true },
-    { name: 'competitions', requireCover: false },
+    { name: 'achievements', requireCover: false },
     { name: 'research', requireCover: true },
 ];
 
@@ -308,7 +308,7 @@ async function main() {
         generatedAt: new Date().toISOString(),
         modules: {
             travel: {},
-            competitions: {},
+            achievements: {},
             research: {},
         },
     };

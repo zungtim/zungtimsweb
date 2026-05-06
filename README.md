@@ -23,7 +23,7 @@ The website now uses a **content-data + source-images** pipeline.
 ### 2) Put source images
 
 - Travel source folder: `public/photo-src/travel/<entry-id>/`
-- Achievement source folder: `public/photo-src/competitions/<entry-id>/`
+- Achievement source folder: `public/photo-src/achievements/<entry-id>/`
 
 Filename rules (strict):
 - Cover image: `cover.*`
