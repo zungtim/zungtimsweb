@@ -39,9 +39,9 @@ const researchData: ResearchItem[] = [
       },
     ],
     metrics: [
-      'PANI-A-CNT/IL/ABS 体系表面电阻降至约 10^8 Ω',
-      'C12mimBr 促进 CNT 束解离与三维导电网络形成',
-      '拉伸强度 51.27 -> 53.14 MPa；冲击强度 9.66 -> 10.7 kJ/m²'
+      'PANI-A-CNT/IL/ABS 体系表面电阻降至约 10^9 Ω，实现抗静电效果',
+      '离子液体（C12mimBr） 促进 CNT 束解离与三维导电网络形成',
+      '保持ABS材料原有的力学与机械性能'
     ],
     images: [
       {
