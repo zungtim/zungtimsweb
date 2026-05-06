@@ -33,15 +33,20 @@ export interface ResearchImage {
   caption: string;
 }
 
+export interface ResearchSection {
+  title: string;
+  body: string;
+}
+
 export interface ResearchItem {
   id: string;
   type: 'research' | 'patent';
   title: string;
   role: string;
   date: string;
+  status: string;
   tags: string[];
-  background: string;
-  methodology: string;
+  sections: ResearchSection[];
   metrics: string[];
   images: ResearchImage[];
   citation?: ReactNode;
