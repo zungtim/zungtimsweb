@@ -18,7 +18,7 @@ const researchData: ResearchItem[] = [
     title: '苯乙烯-马来酸酐共聚物接枝改性碳纳米管/ABS永久抗静电复合材料的制备及性能研究',
     role: '第一负责人',
     date: '2025.10 - 2026.07',
-    status: '中期检查 · 方向调整',
+    status: '中期检查 ',
     tags: ['SMA-g-CNT', '苯乙烯-马来酸酐共聚物', '氨基化碳纳米管', '界面相容性', '永久抗静电', 'ABS树脂'],
     sections: [
       {
