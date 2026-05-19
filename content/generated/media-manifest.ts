@@ -1,7 +1,7 @@
 import type { MediaManifest } from '../../types/content';
 
 export const mediaManifest: MediaManifest = {
-    "generatedAt": "2026-05-06T05:04:29.354Z",
+    "generatedAt": "2026-05-19T07:35:19.866Z",
     "modules": {
         "travel": {
             "2024.08.05": {
@@ -3864,6 +3864,33 @@ export const mediaManifest: MediaManifest = {
                         }
                     },
                     "srcSet": "/photo-gen/research/antistatic-composite/cover-sm.webp 480w, /photo-gen/research/antistatic-composite/cover-md.webp 960w, /photo-gen/research/antistatic-composite/cover-lg.webp 1600w"
+                },
+                "gallery": []
+            },
+            "sma-g-cnt-composite": {
+                "cover": {
+                    "id": "cover",
+                    "variants": {
+                        "sm": {
+                            "src": "/photo-gen/research/sma-g-cnt-composite/cover-sm.webp",
+                            "width": 480,
+                            "height": 130,
+                            "bytes": 9412
+                        },
+                        "md": {
+                            "src": "/photo-gen/research/sma-g-cnt-composite/cover-md.webp",
+                            "width": 960,
+                            "height": 261,
+                            "bytes": 24490
+                        },
+                        "lg": {
+                            "src": "/photo-gen/research/sma-g-cnt-composite/cover-lg.webp",
+                            "width": 1201,
+                            "height": 326,
+                            "bytes": 32206
+                        }
+                    },
+                    "srcSet": "/photo-gen/research/sma-g-cnt-composite/cover-sm.webp 480w, /photo-gen/research/sma-g-cnt-composite/cover-md.webp 960w, /photo-gen/research/sma-g-cnt-composite/cover-lg.webp 1201w"
                 },
                 "gallery": []
             }
