@@ -79,7 +79,7 @@ export const Hero: React.FC = () => {
               Hi，我是黄颂添，Zungtim Wong，一名热衷于探索世界、热爱生活的"奔三青年"。
                </p>
                <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-              虽然我的本专业是<span className="font-semibold text-slate-800 dark:text-slate-200">化学工程</span>，但我对其他学科领域也充满热情，包括但不限于<span className="font-semibold text-slate-800 dark:text-slate-200">计算机科学</span>、<span className="font-semibold text-slate-800 dark:text-slate-200">电子科学</span>和<span className="font-semibold text-slate-800 dark:text-slate-200">地理科学</span>。无论是探究化学过程的精细控制，还是构建一个系统的前后端逻辑，亦或是用眼睛和脚步丈量世界的尺寸，我都始终保持着 <span className="text-xl italic font-serif text-slate-800 dark:text-slate-200 font-semibold">"Stay Hungry, Stay Foolish"</span> 的态度。
+              虽然我的本专业是<span className="font-semibold text-slate-800 dark:text-slate-200">化学工程</span>，但我对其他学科领域也充满热情，包括但不限于<span className="font-semibold text-slate-800 dark:text-slate-200">计算机科学</span>、<span className="font-semibold text-slate-800 dark:text-slate-200">电子科学</span>和<span className="font-semibold text-slate-800 dark:text-slate-200">地理科学</span>。无论是探究化学过程的精细控制，还是探索电子信息科学的精妙，亦或是用眼睛和脚步丈量世界的尺寸，我都始终保持着 <span className="text-xl italic font-serif text-slate-800 dark:text-slate-200 font-semibold">"Stay Hungry, Stay Foolish"</span> 的态度。
             </p>
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
