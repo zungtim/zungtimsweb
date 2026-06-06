@@ -9,13 +9,14 @@ const MetricIcon = ({ index }: { index: number }) => {
   return <Icon className="w-5 h-5" />;
 };
 
-const researchIntro = '本科阶段科研实践以 ABS 抗静电复合材料和有机硅压敏胶为主要体系，围绕工程塑料抗静电改性、导电纳米填料分散与导电网络构筑、有机硅压敏胶的硅烷偶联界面粘附增强等方向展开，探究材料微观结构、界面作用与导电性能、力学性能及服役稳定性之间的关系。';
+const researchIntro = '本科阶段主要围绕功能高分子材料中的界面调控与性能优化问题展开，在有机硅橡胶材料和ABS导电复合材料两个体系中开展科研训练，分别关注改性硅烷偶联剂对硅橡胶的界面作用和纳米功能组分（改性碳纳米管）在聚合物基体中相容性表现这两个主要方向，探究界面作用对聚合物基体分散稳定性、界面相容性及其对材料机械性能、力学性能和服役稳定性的影响。 ';
 
 const researchData: ResearchItem[] = [
   {
     id: '1',
     type: 'research',
     title: '苯乙烯-马来酸酐共聚物接枝改性碳纳米管/ABS永久抗静电复合材料的制备及性能研究',
+    subtitle: '2026年大学生创新训练项目',
     role: '第一负责人',
     date: '2025.10 - 2026.07',
     status: '中期检查 ',
@@ -64,6 +65,7 @@ const researchData: ResearchItem[] = [
     id: '2',
     type: 'patent',
     title: '一种通过改性硅烷偶联剂增强粘附性的有机硅压敏胶',
+    subtitle: '中国发明专利',
     role: '第二发明人',
     date: '2025.07.01',
     status: '专利公开',
@@ -83,7 +85,7 @@ const researchData: ResearchItem[] = [
       },
       {
         title: '关键结果与应用价值',
-        body: '专利文本显示，该体系在常温和高温条件下剥离力可达 1500 gf/inch，在低温和高温条件下可达 1200 gf/inch；持粘性能可达到 1 kg/72 h 无位移，并可在 -50°C 至 100°C 范围内保持较好的粘附性能。该方案通过偶联剂分子设计与多组分界面增强，提高了有机硅压敏胶在复杂服役环境下的粘附可靠性，适用于电子保护、耐温胶带和功能性界面材料等方向。',
+        body: '该体系在常温和高温条件下剥离力可达 1500 gf/inch，在低温和高温条件下可达 1200 gf/inch；持粘性能可达到 1 kg/72 h 无位移，并可在 -50°C 至 100°C 范围内保持较好的粘附性能。该方案通过偶联剂分子设计与多组分界面增强，提高了有机硅压敏胶在复杂服役环境下的粘附可靠性，适用于电子保护、耐温胶带和功能性界面材料等方向。',
       },
     ],
     metrics: [
@@ -227,6 +229,9 @@ export const Research: React.FC = () => {
                                                 <h3 className="mt-3 line-clamp-2 text-sm font-semibold leading-relaxed text-slate-900 dark:text-white">
                                                     {item.title}
                                                 </h3>
+                                                <p className={`mt-2 text-xs font-semibold ${colors.text}`}>
+                                                    {item.subtitle}
+                                                </p>
                                                 <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">{item.role}</p>
                                                 <p className={`mt-2 inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold ${colors.chip}`}>
                                                     {item.status}
@@ -257,6 +262,9 @@ export const Research: React.FC = () => {
                                     <h3 className="mt-4 text-2xl font-bold leading-tight text-slate-900 dark:text-white sm:text-[2rem]">
                                         {currentItem.title}
                                     </h3>
+                                    <p className={`mt-3 text-sm font-semibold sm:text-base ${activeColors.text}`}>
+                                        {currentItem.subtitle}
+                                    </p>
                                 </div>
 
                                 <div className="flex shrink-0 flex-col gap-2 text-sm text-slate-500 dark:text-slate-400 lg:items-end">

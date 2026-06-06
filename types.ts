@@ -42,6 +42,7 @@ export interface ResearchItem {
   id: string;
   type: 'research' | 'patent';
   title: string;
+  subtitle: string;
   role: string;
   date: string;
   status: string;
