@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Heart, Github, Mail, MapPin, X } from 'lucide-react';
+import { Heart, Mail, MapPin, X } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -45,15 +45,6 @@ export const Footer: React.FC = () => {
                 >
                   <Mail className="h-4 w-4" />
                 </button>
-                <a
-                  href="https://github.com/zungtim/zungtimsweb"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="ui-focus-ring ui-ghost-btn inline-flex h-10 w-10 items-center justify-center"
-                  aria-label="GitHub"
-                >
-                  <Github className="h-4 w-4" />
-                </a>
                 <a
                   href="#"
                   className="ui-focus-ring ui-ghost-btn inline-flex h-10 w-10 items-center justify-center"
