@@ -9,7 +9,7 @@ This repository contains the source code and content pipeline for my personal ho
 Main sections:
 
 - About: profile, short bio, and contact entry.
-- Research: current academic interests and preparation.
+- Research: cold ion-molecule reaction-dynamics interests, scientific questions, and a conceptual experimental-method framework.
 - Background: education, compact undergraduate research/patent records, and honors with optional details and galleries.
 - Travel: scroll-linked photographic scenes and responsive travel galleries.
 
@@ -122,7 +122,8 @@ Primary content locations:
 content/travel.tsx
 content/achievements.ts
 content/research.tsx       # Undergraduate archive, not future graduate projects
-content/profile.ts        # Public identity, email, and research interests
+content/profile.ts        # Public identity and contact; re-exports the interest index
+content/research-focus.ts # Shared interest index, Research overview, questions, methods
 ```
 
 Media helper code:

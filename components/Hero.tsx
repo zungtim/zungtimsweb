@@ -50,13 +50,13 @@ export const Hero: React.FC = () => {
           <div className="section-label">
             <p className="eyebrow">01 / Research</p>
             <h2 id="home-interests-title">研究兴趣</h2>
-            <Link to="/research" className="ui-focus-ring text-link">全部方向 <ArrowUpRight size={16} /></Link>
+            <Link to="/research" className="ui-focus-ring text-link">研究概述 <ArrowUpRight size={16} /></Link>
           </div>
           <div className="interest-index">
             {researchInterests.map((interest) => (
               <div key={interest.id} className="interest-row">
                 <span className="index-number">{interest.id}</span>
-                <div><h3>{interest.title}</h3><p>{interest.english}</p></div>
+                <div><span className="interest-context">{interest.context}</span><h3>{interest.title}</h3><p lang="en">{interest.english}</p></div>
               </div>
             ))}
           </div>

@@ -11,6 +11,7 @@ React 19 + TypeScript + Vite personal website with Tailwind CSS styling. A bilin
 - Undergraduate research should be brief historical background in the proposed redesign, not the future site's primary research focus. Keep Travel as a distinct personal section, and do not publish private context retrieved from other chats without confirmation.
 - The user subsequently rejected the literary/editorial visual treatment. Use a practical scientific/technical profile: sans-serif headings, restrained cyan accents, compact metadata, and useful interactions. Do not restore the removed temporary preparation-status badge, age-based greeting, or generic undergraduate interdisciplinary bio.
 - By interaction, the user means page motion and UI response, not additional search/filter/view controls. Travel uses scroll-linked full-bleed photo scenes, thumbnail scene navigation, and restrained pointer/hover feedback. Do not restore its removed toolbar without a new request.
+- The user approved a Research-interest main line of cold ion-molecule reaction dynamics on 2026-10-29. Present its overview, scientific questions, and method context as interests, not completed work or technical credentials. Keep publications, references, and current-project sections absent until their specific public content is confirmed. This approval does not authorize publishing institutional/advisor relationships or private research material.
 
 ## Build Commands
 
@@ -58,6 +59,7 @@ npm install
 │   ├── achievements.ts          # Achievement entries
 │   ├── media.ts                 # Media manifest helpers
 │   ├── profile.ts               # Public identity, research-focused bio, contact, interests
+│   ├── research-focus.ts        # Shared interest index, overview, questions, method context
 │   ├── research.tsx             # Preserved undergraduate project/patent records
 │   ├── travel.tsx               # Travel entries with rich descriptions
 │   └── generated/
@@ -100,7 +102,8 @@ Travel, achievement, and selected research images use a content-data plus genera
 
 - Travel content lives in `content/travel.tsx`.
 - Achievement content lives in `content/achievements.ts`.
-- Research-interest labels and public profile/contact information live in `content/profile.ts`.
+- Public profile/contact information lives in `content/profile.ts`, which re-exports the shared research-interest index for the homepage.
+- Current Research-interest labels, overview, questions, and method context live in `content/research-focus.ts`. The homepage and Research page share this source; keep the discipline, research focus, and method perspective distinct. The method flow is a conceptual illustration, not an apparatus or results diagram.
 - Undergraduate research records live in `content/research.tsx`, displayed briefly in Background with optional original records/images. Do not add future graduate projects to this historical archive or present interests as completed work.
 - Travel source images live in `public/photo-src/travel/<entry-id>/`.
 - Achievement source images live in `public/photo-src/achievements/<entry-id>/`.
@@ -253,6 +256,7 @@ if (!rootElement) {
 - `usePageMotion()` adds one-time viewport reveals to individual content blocks. Do not transform ancestors of fixed overlays or the sticky Travel stage. Respect `prefers-reduced-motion` and keep content visible when motion is unavailable.
 - Use `getMediaImages()` for cover/gallery deduplication by media ID and photo counts. Do not read EXIF/GPS or invent map locations to add Travel interactions.
 - Travel cover framing uses manifest dimensions and the actual stage aspect ratio. Preserve portrait images and heavily mismatched compositions with `contain`, without zoom/parallax cropping; only suitable landscape compositions fill the stage. Keep captions separate from contained photos, including on narrow and short screens. Do not replace source photos to solve layout problems without authorization.
+- Travel transitions keep at most two self-contained scene layers. Each layer owns its image fit, background, and caption; never apply the destination's framing to the outgoing image. Decode the destination cover before committing its title/gallery identity, keep only the latest pending destination, and make outgoing layers inert. Thumbnail navigation jumps directly to the target scroll position; the scene crossfade supplies the motion. Preserve reduced-motion fallback, loading/error feedback, and retry behavior.
 
 ## Common Patterns
 

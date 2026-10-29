@@ -133,7 +133,8 @@ public/photo-src/achievements/2026.05.01/
 
 2026-10-20 起，Research 以研究兴趣为主，本科项目和专利归入 Background。没有经确认的公开笔记或论文时，不展示空栏目。
 
-- 首页姓名、研究导向简介、邮箱、头像和研究兴趣：`content/profile.ts`。不再使用临时阶段标签或旧的本科泛兴趣简介。
+- 首页姓名、研究导向简介、邮箱和头像：`content/profile.ts`。不再使用临时阶段标签或旧的本科泛兴趣简介。
+- Research 的研究兴趣与详细文案：`content/research-focus.ts`。首页通过 `content/profile.ts` 复用其中的简短索引，不需要维护两份研究方向名称。
 - Research 页面布局：`components/Research.tsx`。
 - Background 页面组合：`components/Background.tsx`。
 - 教育记录：`components/Education.tsx`。
@@ -142,7 +143,18 @@ public/photo-src/achievements/2026.05.01/
 - 内容进入视口时的过渡：`hooks/usePageMotion.ts`，配合 `styles/site.css`；不要给固定弹窗或 Travel 的 sticky 容器祖先添加位移。
 - 原 `/education` 与 `/achievements` 地址会转到 `/background`，旧链接仍可使用。
 
-### 需要修改的内容文件
+### 更新当前研究兴趣
+
+2026-10-29 确认以“低温离子—分子反应动力学”为兴趣主线。`content/research-focus.ts` 中：
+
+- `researchInterests`：首页的简短索引，分别标明学科背景、研究主线和方法视角。
+- `researchFocus`：Research 概述与方法引言；`primaryInterestId` 必须对应 `researchInterests` 中的一条 `id`。
+- `researchQuestions`：科学问题、简短说明，以及展开后的变量与观测线索。
+- `researchMethods`：方法框架示意的步骤与说明。
+
+这些内容表达研究兴趣，不应填写为已经取得的成果或已经掌握的技术。没有逐条确认的公开材料时，不新增论文、参考文献或项目占位。
+
+### 更新本科历史记录
 
 ```text
 content/research.tsx

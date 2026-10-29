@@ -54,3 +54,24 @@ export interface AchievementContentEntry extends ContentEntry {
     level: 'National' | 'Provincial' | 'Municipal';
 }
 
+export interface ResearchInterestEntry {
+    id: string;
+    context: string;
+    title: string;
+    english: string;
+}
+
+export interface ResearchQuestionEntry {
+    id: string;
+    title: string;
+    summary: string;
+    details: { label: string; body: string }[];
+}
+
+export interface ResearchMethodEntry {
+    id: string;
+    title: string;
+    english: string;
+    summary: string;
+}
+
