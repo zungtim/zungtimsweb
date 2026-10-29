@@ -1,5 +1,5 @@
 ﻿import { mediaManifest } from './generated/media-manifest';
-import type { EntryMediaRef, MediaImage, MediaModule, MediaVariant, MediaVariantKey } from '../types/content';
+import type { EntryMediaRef, MediaEntry, MediaImage, MediaModule, MediaVariant, MediaVariantKey } from '../types/content';
 
 const variantPreference: MediaVariantKey[] = ['lg', 'md', 'sm'];
 
@@ -9,6 +9,14 @@ export function getMediaEntry(ref: EntryMediaRef | undefined) {
     }
 
     return mediaManifest.modules[ref.module]?.[ref.entryId];
+}
+
+export function getMediaImages(entry: MediaEntry | undefined): MediaImage[] {
+    if (!entry) {
+        return [];
+    }
+
+    return Array.from(new Map([entry.cover, ...entry.gallery].map((image) => [image.id, image])).values());
 }
 
 function pickVariant(image: MediaImage, preferred: MediaVariantKey): MediaVariant {

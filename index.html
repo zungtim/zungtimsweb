@@ -1,264 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>Zungtim Wong | Personal website</title>
-  
   <meta name="robots" content="noindex, nofollow" />
-
   <meta property="og:title" content="ZungTim 的个人主页" />
-  <meta property="og:description" content="Hi，这是我的个人作品集。内含化学工程研究与计算机科学项目的详细介绍，欢迎查阅。" />
+  <meta property="og:description" content="Zungtim Wong · 研究兴趣、个人经历与旅行记录。" />
   <meta property="og:image" content="/photo/avatar.jpg" />
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/site.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
-          colors: {
-            primary: '#0f2742',
-            secondary: '#35546f',
-            accent: '#1e8f80',
-          },
+          colors: { primary: '#20292e', secondary: '#617079', accent: '#087f8c' },
           fontFamily: {
             sans: ['Noto Sans', 'system-ui', 'sans-serif'],
-            serif: ['Source Serif 4', 'Georgia', 'serif'],
-          },
-          animation: {
-            'fade-in': 'fadeIn 0.6s ease-out',
-            'slide-up': 'slideUp 0.6s ease-out',
-          },
-          keyframes: {
-            fadeIn: {
-              '0%': { opacity: '0' },
-              '100%': { opacity: '1' },
-            },
-            slideUp: {
-              '0%': { opacity: '0', transform: 'translateY(20px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            },
+            serif: ['Noto Sans', 'system-ui', 'sans-serif'],
           },
         },
       },
-    }
+    };
   </script>
-  
-  <style>
-    :root {
-      --ui-bg: #f6f8fb;
-      --ui-bg-soft: #eef2f7;
-      --ui-surface: #ffffff;
-      --ui-border: rgba(15, 39, 66, 0.12);
-      --ui-border-strong: rgba(15, 39, 66, 0.2);
-      --ui-text: #12263a;
-      --ui-text-muted: #53687d;
-      --ui-brand: #0f2742;
-      --ui-brand-soft: #1f3f63;
-      --ui-accent: #1e8f80;
-      --ui-cta-bg: #1b446a;
-      --ui-cta-bg-hover: #245783;
-      --ui-cta-text: #f4f8fc;
-      --ui-shadow-sm: 0 1px 2px rgba(15, 39, 66, 0.06), 0 8px 20px rgba(15, 39, 66, 0.06);
-      --ui-shadow-md: 0 1px 2px rgba(15, 39, 66, 0.08), 0 12px 30px rgba(15, 39, 66, 0.1);
-      --ui-shadow-lg: 0 2px 4px rgba(15, 39, 66, 0.1), 0 20px 44px rgba(15, 39, 66, 0.14);
-      --ui-radius-xl: 1rem;
-      --ui-radius-2xl: 1.35rem;
-      --ui-radius-3xl: 1.6rem;
-      --ui-ease: cubic-bezier(0.2, 0.72, 0.2, 1);
-      --ui-grid: rgba(15, 39, 66, 0.08);
-    }
-
-    html.dark {
-      --ui-bg: #0a1320;
-      --ui-bg-soft: #0f1b2a;
-      --ui-surface: rgba(13, 24, 39, 0.88);
-      --ui-border: rgba(133, 156, 181, 0.22);
-      --ui-border-strong: rgba(133, 156, 181, 0.36);
-      --ui-text: #e4edf6;
-      --ui-text-muted: #9cb0c5;
-      --ui-brand: #d9e9fb;
-      --ui-brand-soft: #b3d0ef;
-      --ui-accent: #57c9b8;
-      --ui-cta-bg: #2a5f81;
-      --ui-cta-bg-hover: #34739a;
-      --ui-cta-text: #f2fbff;
-      --ui-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 28px rgba(0, 0, 0, 0.28);
-      --ui-shadow-md: 0 2px 6px rgba(0, 0, 0, 0.36), 0 16px 34px rgba(0, 0, 0, 0.34);
-      --ui-shadow-lg: 0 4px 10px rgba(0, 0, 0, 0.42), 0 22px 44px rgba(0, 0, 0, 0.42);
-      --ui-grid: rgba(133, 156, 181, 0.11);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-    
-    html.dark {
-      color-scheme: dark;
-    }
-
-    body {
-      background:
-        radial-gradient(circle at 15% 10%, rgba(30, 143, 128, 0.08), transparent 42%),
-        radial-gradient(circle at 82% 14%, rgba(15, 39, 66, 0.08), transparent 35%),
-        linear-gradient(180deg, var(--ui-bg), var(--ui-bg-soft));
-      color: var(--ui-text);
-      font-family: 'Noto Sans', system-ui, sans-serif;
-      letter-spacing: 0.01em;
-    }
-
-    .ui-page-bg {
-      background-image:
-        linear-gradient(var(--ui-grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--ui-grid) 1px, transparent 1px);
-      background-size: 30px 30px;
-      mask-image: radial-gradient(circle at center, black 55%, transparent 100%);
-      opacity: 0.46;
-    }
-
-    .ui-section-head {
-      margin-bottom: 3.5rem;
-      text-align: center;
-    }
-
-    .ui-subtle-panel {
-      border: 1px solid var(--ui-border);
-      background: color-mix(in srgb, var(--ui-surface) 88%, transparent);
-      border-radius: 1rem;
-    }
-
-    .ui-section {
-      padding-top: 6rem;
-      padding-bottom: 6rem;
-      min-height: calc(100vh - 64px);
-    }
-
-    .ui-shell {
-      width: 100%;
-      max-width: 76rem;
-      margin-inline: auto;
-    }
-
-    .ui-surface {
-      background: var(--ui-surface);
-      border: 1px solid var(--ui-border);
-      border-radius: var(--ui-radius-2xl);
-      box-shadow: var(--ui-shadow-sm);
-      transition: border-color 220ms var(--ui-ease), box-shadow 220ms var(--ui-ease);
-    }
-
-    .ui-surface:hover {
-      border-color: var(--ui-border-strong);
-      box-shadow: var(--ui-shadow-md);
-    }
-
-    .ui-chip {
-      border: 1px solid var(--ui-border);
-      border-radius: 9999px;
-      background: color-mix(in srgb, var(--ui-surface) 88%, transparent);
-      color: var(--ui-text-muted);
-    }
-
-    .ui-primary-btn {
-      border-radius: 0.95rem;
-      background: linear-gradient(135deg, var(--ui-cta-bg), color-mix(in srgb, var(--ui-accent) 30%, var(--ui-cta-bg)));
-      color: var(--ui-cta-text);
-      border: 1px solid color-mix(in srgb, var(--ui-accent) 22%, transparent);
-      transition: transform 180ms var(--ui-ease), box-shadow 180ms var(--ui-ease), background-color 180ms var(--ui-ease);
-      box-shadow: var(--ui-shadow-sm);
-    }
-
-    .ui-primary-btn:hover {
-      background: linear-gradient(135deg, var(--ui-cta-bg-hover), color-mix(in srgb, var(--ui-accent) 36%, var(--ui-cta-bg-hover)));
-      box-shadow: var(--ui-shadow-md);
-      transform: translateY(-1px);
-    }
-
-    .ui-ghost-btn {
-      border-radius: 0.95rem;
-      border: 1px solid var(--ui-border);
-      background: color-mix(in srgb, var(--ui-surface) 92%, transparent);
-      color: var(--ui-text);
-      transition: border-color 180ms var(--ui-ease), background-color 180ms var(--ui-ease), transform 180ms var(--ui-ease);
-    }
-
-    .ui-ghost-btn:hover {
-      border-color: var(--ui-border-strong);
-      background: color-mix(in srgb, var(--ui-surface) 96%, var(--ui-accent) 4%);
-      transform: translateY(-1px);
-    }
-
-    .ui-focus-ring:focus-visible {
-      outline: 2px solid var(--ui-accent);
-      outline-offset: 2px;
-    }
-
-    .ui-text-gradient {
-      background: linear-gradient(140deg, var(--ui-brand) 0%, var(--ui-accent) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 3px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #94a3b8;
-    }
-    html.dark ::-webkit-scrollbar-thumb {
-      background: #475569;
-    }
-    html.dark ::-webkit-scrollbar-thumb:hover {
-      background: #64748b;
-    }
-    
-    ::selection {
-      background: color-mix(in srgb, var(--ui-accent) 24%, transparent);
-      color: inherit;
-    }
-    
-    /* ImageLoader Skeleton Shimmer */
-    @keyframes shimmer {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-    .animate-shimmer {
-      animation: shimmer 1.5s infinite;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
-      }
-    }
-  </style>
-  
   <script type="importmap">
 {
   "imports": {
@@ -271,9 +39,8 @@
 }
   </script>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased">
+<body>
   <div id="root"></div>
-  
-  <script type="module" src="/index.tsx"></script> 
+  <script type="module" src="/index.tsx"></script>
 </body>
 </html>

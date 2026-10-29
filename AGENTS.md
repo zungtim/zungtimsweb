@@ -4,6 +4,14 @@
 
 React 19 + TypeScript + Vite personal website with Tailwind CSS styling. A bilingual (English/Chinese) portfolio website showcasing education, research, achievements, and travel experiences.
 
+## Website Direction
+
+- Read `WEBSITE_ROADMAP.md` before proposing future UI, content-structure, privacy, or publishing changes. It records the user's tentative graduate-oriented academic-site direction and the dated architecture assessment.
+- The first graduate-oriented UI iteration was implemented at the user's request on 2026-10-20. This does not authorize additional content rewrites, media removal, repository visibility changes, Git-history changes, or publishing. The roadmap's privacy assessment remains a dated assessment, not a completed remediation list.
+- Undergraduate research should be brief historical background in the proposed redesign, not the future site's primary research focus. Keep Travel as a distinct personal section, and do not publish private context retrieved from other chats without confirmation.
+- The user subsequently rejected the literary/editorial visual treatment. Use a practical scientific/technical profile: sans-serif headings, restrained cyan accents, compact metadata, and useful interactions. Do not restore the removed temporary preparation-status badge, age-based greeting, or generic undergraduate interdisciplinary bio.
+- By interaction, the user means page motion and UI response, not additional search/filter/view controls. Travel uses scroll-linked full-bleed photo scenes, thumbnail scene navigation, and restrained pointer/hover feedback. Do not restore its removed toolbar without a new request.
+
 ## Build Commands
 
 ```bash
@@ -35,17 +43,22 @@ npm install
 ```text
 .
 ├── components/                  # React components
-│   ├── Hero.tsx                 # Landing page with avatar, bio, and contact modal
+│   ├── Hero.tsx                 # Academic profile, interests, background/travel entries
 │   ├── Navbar.tsx               # Navigation with theme toggle
-│   ├── Education.tsx            # Education background cards
-│   ├── Research.tsx             # Research projects portfolio
-│   ├── Achievements.tsx         # Achievement cards/gallery
-│   ├── Travel.tsx               # Travel photo gallery
+│   ├── Background.tsx           # Education, undergraduate research archive, honors
+│   ├── Education.tsx            # Compact education timeline with optional records
+│   ├── Research.tsx             # Current interests and reusable undergraduate archive
+│   ├── Achievements.tsx         # Compact honors list and photo gallery
+│   ├── ContactDialog.tsx        # Shared, focus-managed email dialog
+│   ├── Travel.tsx               # Scroll-linked travel scenes and gallery entry
+│   ├── TravelGallery.tsx        # Photo grid/viewer, navigation, zoom, touch handling
 │   ├── Footer.tsx               # Site footer
 │   └── ImageLoader.tsx          # Lazy image loading utility
 ├── content/                     # User-facing content data
 │   ├── achievements.ts          # Achievement entries
 │   ├── media.ts                 # Media manifest helpers
+│   ├── profile.ts               # Public identity, research-focused bio, contact, interests
+│   ├── research.tsx             # Preserved undergraduate project/patent records
 │   ├── travel.tsx               # Travel entries with rich descriptions
 │   └── generated/
 │       └── media-manifest.ts    # Generated responsive media manifest
@@ -59,7 +72,8 @@ npm install
 ├── types.ts                     # Legacy/shared TypeScript interfaces
 ├── App.tsx                      # Main app with routing and ThemeProvider
 ├── index.tsx                    # React entry point
-├── index.html                   # HTML template, Tailwind CDN config, UI CSS tokens
+├── index.html                   # HTML template and Tailwind CDN config
+├── styles/site.css              # Technical-profile layouts, theme tokens, responsive UI
 ├── vite.config.ts               # Vite configuration
 └── public/
     ├── photo/                   # Static images used directly by pages
@@ -86,7 +100,8 @@ Travel, achievement, and selected research images use a content-data plus genera
 
 - Travel content lives in `content/travel.tsx`.
 - Achievement content lives in `content/achievements.ts`.
-- Research content currently lives in the `researchData` array inside `components/Research.tsx`.
+- Research-interest labels and public profile/contact information live in `content/profile.ts`.
+- Undergraduate research records live in `content/research.tsx`, displayed briefly in Background with optional original records/images. Do not add future graduate projects to this historical archive or present interests as completed work.
 - Travel source images live in `public/photo-src/travel/<entry-id>/`.
 - Achievement source images live in `public/photo-src/achievements/<entry-id>/`.
 - Research source images live in `public/photo-src/research/<entry-id>/`.
@@ -147,23 +162,25 @@ import type { NavItem } from '@/types';
 
 ## Styling
 
-- Use Tailwind utility classes and existing semantic UI classes.
+- Use Tailwind utility classes and existing semantic UI classes in `styles/site.css`.
 - Tailwind is loaded through CDN config in `index.html`.
-- Reuse semantic UI classes from `index.html`:
+- Reuse semantic UI classes from `styles/site.css`:
   - Layout: `ui-section`, `ui-shell`
   - Surface/card: `ui-surface`, `ui-subtle-panel`
   - Chips: `ui-chip`
   - Buttons: `ui-primary-btn`, `ui-ghost-btn`
   - Accessibility: `ui-focus-ring`
-  - Text: `ui-text-gradient`
+  - Shared layout: `page-gutter`, `editorial-grid`, `page-heading`, `record-details`
+  - Links and tools: `text-link`, `icon-button`
 - Dark mode uses the `dark:` prefix and CSS variables attached to `html.dark`.
 - Every visual change must be reviewed in both light and dark themes, including text, cards, borders, overlays, badges, icons, hover states, and disabled/secondary text.
 - Avoid hardcoded colors that only work in one theme; pair Tailwind color utilities with matching `dark:` variants or use existing semantic UI classes/CSS variables.
 - Current Tailwind custom colors:
-  - `primary`: `#0f2742`
-  - `secondary`: `#35546f`
-  - `accent`: `#1e8f80`
-- Prefer readable, restrained portfolio styling over decorative redesigns.
+  - `primary`: `#20292e`
+  - `secondary`: `#617079`
+  - `accent`: `#087f8c`
+- Use cool white/gray and graphite surfaces with a restrained cyan accent, sans-serif headings, and monospace metadata. Keep sections unframed and limit genuinely framed tools/cards to 8px corners. Use real public images, not invented scientific results or decorative pseudo-data.
+- Do not show empty Notes or Publications sections. Only add approved public writing and verified works; never mirror private notes from other chats.
 
 ## Dark Mode
 
@@ -189,9 +206,9 @@ Current routes:
 | Path | Component |
 |------|-----------|
 | `/` | `Hero` |
-| `/education` | `Education` |
+| `/background` | `Background` (education, undergraduate archive, honors) |
 | `/research` | `Research` |
-| `/achievements` | `Achievements` |
+| `/education`, `/achievements` | Redirect to `/background` for legacy links |
 | `/travel` | `Travel` |
 
 ## Error Handling
@@ -231,6 +248,11 @@ if (!rootElement) {
 - Bilingual content (English/Chinese) appears throughout.
 - Generated files in `content/generated/` and `public/photo-gen/` should normally be updated through `npm run media:build`.
 - Before changing gallery data, verify each content `entryId` has a corresponding folder under `public/photo-src/<module>/`.
+- Use `useDialog()` for modal focus trapping, Escape handling, body scroll locking, and focus restoration. Email dialogs use a portal; galleries must remain above the header/footer without transformed ancestor stacking contexts.
+- Travel only uses the `trip` URL parameter for the selected gallery. Its scene changes follow native scrolling; do not capture wheel/touch events to lock the page. Keep the thumbnail grid and photo viewer inside one portal dialog, not nested dialogs. Escape returns from photo view to the grid before closing; arrows, zoom bounds, focus restoration, and mobile controls must remain functional.
+- `usePageMotion()` adds one-time viewport reveals to individual content blocks. Do not transform ancestors of fixed overlays or the sticky Travel stage. Respect `prefers-reduced-motion` and keep content visible when motion is unavailable.
+- Use `getMediaImages()` for cover/gallery deduplication by media ID and photo counts. Do not read EXIF/GPS or invent map locations to add Travel interactions.
+- Travel cover framing uses manifest dimensions and the actual stage aspect ratio. Preserve portrait images and heavily mismatched compositions with `contain`, without zoom/parallax cropping; only suitable landscape compositions fill the stage. Keep captions separate from contained photos, including on narrow and short screens. Do not replace source photos to solve layout problems without authorization.
 
 ## Common Patterns
 
@@ -254,7 +276,7 @@ export const MyComponent: React.FC = () => {
 ### Card Component Pattern
 
 ```typescript
-<div className="ui-surface rounded-3xl p-6 transition-all duration-300 hover:-translate-y-1">
+<div className="ui-surface rounded-lg p-6">
   {/* Card content */}
 </div>
 ```

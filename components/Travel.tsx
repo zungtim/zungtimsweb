@@ -1,304 +1,173 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
-import { MapPin, Calendar, Camera, X, Quote, ZoomIn } from 'lucide-react';
-import { ImageLoader } from './ImageLoader';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { ArrowDown, ArrowUpRight, Camera, MapPin } from 'lucide-react';
+import { TravelGallery } from './TravelGallery';
 import { travelEntries } from '../content/travel';
-import { getMediaEntry, resolveMediaImage } from '../content/media';
-import type { TravelContentEntry } from '../types/content';
-import type { ResolvedMediaImage } from '../content/media';
+import { getMediaEntry, getMediaImages, resolveMediaImage } from '../content/media';
 
-// 内容维护提示：新增/修改旅行经历文字请编辑 content/travel.tsx，本文件仅负责渲染。
-const LIST_SIZES = '(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw';
-const MODAL_HERO_SIZES = '100vw';
-const MODAL_GRID_SIZES = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
-
-function isPortraitImage(image: ResolvedMediaImage | undefined): boolean {
-  if (!image) {
-    return false;
-  }
-  return image.height > image.width;
-}
-
-function getImageAspectStyle(image: ResolvedMediaImage | undefined): React.CSSProperties | undefined {
-  if (!image) {
-    return undefined;
-  }
-
-  return {
-    aspectRatio: `${image.width} / ${image.height}`,
-  };
-}
+const trips = travelEntries.map((trip) => {
+  const media = getMediaEntry(trip.media);
+  return { trip, cover: resolveMediaImage(media?.cover, 'lg'), thumbnail: resolveMediaImage(media?.cover, 'sm'), count: getMediaImages(media).length };
+});
+const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
+const MIN_VISIBLE_COVER = 0.65;
 
 export const Travel: React.FC = () => {
-  const [selectedTrip, setSelectedTrip] = useState<TravelContentEntry | null>(null);
-  const [visibleImageCount, setVisibleImageCount] = useState(6);
-  const loadMoreTriggerRef = useRef<HTMLDivElement | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const selectedTrip = travelEntries.find((trip) => trip.id === searchParams.get('trip'));
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [stageRatio, setStageRatio] = useState<number | null>(null);
+  const activeRef = useRef(0);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLDivElement>(null);
+  const pointerFrame = useRef(0);
+  const initialTrip = useRef(selectedTrip?.id);
+  const current = trips[activeIndex];
+  const coverRatio = current?.cover ? current.cover.width / current.cover.height : 1;
+  // Preserve portrait compositions and avoid filling when more than a third would be cropped.
+  const containCover = coverRatio < 1 || (stageRatio !== null && Math.min(coverRatio / stageRatio, stageRatio / coverRatio) < MIN_VISIBLE_COVER);
 
-  useEffect(() => {
-    if (selectedTrip) {
-      setVisibleImageCount(6);
-    }
-  }, [selectedTrip?.id]);
-
-  useEffect(() => {
-    if (selectedTrip) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
+  useLayoutEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return;
+    const updateRatio = () => {
+      const { width, height } = stage.getBoundingClientRect();
+      if (height > 0) setStageRatio(width / height);
     };
-  }, [selectedTrip]);
+    updateRatio();
+    const observer = new ResizeObserver(updateRatio);
+    observer.observe(stage);
+    return () => observer.disconnect();
+  }, []);
+
+  const sceneOffset = (index: number) => {
+    const track = trackRef.current;
+    const stage = stageRef.current;
+    if (!track || !stage) return 0;
+    const stickyTop = Number.parseFloat(window.getComputedStyle(stage).top) || 0;
+    const range = Math.max(1, track.offsetHeight - stage.offsetHeight);
+    return track.getBoundingClientRect().top + window.scrollY - stickyTop + range * index / Math.max(1, trips.length - 1);
+  };
+
+  const jumpTo = (index: number) => {
+    window.scrollTo({
+      top: sceneOffset(clamp(index, 0, trips.length - 1)),
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+    });
+  };
 
   useEffect(() => {
-    if (!selectedTrip) {
-      return;
-    }
-
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setSelectedTrip(null);
+    let frame = 0;
+    const updateScene = () => {
+      frame = 0;
+      const track = trackRef.current;
+      const stage = stageRef.current;
+      if (!track || !stage) return;
+      const stickyTop = Number.parseFloat(window.getComputedStyle(stage).top) || 0;
+      const range = Math.max(1, track.offsetHeight - stage.offsetHeight);
+      const progress = clamp((stickyTop - track.getBoundingClientRect().top) / range, 0, 1);
+      const position = progress * Math.max(1, trips.length - 1);
+      const index = Math.round(position);
+      stage.style.setProperty('--scene-shift', `${(position - index) * 18}px`);
+      stage.style.setProperty('--travel-progress', String(progress));
+      if (index !== activeRef.current) {
+        activeRef.current = index;
+        setActiveIndex(index);
       }
     };
-
-    window.addEventListener('keydown', handleEsc);
+    const schedule = () => { if (!frame) frame = window.requestAnimationFrame(updateScene); };
+    const initialIndex = trips.findIndex(({ trip }) => trip.id === initialTrip.current);
+    frame = window.requestAnimationFrame(() => {
+      if (initialIndex > 0) window.scrollTo({ top: sceneOffset(initialIndex), behavior: 'instant' });
+      updateScene();
+    });
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
     return () => {
-      window.removeEventListener('keydown', handleEsc);
+      window.cancelAnimationFrame(frame);
+      window.cancelAnimationFrame(pointerFrame.current);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
     };
-  }, [selectedTrip]);
+  }, []);
 
   useEffect(() => {
-    if (!selectedTrip) {
-      return;
-    }
+    const nav = navRef.current;
+    const button = nav?.querySelector<HTMLElement>(`[data-scene-index="${activeIndex}"]`);
+    if (nav && button) nav.scrollTo({ left: button.offsetLeft - (nav.clientWidth - button.offsetWidth) / 2, behavior: 'instant' });
+  }, [activeIndex]);
 
-    const entryMedia = getMediaEntry(selectedTrip.media);
-    const totalImages = entryMedia?.gallery.length ?? 0;
-    if (visibleImageCount >= totalImages) {
-      return;
-    }
+  const openTrip = () => {
+    setSearchParams({ trip: current.trip.id }, { state: { travelGalleryOpened: true } });
+  };
+  const closeTrip = () => {
+    if (location.state?.travelGalleryOpened) navigate(-1);
+    else setSearchParams({}, { replace: true });
+  };
 
-    const target = loadMoreTriggerRef.current;
-    if (!target) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisibleImageCount((prev) => Math.min(prev + 4, totalImages));
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '200px',
-      }
-    );
-
-    observer.observe(target);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [selectedTrip, visibleImageCount]);
+  if (!current) return null;
 
   return (
-    <section id="travel" className="ui-section px-4 sm:px-6 lg:px-8">
-      <div className="ui-shell">
-        <div className="mb-12 max-w-3xl">
-          <div className="ui-chip mb-6 inline-flex items-center justify-center rounded-2xl p-3 text-secondary dark:text-slate-300">
-            <Camera className="h-8 w-8" />
+    <section className="travel-page" aria-label="Travel">
+      <div ref={trackRef} className="travel-scroll-track" style={{ '--trip-count': trips.length } as React.CSSProperties}>
+        <div
+          ref={stageRef}
+          className="travel-stage"
+          data-cover-fit={containCover ? 'contain' : 'cover'}
+          onPointerMove={(event) => {
+            if (event.pointerType !== 'mouse' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            const rect = event.currentTarget.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            window.cancelAnimationFrame(pointerFrame.current);
+            pointerFrame.current = window.requestAnimationFrame(() => {
+              const stage = stageRef.current;
+              if (!stage) return;
+              stage.style.setProperty('--pointer-x', `${(x / rect.width - 0.5) * 18}px`);
+              stage.style.setProperty('--pointer-y', `${(y / rect.height - 0.5) * 12}px`);
+              stage.style.setProperty('--cursor-x', `${x}px`);
+              stage.style.setProperty('--cursor-y', `${y}px`);
+            });
+          }}
+          onPointerLeave={() => {
+            window.cancelAnimationFrame(pointerFrame.current);
+            stageRef.current?.style.setProperty('--pointer-x', '0px');
+            stageRef.current?.style.setProperty('--pointer-y', '0px');
+          }}
+        >
+          <div className="travel-scene-images" aria-hidden="true">
+            {trips.map(({ trip, cover }, index) => cover && Math.abs(index - activeIndex) <= 1 && (
+              <img key={trip.id} className={index === activeIndex ? 'scene-image is-active' : 'scene-image'} src={cover.src} srcSet={cover.srcSet} sizes={containCover ? '(max-width: 767px) calc(100vw - 40px), 54vw' : '100vw'} width={cover.width} height={cover.height} alt="" loading={index === activeIndex ? 'eager' : 'lazy'} fetchPriority={index === activeIndex ? 'high' : 'low'} />
+            ))}
           </div>
-          <h2 className="mb-3 text-4xl font-bold tracking-tight text-slate-900 dark:text-white">旅行足迹</h2>
-          <p className="text-lg font-serif italic leading-relaxed text-slate-500 dark:text-slate-400">"The world is a book and those who do not travel read only one page."</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {travelEntries.map((trip, idx) => {
-            const entryMedia = getMediaEntry(trip.media);
-            const coverImage = resolveMediaImage(entryMedia?.cover, 'md');
-            const galleryCount = entryMedia?.gallery.length ?? 0;
-            return (
-              <div
-                key={trip.id}
-                onClick={() => setSelectedTrip(trip)}
-                className={`break-inside-avoid group cursor-pointer ui-surface ui-focus-ring rounded-3xl overflow-hidden transition-transform duration-300 hover:-translate-y-1 ${
-                  idx === 0 ? 'md:col-span-2' : ''
-                }`}
-                tabIndex={0}
-                role="button"
-                onKeyDown={(event) => {
-                  if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    setSelectedTrip(trip);
-                  }
-                }}
-              >
-                <div className="relative h-64 overflow-hidden bg-slate-100 dark:bg-slate-800">
-                  {coverImage && (
-                    <ImageLoader
-                      src={coverImage.src}
-                      srcSet={coverImage.srcSet}
-                      sizes={LIST_SIZES}
-                      alt={trip.title}
-                      priority={idx < 3}
-                      loading={idx < 3 ? 'eager' : 'lazy'}
-                      fetchPriority={idx < 3 ? 'high' : 'low'}
-                      containerClassName="w-full h-full"
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                  )}
-                  <div className="absolute top-4 right-4 bg-white/80 dark:bg-slate-800/80 px-3 py-1 rounded-full text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm z-10">
-                    {trip.year}
-                  </div>
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 text-white flex items-center gap-2 font-semibold bg-black/40 px-4 py-2 rounded-full transition-opacity duration-300">
-                      <ZoomIn className="w-4 h-4" /> 查看图集
-                    </div>
-                  </div>
-                </div>
-
-                <div className="p-6 flex-grow flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center gap-2 text-sm text-teal-600 dark:text-teal-400 font-semibold mb-2">
-                      <Calendar className="w-4 h-4" />
-                      {trip.date}
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 line-clamp-1">{trip.title}</h3>
-                    <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm mb-4">
-                      <MapPin className="w-4 h-4" />
-                      {trip.location}
-                    </div>
-                  </div>
-
-                  <div className="pt-4 border-t border-slate-100 dark:border-slate-700 flex justify-between items-center text-slate-400 dark:text-slate-500 text-sm">
-                    <span className="flex items-center gap-1">
-                      <Camera className="w-3.5 h-3.5" /> {galleryCount} Photos
-                    </span>
-                    <span className="text-xl opacity-60 group-hover:opacity-100 transition-opacity">{trip.emoji}</span>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {selectedTrip && (() => {
-          const selectedMedia = getMediaEntry(selectedTrip.media);
-          const selectedCover = resolveMediaImage(selectedMedia?.cover, 'lg');
-          const selectedCoverIsPortrait = isPortraitImage(selectedCover);
-          const visibleImages = (selectedMedia?.gallery ?? []).slice(0, visibleImageCount);
-
-          return (
-            <div
-              className="fixed top-16 left-0 right-0 bottom-0 z-[100] flex items-center justify-center p-4 sm:p-6"
-              role="dialog"
-              aria-modal="true"
-              aria-label={`${selectedTrip.title} travel gallery`}
-            >
-              <div
-                className="absolute inset-0 bg-slate-900/80 transition-opacity"
-                onClick={() => setSelectedTrip(null)}
-              />
-
-              <div className="relative w-full max-w-5xl max-h-[90vh] ui-surface rounded-3xl overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-200">
-                <button
-                  onClick={() => setSelectedTrip(null)}
-                  className="ui-focus-ring absolute top-4 right-4 z-20 p-2 bg-black/10 hover:bg-black/20 text-slate-800 dark:text-slate-200 rounded-full transition-colors"
-                  aria-label="Close travel gallery"
-                >
-                  <X className="w-6 h-6" />
+          <div className="travel-scene-shade" />
+          <div className="scene-topline"><div><p className="scene-eyebrow">Travel archive</p><h1>Travel</h1></div><span className="scene-sequence">{String(activeIndex + 1).padStart(2, '0')} / {String(trips.length).padStart(2, '0')}</span></div>
+          <button type="button" className="ui-focus-ring scene-open-target" onClick={openTrip} aria-label={`Open ${current.trip.title} travel gallery`} aria-haspopup="dialog" />
+          <div className="scene-content" key={current.trip.id}>
+            <p className="scene-location"><MapPin size={16} />{current.trip.location}</p>
+            <h2>{current.trip.title}</h2>
+            <div className="scene-meta"><span>{current.trip.date}</span><span><Camera size={15} />{current.count} 张照片</span></div>
+            <button type="button" className="scene-gallery-link ui-focus-ring" onClick={openTrip} aria-label={`查看${current.trip.title}图集`}><span>查看图集</span><ArrowUpRight size={20} /></button>
+          </div>
+          <div className="scene-cursor" aria-hidden="true"><ArrowUpRight size={24} /></div>
+          <div className="scene-bottom">
+            <div className="scene-navigation" ref={navRef} role="group" aria-label="旅行场景">
+              {trips.map(({ trip, thumbnail }, index) => (
+                <button key={trip.id} type="button" data-scene-index={index} className="ui-focus-ring scene-stop" onClick={() => jumpTo(index)} aria-label={`前往${trip.title}`} aria-pressed={activeIndex === index} title={trip.location}>
+                  {thumbnail && <img src={thumbnail.src} alt="" loading="lazy" width="76" height="48" />}
+                  <span>{String(index + 1).padStart(2, '0')}</span>
                 </button>
-
-                <div className="overflow-y-auto custom-scrollbar">
-                  <div className="relative h-64 sm:h-80 w-full shrink-0">
-                    {selectedCover && (
-                      <ImageLoader
-                        src={selectedCover.src}
-                        srcSet={selectedCover.srcSet}
-                        sizes={MODAL_HERO_SIZES}
-                        alt={selectedTrip.title}
-                        priority={true}
-                        loading="eager"
-                        fetchPriority="high"
-                        containerClassName="w-full h-full"
-                        className={`h-full w-full ${selectedCoverIsPortrait ? 'object-contain p-1' : 'object-cover'}`}
-                      />
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                      <div className="p-8 text-white w-full">
-                        <div className="flex items-center gap-2 text-teal-300 font-bold mb-2 uppercase tracking-wide text-sm">
-                          <MapPin className="w-4 h-4" /> {selectedTrip.location}
-                        </div>
-                        <h2 className="text-3xl sm:text-4xl font-bold mb-2">{selectedTrip.title} {selectedTrip.emoji}</h2>
-                        <p className="opacity-90 font-mono text-sm">{selectedTrip.date}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-8">
-                    <div className="bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 border-l-4 border-l-teal-500 p-6 rounded-xl mb-10">
-                      <Quote className="w-8 h-8 text-teal-200 mb-2" />
-                      <div className="text-slate-700 dark:text-slate-300 text-lg font-serif">
-                        {selectedTrip.description}
-                      </div>
-                    </div>
-
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-                      <Camera className="w-5 h-5 text-teal-600 dark:text-teal-400" />
-                      旅途剪影
-                    </h3>
-
-                    <div className="columns-1 sm:columns-2 md:columns-3 [column-gap:1rem]">
-                      {visibleImages.map((image) => {
-                        const mediaImage = resolveMediaImage(image, 'md');
-                        if (!mediaImage) {
-                          return null;
-                        }
-
-                        return (
-                          <div
-                            key={image.id}
-                            className="mb-4 [break-inside:avoid]"
-                          >
-                            <ImageLoader
-                              src={mediaImage.src}
-                              srcSet={mediaImage.srcSet}
-                              sizes={MODAL_GRID_SIZES}
-                              alt={`Gallery ${image.id}`}
-                              containerClassName="w-full rounded-xl bg-slate-100 dark:bg-slate-700"
-                              containerStyle={getImageAspectStyle(mediaImage)}
-                              className="h-full w-full rounded-xl object-cover transition-transform duration-500 hover:scale-[1.02]"
-                              loading="lazy"
-                              fetchPriority="low"
-                            />
-                          </div>
-                        );
-                      })}
-                    </div>
-
-                    {visibleImageCount < (selectedMedia?.gallery.length ?? 0) && (
-                      <div
-                        className="h-20 mt-8 flex items-center justify-center"
-                        ref={loadMoreTriggerRef}
-                      >
-                        <div className="flex items-center gap-2 text-slate-400 dark:text-slate-500">
-                          <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                          <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                          <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="h-12" />
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
-          );
-        })()}
+            <button type="button" onClick={() => jumpTo(activeIndex === trips.length - 1 ? 0 : activeIndex + 1)} className="ui-focus-ring scene-next" aria-label={activeIndex === trips.length - 1 ? '回到第一段旅程' : '下一段旅程'} title={activeIndex === trips.length - 1 ? '回到第一段旅程' : '下一段旅程'}><ArrowDown size={20} /></button>
+          </div>
+          <div className="scene-progress" aria-hidden="true"><span /></div>
+        </div>
       </div>
+      {selectedTrip && <TravelGallery key={selectedTrip.id} trip={selectedTrip} onClose={closeTrip} />}
     </section>
   );
 };
