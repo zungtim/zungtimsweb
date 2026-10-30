@@ -61,6 +61,18 @@ export interface ResearchInterestEntry {
     english: string;
 }
 
+export interface ResearchArchiveEntry {
+    id: string;
+    type: 'research' | 'patent';
+    title: string;
+    subtitle: string;
+    role: string;
+    date: string;
+    summary: string;
+    publicationNumber?: string;
+    status?: string;
+}
+
 export interface ResearchQuestionEntry {
     id: string;
     title: string;

@@ -3,8 +3,12 @@ import { ArrowRight, ArrowUpRight, Mail, Microscope } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ContactDialog } from './ContactDialog';
 import { profile, researchInterests } from '../content/profile';
+import { researchFocus } from '../content/research-focus';
 import { travelEntries } from '../content/travel';
 import { getMediaEntry, resolveMediaImage } from '../content/media';
+
+const primaryResearchInterest = researchInterests.find((interest) => interest.id === researchFocus.primaryInterestId);
+const supportingResearchInterests = researchInterests.filter((interest) => interest.id !== researchFocus.primaryInterestId);
 
 export const Hero: React.FC = () => {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -45,23 +49,26 @@ export const Hero: React.FC = () => {
         </div>
       </section>
 
-      <section className="home-interests page-gutter" aria-labelledby="home-interests-title">
+      {primaryResearchInterest && <section className="home-interests page-gutter" aria-labelledby="home-interests-title">
         <div className="ui-shell editorial-grid">
           <div className="section-label">
             <p className="eyebrow">01 / Research</p>
             <h2 id="home-interests-title">研究兴趣</h2>
             <Link to="/research" className="ui-focus-ring text-link">研究概述 <ArrowUpRight size={16} /></Link>
           </div>
-          <div className="interest-index">
-            {researchInterests.map((interest) => (
-              <div key={interest.id} className="interest-row">
-                <span className="index-number">{interest.id}</span>
-                <div><span className="interest-context">{interest.context}</span><h3>{interest.title}</h3><p lang="en">{interest.english}</p></div>
-              </div>
-            ))}
+          <div className="home-research-overview">
+            <Link to="/research" className="ui-focus-ring home-research-focus" aria-label={'查看' + primaryResearchInterest.title + '研究概述'}>
+              <span className="home-research-label">{primaryResearchInterest.context}</span>
+              <div className="home-research-title"><h3>{primaryResearchInterest.title}</h3><ArrowUpRight size={20} aria-hidden="true" /></div>
+              <p lang="en">{primaryResearchInterest.english}</p>
+            </Link>
+            <p className="home-research-summary">{researchFocus.overview}</p>
+            <dl className="home-research-context">
+              {supportingResearchInterests.map((interest) => <div key={interest.id}><dt>{interest.context}</dt><dd>{interest.title}</dd></div>)}
+            </dl>
           </div>
         </div>
-      </section>
+      </section>}
 
       <section className="home-background page-gutter" aria-labelledby="home-background-title">
         <div className="ui-shell editorial-grid">

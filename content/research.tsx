@@ -1,6 +1,31 @@
 import React from 'react';
 import type { ResearchItem } from '../types';
+import type { ResearchArchiveEntry } from '../types/content';
 
+export const researchArchiveEntries: ResearchArchiveEntry[] = [
+  {
+    id: '1',
+    type: 'research',
+    title: '苯乙烯-马来酸酐共聚物接枝改性碳纳米管/ABS永久抗静电复合材料的制备及性能研究',
+    subtitle: '2026年大学生创新训练项目',
+    role: '第一负责人',
+    date: '2025.10 - 2026.07',
+    summary: '围绕碳纳米管在 ABS 中的团聚与界面相容性问题，开展 SMA 接枝改性与复合材料制备，研究填料分散、界面作用对抗静电及力学性能的影响。',
+  },
+  {
+    id: '2',
+    type: 'patent',
+    title: '一种通过改性硅烷偶联剂增强粘附性的有机硅压敏胶',
+    subtitle: '中国发明专利',
+    role: '第二发明人',
+    date: '2025.07.01',
+    summary: '以改性硅烷偶联剂调控有机硅压敏胶的界面结合，围绕配方设计与粘附性能评价，考察剥离强度、持粘性及温度适应性。',
+    publicationNumber: 'CN 120230511 A',
+    status: '专利公开',
+  },
+];
+
+// Historical detail is retained for reference, but is not rendered by the public archive.
 export const researchIntro = '本科阶段主要围绕功能高分子材料中的界面调控与性能优化问题展开，在有机硅橡胶材料和ABS导电复合材料两个体系中开展科研训练，分别关注改性硅烷偶联剂对硅橡胶的界面作用和纳米功能组分（改性碳纳米管）在聚合物基体中相容性表现这两个主要方向，探究界面作用对聚合物基体分散稳定性、界面相容性及其对材料机械性能、力学性能和服役稳定性的影响。 ';
 
 export const researchData: ResearchItem[] = [

@@ -10,7 +10,7 @@ Main sections:
 
 - About: profile, short bio, and contact entry.
 - Research: cold ion-molecule reaction-dynamics interests, scientific questions, and a conceptual experimental-method framework.
-- Background: education, compact undergraduate research/patent records, and honors with optional details and galleries.
+- Background: education with optional records, concise undergraduate research/patent summaries, and honors with galleries.
 - Travel: scroll-linked photographic scenes and responsive travel galleries.
 
 ## Tech Stack
@@ -121,7 +121,7 @@ Primary content locations:
 ```text
 content/travel.tsx
 content/achievements.ts
-content/research.tsx       # Undergraduate archive, not future graduate projects
+content/research.tsx       # Public researchArchiveEntries; retained historical detail
 content/profile.ts        # Public identity and contact; re-exports the interest index
 content/research-focus.ts # Shared interest index, Research overview, questions, methods
 ```

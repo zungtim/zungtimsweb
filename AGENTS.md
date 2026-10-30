@@ -104,7 +104,7 @@ Travel, achievement, and selected research images use a content-data plus genera
 - Achievement content lives in `content/achievements.ts`.
 - Public profile/contact information lives in `content/profile.ts`, which re-exports the shared research-interest index for the homepage.
 - Current Research-interest labels, overview, questions, and method context live in `content/research-focus.ts`. The homepage and Research page share this source; keep the discipline, research focus, and method perspective distinct. The method flow is a conceptual illustration, not an apparatus or results diagram.
-- Undergraduate research records live in `content/research.tsx`, displayed briefly in Background with optional original records/images. Do not add future graduate projects to this historical archive or present interests as completed work.
+- Undergraduate research records live in `content/research.tsx`. Background renders only `researchArchiveEntries`: formal title, date, role, a concise summary, and the patent publication number/status when applicable. The user requested removal of the long detail/image UI on 2026-10-30; do not restore it without a new request. The older `researchData`, `researchIntro`, and image files are retained as historical source material, not rendered records. Do not add future graduate projects to this archive or present interests as completed work.
 - Travel source images live in `public/photo-src/travel/<entry-id>/`.
 - Achievement source images live in `public/photo-src/achievements/<entry-id>/`.
 - Research source images live in `public/photo-src/research/<entry-id>/`.
@@ -114,11 +114,11 @@ Travel, achievement, and selected research images use a content-data plus genera
 - The media builder preserves the existing `generatedAt` value when generated media content has not changed.
 - Components should use `getMediaEntry()` and `resolveMediaImage()` instead of hardcoding generated travel/achievement/research image arrays.
 
-Static one-off images are still used directly in some pages:
+Static and retained one-off images:
 
 - Avatar: `public/photo/avatar.jpg`
 - Education logo: `public/photo/education/gdutlogo.png`
-- Research patent certificate image: `public/photo/Research/patent-cert.png`
+- Historical research patent image: `public/photo/Research/patent-cert.png` is retained but no longer displayed.
 
 ## TypeScript & React
 

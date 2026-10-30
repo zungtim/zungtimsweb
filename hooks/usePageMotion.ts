@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const REVEAL_TARGETS = '.page-heading, .profile-eyebrow, .identity-row, .section-label, .interest-row, .background-teaser, .travel-feature, .research-interest, .education-row, .archive-heading, .achievement-row';
+const REVEAL_TARGETS = '.page-heading, .profile-eyebrow, .identity-row, .section-label, .home-research-overview, .background-teaser, .travel-feature, .research-interest, .education-row, .archive-heading, .achievement-row';
 
 export const usePageMotion = (pathname: string) => {
   useEffect(() => {

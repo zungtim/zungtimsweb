@@ -160,7 +160,7 @@ public/photo-src/achievements/2026.05.01/
 content/research.tsx
 ```
 
-本科历史项目与专利的数据在 `content/research.tsx` 的 `researchData` 数组中，页面默认简要显示，展开后可查看原始记录与图片。未来真实开展的研究生课题不应直接混入这个本科档案，应另行增加经确认的当前研究展示。
+Background 页面只读取 `content/research.tsx` 的 `researchArchiveEntries` 数组。每条保留正式题目、时间、角色和一段研究内容；专利另保留公开号与公开状态。2026-10-30 起不再展示长篇实验细节、指标清单、图片或“原始记录与图片”折叠入口。
 
 常见字段包括：
 
@@ -172,54 +172,25 @@ content/research.tsx
   subtitle: '项目类别或正式名称',
   role: '第一负责人',
   date: '2026.01 - 2026.12',
-  status: '记录状态',
-  tags: ['关键词1', '关键词2'],
-  sections: [
-    { title: '研究问题', body: '经确认的研究背景' },
-    { title: '技术路线', body: '经确认的研究方法' },
-  ],
-  metrics: [
-    '关键成果 1',
-    '关键成果 2',
-  ],
-  images: [
-    {
-      media: {
-        module: 'research',
-        entryId: 'research-example',
-      },
-      caption: '图片说明'
-    }
-  ]
+  summary: '一段经确认的研究内容，说明研究问题、方法与评价对象。',
 }
 ```
 
 如果是专利，可以使用：
 
 ```tsx
-type: 'patent'
+type: 'patent',
+publicationNumber: '经核实的专利公开号',
+status: '专利公开',
 ```
 
-并按现有专利条目的格式添加 `citation`。
+公开不等于授权；只有确认授权后才能更新为授权状态。不要把第二发明人改写为独立完成，也不要把研究经历改写为已结题或已发表成果。
 
-### 需要添加的图片目录
+### 保留的历史资料
 
-推荐 Research 图片也走压缩管线：
+`researchData`、`researchIntro` 及既有图片仍保留在源码和原目录中，但不由当前本科档案页面渲染。修改这部分历史数据不会自动改变页面摘要。未来真实开展的研究生课题不应混入本科档案，应另行增加经确认的当前研究展示。
 
-```text
-public/photo-src/research/<entryId>/
-```
-
-例子：
-
-```text
-public/photo-src/research/research-example/
-└── cover.png
-```
-
-`entryId` 必须和 `content/research.tsx` 里图片的 `media.entryId` 完全一致。
-
-目前 Research 图片渲染会读取该目录下的 `cover.*`。如果一个 Research 项目要展示多张图，可以在 `images` 数组里放多个图片对象，每个对象对应一个不同的 `entryId`。
+图片仅移除页面展示，没有删除原文件、生成文件或 Git 历史；`public` 下文件仍可能随构建发布，这不是隐私清理。
 
 ## 更新后检查
 

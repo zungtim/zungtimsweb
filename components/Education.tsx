@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ArrowUpRight, ChevronDown } from 'lucide-react';
 
 export const Education: React.FC = () => (
   <div>
@@ -11,10 +11,11 @@ export const Education: React.FC = () => (
         <details className="record-details">
           <summary className="ui-focus-ring">本科阶段记录 <ChevronDown className="h-4 w-4" /></summary>
           <dl className="education-facts">
-            <div><dt>GPA</dt><dd>3.46 / 5.0</dd></div>
-            <div><dt>百分制成绩</dt><dd>87.18 / 100</dd></div>
+            <div><dt>GPA</dt><dd>3.55 / 5.0</dd></div>
+            <div><dt>百分制成绩</dt><dd>87.49 / 100</dd></div>
             <div><dt>大一综合测评</dt><dd>Top 1.28% · 2 / 156</dd></div>
             <div><dt>大二综合测评</dt><dd>Top 1.95% · 3 / 154</dd></div>
+            <div><dt>大三综合测评</dt><dd>Top 6.25% · 10 / 160</dd></div>
           </dl>
           <div className="record-copy">
             <p>学科评估 B+</p>
@@ -33,7 +34,11 @@ export const Education: React.FC = () => (
         <p>广东工业大学 · 辅修专业</p>
         <details className="record-details">
           <summary className="ui-focus-ring">辅修记录 <ChevronDown className="h-4 w-4" /></summary>
-          <div className="record-copy"><p>对印制电子电路制造工艺进行学习，拓宽专业视野并探索学科交叉可能性</p><h4>课程</h4><p>印制电子电路原理与工艺 / 电子装联工艺 / 印制电路板加工技术 / 印制电路板电镀技术</p></div>
+          <div className="record-copy">
+            <p>依托学校工科多学科资源，面向印制电子电路产业，结合理论教学、工程实践与校企合作，培养掌握 PCB 材料、制造工艺及产品检测知识的复合型、创新型人才。</p>
+            <a href="https://cxcy.gdut.edu.cn/info/1087/1427.htm" target="_blank" rel="noreferrer" className="ui-focus-ring text-link education-source">学院介绍（官方）<ArrowUpRight size={14} aria-hidden="true" /></a>
+            <h4>课程</h4><p>印制电子电路原理与工艺 / 电子装联工艺 / 印制电路板加工技术 / 印制电路板电镀技术</p>
+          </div>
         </details>
       </div>
     </article>
